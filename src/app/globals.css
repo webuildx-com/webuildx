@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@source "../components/**/*.{ts,tsx}";
+@source "./**/*.{ts,tsx}";
+
+@theme {
+  /* Primary */
+  --color-brand: #ed1b24;
+  --color-brand-hover: #c4161d;
+  --color-ink: #0b1e1c;
+  --color-footer: #0a0a0a;
+  --color-sea-salt: #f9f9f9;
+  --color-silver: #c2c2c2;
+
+  /* Secondary */
+  --color-alice-blue: #d5e5f2;
+  --color-sunset: #d9ba23;
+  --color-old-gold: #fed39e;
+  --color-pink: #f280aa;
+  --color-persimmon: #f25d07;
+
+  /* UI derived */
+  --color-muted: #4f5c5a;
+  --color-subtle: #7a8684;
+  --color-border: #d8dcdb;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: auto;
+  }
+
+  a[href],
+  button:not(:disabled),
+  select:not(:disabled),
+  summary {
+    cursor: pointer;
+  }
+
+  input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="submit"]):not([type="button"]):not(:disabled),
+  textarea:not(:disabled) {
+    cursor: text;
+  }
+
+  input[type="checkbox"],
+  input[type="radio"],
+  input[type="file"],
+  label[for] {
+    cursor: pointer;
+  }
+
+  button:disabled,
+  input:disabled,
+  select:disabled,
+  textarea:disabled {
+    cursor: not-allowed;
+  }
+
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  body {
+    @apply bg-sea-salt text-ink antialiased;
+  }
+}
