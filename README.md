@@ -35,6 +35,15 @@ npm run dev            # http://localhost:3010
 
 ## Deploy
 
-Recommended: [Vercel](https://vercel.com) — import this repo, add env vars, connect `webuildx.com`.
+### Netlify (recommended for this project)
+
+1. Import [webuildx-com/webuildx](https://github.com/webuildx-com/webuildx) in Netlify
+2. Build settings are in `netlify.toml` (`npm run build`, Node 20, Next.js runtime)
+3. Add all env vars from `.env.example` in **Site configuration → Environment variables**
+4. Connect `webuildx.com` under **Domain management**
 
 Ensure your domain is verified in Resend and Turnstile before going live.
+
+### Vercel
+
+Import the repo at [vercel.com](https://vercel.com), add env vars, connect your domain.

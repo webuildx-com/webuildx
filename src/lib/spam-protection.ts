@@ -88,17 +88,24 @@ export function isDisposableEmail(email: string): boolean {
   return DISPOSABLE_DOMAINS.has(domain);
 }
 
+export function isTurnstileConfigured(): boolean {
+  return Boolean(
+    process.env.TURNSTILE_SECRET_KEY &&
+      process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY,
+  );
+}
+
 export async function verifyTurnstileToken(
   token: string,
   ip: string,
 ): Promise<boolean> {
-  const secret = process.env.TURNSTILE_SECRET_KEY;
-
-  if (!secret) {
-    return process.env.NODE_ENV === "development";
+  if (!isTurnstileConfigured()) {
+    return true;
   }
 
   if (!token) return false;
+
+  const secret = process.env.TURNSTILE_SECRET_KEY!;
 
   try {
     const response = await fetch(
