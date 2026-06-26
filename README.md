@@ -38,9 +38,10 @@ npm run dev            # http://localhost:3010
 ### Netlify (recommended for this project)
 
 1. Import [webuildx-com/webuildx](https://github.com/webuildx-com/webuildx) in Netlify
-2. Build settings are in `netlify.toml` (`npm run build`, Node 20, Next.js runtime)
-3. Add all env vars from `.env.example` in **Site configuration → Environment variables**
-4. Connect `webuildx.com` under **Domain management**
+2. **Build command:** `npm run build` (set in `netlify.toml`)
+3. **Publish directory:** leave **empty** — do not set `.next` or `public`. Netlify’s Next.js runtime handles output automatically
+4. Add all env vars from `.env.example` in **Site configuration → Environment variables**
+5. Connect `webuildx.com` under **Domain management** (remove or repoint any Framer DNS if needed)
 
 Ensure your domain is verified in Resend and Turnstile before going live.
 
