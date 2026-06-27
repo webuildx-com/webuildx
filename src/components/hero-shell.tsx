@@ -6,6 +6,7 @@ import { TrustedBy } from "@/components/trusted-by";
 export function HeroShell() {
   return (
     <section
+      id="hero"
       className="flex min-h-svh flex-col bg-sea-salt pt-[72px]"
       aria-label="WebuildX introduction"
     >

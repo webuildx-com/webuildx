@@ -1,3 +1,4 @@
+import { Analytics } from "@/components/analytics";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -41,6 +42,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} scroll-smooth`}>
       <body className="font-sans">
+        <Analytics />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>

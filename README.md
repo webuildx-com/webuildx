@@ -23,6 +23,10 @@ npm run dev            # http://localhost:3010
 | `TURNSTILE_SECRET_KEY` | Yes (prod) | Cloudflare Turnstile secret |
 | `UPSTASH_REDIS_REST_URL` | No | Rate limiting (recommended in prod) |
 | `UPSTASH_REDIS_REST_TOKEN` | No | Rate limiting (recommended in prod) |
+| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | Yes (prod) | GA4 measurement ID (`G-XXXXXXXXXX`) |
+| `NEXT_PUBLIC_CLARITY_PROJECT_ID` | No | Microsoft Clarity (free heatmaps & session replay) |
+
+Tracked automatically: page views, section scroll depth, CTA clicks, inquiry form start/submit. Mark `generate_lead` as a conversion in GA4 Admin → Events.
 
 ## Scripts
 

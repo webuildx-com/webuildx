@@ -57,7 +57,7 @@ export function ProjectFaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="bg-sea-salt pb-16 lg:pb-20" aria-labelledby="faq-heading">
+    <section className="bg-sea-salt pb-16 lg:pb-20" id="faq" aria-labelledby="faq-heading">
       <div className="mx-auto max-w-[1280px] px-6 lg:px-10">
         <h2 id="faq-heading" className="sr-only">
           Frequently asked questions

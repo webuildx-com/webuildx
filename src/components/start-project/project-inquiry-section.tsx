@@ -17,6 +17,7 @@ import {
   InquiryTurnstile,
   isTurnstileConfigured,
 } from "@/components/start-project/inquiry-turnstile";
+import { trackEvent, trackGenerateLead } from "@/lib/analytics";
 import { useId, useRef, useState } from "react";
 
 type SubmitStatus = "idle" | "loading" | "success" | "error";
@@ -128,7 +129,14 @@ export function ProjectInquirySection() {
   const [turnstileToken, setTurnstileToken] = useState("");
   const [turnstileKey, setTurnstileKey] = useState(0);
   const [formStartedAt] = useState(() => Date.now().toString());
+  const inquiryStartedRef = useRef(false);
   const turnstileEnabled = isTurnstileConfigured();
+
+  const markInquiryStarted = () => {
+    if (inquiryStartedRef.current) return;
+    inquiryStartedRef.current = true;
+    trackEvent("inquiry_started", { page: "/start-a-project" });
+  };
 
   const resetTurnstile = () => {
     setTurnstileToken("");
@@ -162,8 +170,18 @@ export function ProjectInquirySection() {
 
       if (!response.ok) {
         resetTurnstile();
+        trackEvent("inquiry_error", {
+          reason: data.error?.slice(0, 120) ?? "unknown",
+        });
         throw new Error(data.error ?? "Something went wrong. Please try again.");
       }
+
+      trackGenerateLead("inquiry_form", {
+        project_type: formData.get("projectType")?.toString() ?? "",
+      });
+      trackEvent("inquiry_submitted", {
+        project_type: formData.get("projectType")?.toString() ?? "",
+      });
 
       setStatus("success");
       formRef.current?.reset();
@@ -234,6 +252,7 @@ export function ProjectInquirySection() {
                 <form
                   ref={formRef}
                   onSubmit={handleSubmit}
+                  onFocusCapture={markInquiryStarted}
                   className="space-y-8"
                 >
                   <input
