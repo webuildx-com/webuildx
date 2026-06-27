@@ -180,7 +180,7 @@ export function ServicesSection() {
     <section
       ref={sectionRef}
       id="services"
-      className="relative bg-sea-salt"
+      className="relative border-t border-border bg-sea-salt"
       aria-labelledby="services-heading"
     >
       {steps.map((step) => (

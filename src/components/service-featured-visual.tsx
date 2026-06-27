@@ -21,99 +21,116 @@ function loopProps(
 }
 
 function DesignVisual({ reduced }: { reduced: boolean | null }) {
-  const navItems = [0, 1, 2, 3, 4];
+  const swatches = [
+    { color: "#ed1b24", label: "Brand" },
+    { color: "#0b1e1c", label: "Ink" },
+    { color: "#f9f9f9", label: "Surface" },
+  ];
 
   return (
-    <div className="relative aspect-[4/3] h-full max-h-[min(44vh,360px)] w-full overflow-hidden border border-border bg-[#f5f5f5] sm:max-h-[min(52vh,420px)] lg:max-h-[min(48vh,440px)]">
-      <div className="absolute inset-6 sm:inset-8">
-        <div className="flex h-full flex-col overflow-hidden border border-border bg-white shadow-[0_24px_48px_-24px_rgba(0,0,0,0.18)]">
-          <div className="flex items-center gap-2 border-b border-border px-4 py-3">
-            <motion.span
-              className="h-2 w-2 rounded-full bg-brand"
-              {...loopProps(reduced, { scale: [1, 1.15, 1] }, { duration: 2.4, repeat: Infinity, ease: "easeInOut" })}
-            />
-            <span className="h-2 w-2 rounded-full bg-border" />
-            <span className="h-2 w-2 rounded-full bg-border" />
-            <motion.span
-              className="ml-3 h-2 rounded-full bg-border"
-              {...loopProps(reduced, { width: ["6rem", "8rem", "6rem"], opacity: [0.55, 1, 0.55] }, { duration: 3.2, repeat: Infinity, ease: "easeInOut" })}
-            />
+    <div className="relative aspect-[4/3] h-full max-h-[min(44vh,360px)] w-full overflow-hidden border border-border bg-[#fafafa] sm:max-h-[min(52vh,420px)] lg:max-h-[min(48vh,440px)]">
+      <div
+        className="absolute inset-0 opacity-40"
+        style={{
+          backgroundImage:
+            "linear-gradient(#e4e7e6 1px, transparent 1px), linear-gradient(90deg, #e4e7e6 1px, transparent 1px)",
+          backgroundSize: "20px 20px",
+        }}
+        aria-hidden="true"
+      />
+
+      <motion.span
+        className="pointer-events-none absolute -right-1 top-2 select-none text-[4.5rem] font-semibold leading-none tracking-tighter text-ink/[0.05] sm:text-[5.5rem]"
+        {...loopProps(reduced, { y: [0, -5, 0] }, { duration: 5.5, repeat: Infinity, ease: "easeInOut" })}
+        aria-hidden="true"
+      >
+        Aa
+      </motion.span>
+
+      <motion.div
+        className="absolute left-[9%] top-[13%] w-[80%] overflow-hidden rounded-sm border border-border bg-white shadow-[0_18px_36px_-18px_rgba(11,30,28,0.14)]"
+        {...loopProps(reduced, { y: [0, -3, 0] }, { duration: 4.2, repeat: Infinity, ease: "easeInOut" })}
+      >
+        <div className="flex items-center justify-between border-b border-border px-3.5 py-2.5 sm:px-4 sm:py-3">
+          <div className="flex items-center gap-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-brand sm:h-2 sm:w-2" />
+            <span className="h-1.5 w-5 rounded-full bg-border sm:h-2 sm:w-6" />
+          </div>
+          <motion.span
+            className="rounded-full bg-brand px-2 py-0.5 text-[8px] font-medium text-white sm:text-[9px]"
+            {...loopProps(reduced, { scale: [1, 1.05, 1] }, { duration: 2.4, repeat: Infinity, ease: "easeInOut" })}
+          >
+            Primary
+          </motion.span>
+        </div>
+
+        <div className="p-3.5 sm:p-4">
+          <motion.div
+            className="mb-2 h-2 w-[52%] rounded-full bg-ink sm:h-2.5"
+            {...loopProps(reduced, { width: ["46%", "58%", "46%"] }, { duration: 3.8, repeat: Infinity, ease: "easeInOut" })}
+          />
+          <div className="mb-3 space-y-1.5">
+            <div className="h-1.5 w-full rounded-full bg-border" />
+            <div className="h-1.5 w-[72%] rounded-full bg-border" />
           </div>
 
-          <div className="relative flex min-h-0 flex-1">
-            <div className="relative w-[28%] border-r border-border bg-[#fafafa] p-3">
+          <p className="mb-2 text-[8px] font-medium uppercase tracking-[0.14em] text-subtle sm:text-[9px]">
+            Palette
+          </p>
+          <div className="grid grid-cols-3 gap-2">
+            {swatches.map(({ color, label }, i) => (
               <motion.div
-                className="mb-3 h-2 w-12 rounded-full bg-brand/80"
-                {...loopProps(reduced, { opacity: [0.65, 1, 0.65] }, { duration: 2.8, repeat: Infinity, ease: "easeInOut" })}
-              />
-              <div className="relative space-y-2">
-                <motion.div
-                  className="absolute left-0 h-4 w-full rounded-sm bg-brand/12"
-                  {...loopProps(
-                    reduced,
-                    { y: [0, 24, 48, 72, 48, 24, 0] },
-                    { duration: 6, repeat: Infinity, ease: "easeInOut" },
-                  )}
-                />
-                {navItems.map((item) => (
-                  <div key={item} className="relative h-4">
-                    <motion.div
-                      className="relative h-1.5 rounded-full bg-border"
-                      style={{ width: `${100 - item * 8}%` }}
-                      {...loopProps(
-                        reduced,
-                        { opacity: [0.45, 1, 0.45] },
-                        { duration: 2.6, repeat: Infinity, ease: "easeInOut", delay: item * 0.18 },
-                      )}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="relative flex flex-1 flex-col p-4 sm:p-5">
-              <motion.div
-                className="mb-4 h-3 w-[45%] rounded-full bg-ink/90"
-                {...loopProps(reduced, { width: ["38%", "52%", "38%"] }, { duration: 4, repeat: Infinity, ease: "easeInOut" })}
-              />
-              <motion.div
-                className="mb-2 h-2 w-full max-w-[280px] rounded-full bg-border"
-                {...loopProps(reduced, { opacity: [0.4, 1, 0.4] }, { duration: 2.2, repeat: Infinity, ease: "easeInOut" })}
-              />
-              <motion.div
-                className="mb-6 h-2 w-[75%] max-w-[220px] rounded-full bg-border"
-                {...loopProps(reduced, { opacity: [0.35, 0.9, 0.35] }, { duration: 2.6, repeat: Infinity, ease: "easeInOut", delay: 0.3 })}
-              />
-
-              <div className="mt-auto grid grid-cols-2 gap-3">
-                {[0, 1].map((card) => (
-                  <motion.div
-                    key={card}
-                    className="aspect-[5/3] rounded-sm border border-border bg-[#fafafa]"
-                    {...loopProps(
-                      reduced,
-                      {
-                        borderColor: ["#d8dcdb", "#ed1b24", "#d8dcdb"],
-                        scale: [1, 1.02, 1],
-                      },
-                      { duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: card * 0.6 },
-                    )}
-                  />
-                ))}
-              </div>
-
-              <motion.div
-                className="pointer-events-none absolute bottom-8 right-6 h-3 w-3 rounded-full border-2 border-brand bg-white sm:bottom-10 sm:right-8"
+                key={label}
+                className="overflow-hidden rounded-sm border border-border"
                 {...loopProps(
                   reduced,
-                  { x: [0, 48, 96, 48, 0], y: [0, -12, 8, 24, 0], opacity: [0, 1, 1, 1, 0] },
-                  { duration: 6, repeat: Infinity, ease: "easeInOut" },
+                  { scale: [1, 1.04, 1] },
+                  { duration: 2.6, repeat: Infinity, ease: "easeInOut", delay: i * 0.35 },
                 )}
-              />
-            </div>
+              >
+                <div className="aspect-[4/3]" style={{ backgroundColor: color }} />
+                <p className="bg-white px-1.5 py-1 text-[7px] font-medium text-muted sm:text-[8px]">
+                  {label}
+                </p>
+              </motion.div>
+            ))}
           </div>
         </div>
-      </div>
+      </motion.div>
+
+      <motion.div
+        className="absolute bottom-[11%] right-[7%] w-[44%] border border-border bg-white/95 p-2.5 backdrop-blur-sm shadow-[0_8px_24px_-12px_rgba(11,30,28,0.12)] sm:p-3"
+        {...loopProps(reduced, { y: [0, 4, 0] }, { duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 0.6 })}
+      >
+        <p className="text-[7px] font-medium uppercase tracking-[0.16em] text-subtle sm:text-[8px]">
+          Typography
+        </p>
+        <p className="mt-0.5 text-[15px] font-semibold tracking-tight text-ink sm:text-[17px]">
+          Inter
+        </p>
+        <div className="mt-1.5 flex items-end gap-1.5">
+          {[400, 500, 600, 700].map((weight, i) => (
+            <motion.span
+              key={weight}
+              className="text-[11px] leading-none text-ink/45 sm:text-[12px]"
+              style={{ fontWeight: weight }}
+              {...loopProps(
+                reduced,
+                { color: ["rgba(11,30,28,0.35)", "rgba(237,27,36,0.85)", "rgba(11,30,28,0.35)"] },
+                { duration: 3.2, repeat: Infinity, ease: "easeInOut", delay: i * 0.45 },
+              )}
+            >
+              Aa
+            </motion.span>
+          ))}
+        </div>
+      </motion.div>
+
+      <motion.div
+        className="absolute left-[9%] top-[48%] h-px w-[80%] origin-left bg-brand/50"
+        {...loopProps(reduced, { scaleX: [0.2, 1, 0.2] }, { duration: 5, repeat: Infinity, ease: "easeInOut" })}
+        aria-hidden="true"
+      />
     </div>
   );
 }

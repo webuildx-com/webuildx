@@ -12,23 +12,21 @@ const logos = [
   { id: "landlordcare", label: "LandLordCare" },
 ] as const;
 
-function LogoLabel({
-  label,
-  size = "default",
+function TrustedByHeading({
+  className,
+  labelClassName,
 }: {
-  label: string;
-  size?: "mobile" | "default";
+  className?: string;
+  labelClassName: string;
 }) {
   return (
-    <span
-      className={
-        size === "mobile"
-          ? "whitespace-nowrap text-[15px] font-semibold tracking-[0.01em] text-ink/50"
-          : "whitespace-nowrap text-[12px] font-medium tracking-[0.02em] text-ink/40 transition-colors duration-300 hover:text-ink/55"
-      }
+    <motion.div
+      className={`flex items-center gap-3 sm:gap-4 lg:gap-5 ${className ?? ""}`}
+      variants={fadeUpSafe}
     >
-      {label}
-    </span>
+      <p className={`shrink-0 ${labelClassName}`}>Trusted by ambitious teams</p>
+      <span className="h-px min-w-0 flex-1 bg-border" aria-hidden="true" />
+    </motion.div>
   );
 }
 
@@ -44,14 +42,12 @@ export function TrustedBy() {
       animate={entered ? "visible" : "hidden"}
       variants={staggerDelayed}
     >
-      <motion.p
-        className="mb-5 text-[10px] font-medium uppercase tracking-[0.22em] text-subtle sm:mb-4"
-        variants={fadeUpSafe}
-      >
-        Trusted by ambitious teams
-      </motion.p>
+      {/* Mobile: label + line, then marquee */}
+      <TrustedByHeading
+        className="mb-5 sm:hidden"
+        labelClassName="text-[10px] font-medium uppercase tracking-[0.22em] text-subtle"
+      />
 
-      {/* Mobile: slow drift */}
       <motion.div className="sm:hidden" variants={fadeUpSafe}>
         <div
           className={
@@ -67,21 +63,40 @@ export function TrustedBy() {
           >
             {marqueeLogos.map(({ id, label }, index) => (
               <li key={`${id}-${index}`} className="shrink-0">
-                <LogoLabel label={label} size="mobile" />
+                <span className="whitespace-nowrap text-[15px] font-semibold tracking-[0.01em] text-ink/50">
+                  {label}
+                </span>
               </li>
             ))}
           </ul>
         </div>
       </motion.div>
 
-      {/* Desktop */}
+      {/* Tablet + desktop: label + line, then logo row */}
+      <TrustedByHeading
+        className="mb-4 hidden sm:mb-5 sm:flex"
+        labelClassName="text-[11px] font-medium uppercase tracking-[0.18em] text-subtle"
+      />
+
       <motion.ul
-        className="hidden sm:flex sm:flex-wrap sm:items-center sm:gap-x-10 sm:gap-y-2 lg:gap-x-12"
+        className="hidden sm:flex sm:items-center"
         variants={staggerDelayed}
       >
-        {logos.map(({ id, label }) => (
-          <motion.li key={id} variants={fadeUpSafe}>
-            <LogoLabel label={label} />
+        {logos.map(({ id, label }, index) => (
+          <motion.li
+            key={id}
+            className="relative flex-1 py-1 text-center"
+            variants={fadeUpSafe}
+          >
+            {index > 0 && (
+              <span
+                className="absolute left-0 top-1/2 h-6 w-px -translate-y-1/2 bg-border"
+                aria-hidden="true"
+              />
+            )}
+            <span className="text-[13px] font-bold leading-none tracking-tight text-ink/45">
+              {label}
+            </span>
           </motion.li>
         ))}
       </motion.ul>

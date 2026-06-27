@@ -80,6 +80,32 @@
 }
 
 @layer utilities {
+  /* Subtle section break: pure white base with a faint brand-ink dot grid,
+     fading out toward the edges so it reads as texture, not a hard pattern. */
+  .section-dot-grid {
+    background-color: #ffffff;
+    background-image: radial-gradient(
+      circle at center,
+      rgba(11, 30, 28, 0.05) 1px,
+      transparent 1.4px
+    );
+    background-size: 24px 24px;
+    background-position: center top;
+  }
+
+  .section-dot-grid-mask {
+    -webkit-mask-image: radial-gradient(
+      ellipse 90% 80% at 50% 45%,
+      black 55%,
+      transparent 100%
+    );
+    mask-image: radial-gradient(
+      ellipse 90% 80% at 50% 45%,
+      black 55%,
+      transparent 100%
+    );
+  }
+
   @keyframes trusted-marquee {
     to {
       transform: translateX(-50%);

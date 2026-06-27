@@ -19,7 +19,7 @@ export function Hero() {
       <div className="mt-8 flex flex-wrap items-center gap-5 sm:mt-10 sm:gap-6">
         <Link
           href="/start-a-project"
-          className="inline-flex items-center gap-2 bg-brand px-6 py-3 text-[15px] font-medium text-white transition-colors hover:bg-brand-hover"
+          className="inline-flex items-center gap-2 bg-ink px-6 py-3 text-[15px] font-medium text-white transition-colors hover:bg-footer"
         >
           Start a project
           <ArrowRightIcon className="h-4 w-4" />

@@ -84,10 +84,10 @@ export function SelectedWorkSection() {
     <>
       <section
         id="work"
-        className="bg-sea-salt"
+        className="border-t border-border bg-sea-salt"
         aria-labelledby="work-heading"
       >
-        <div className="mx-auto max-w-[1280px] px-6 lg:px-10">
+        <div className="mx-auto max-w-[1280px] px-6 pt-8 sm:pt-10 lg:px-10 lg:pt-14">
           <div className="lg:grid lg:grid-cols-[minmax(0,340px)_minmax(0,1fr)] lg:gap-x-16 xl:gap-x-20">
             {/* Sticky spotlight rail */}
             <div className="pt-10 lg:sticky lg:top-[72px] lg:flex lg:min-h-[calc(100svh-72px)] lg:flex-col lg:self-start lg:py-20">
@@ -102,44 +102,6 @@ export function SelectedWorkSection() {
                   Products we&apos;ve helped take from idea to launch and
                   beyond.
                 </p>
-              </ScrollReveal>
-
-              <ScrollReveal delay={0.06}>
-                <nav className="mt-6 lg:hidden" aria-label="Project index">
-                <ul className="space-y-1 border-t border-border pt-4">
-                  {workProjects.map((project) => {
-                    const isActive = activeId === project.id;
-                    return (
-                      <li key={project.id}>
-                        <button
-                          type="button"
-                          onClick={() => scrollToProject(project.id)}
-                          className={`group flex w-full items-start border-l-2 py-2.5 pl-4 text-left transition-colors duration-300 ${
-                            isActive
-                              ? "border-brand"
-                              : "border-transparent hover:border-border"
-                          }`}
-                        >
-                          <span>
-                            <span
-                              className={`block text-[14px] font-semibold tracking-tight transition-colors ${
-                                isActive
-                                  ? "text-ink"
-                                  : "text-muted group-hover:text-ink"
-                              }`}
-                            >
-                              {project.name}
-                            </span>
-                            <span className="mt-0.5 block text-[12px] text-subtle">
-                              {project.category}
-                            </span>
-                          </span>
-                        </button>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </nav>
               </ScrollReveal>
 
               <nav
