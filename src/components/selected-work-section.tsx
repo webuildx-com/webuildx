@@ -95,33 +95,46 @@ export function SelectedWorkSection() {
                 >
                   Selected work
                 </p>
-                <p className="max-w-sm text-[1.35rem] font-semibold leading-[1.3] tracking-tight text-ink sm:text-[1.75rem] lg:text-[1.85rem]">
+                <p className="max-w-sm text-[1.25rem] font-semibold leading-[1.25] tracking-tight text-ink sm:text-[1.75rem] lg:text-[1.85rem]">
                   Products we&apos;ve helped take from idea to launch and
                   beyond.
                 </p>
               </ScrollReveal>
 
-              <nav
-                className="mt-8 flex gap-2 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] lg:mt-10 lg:hidden [&::-webkit-scrollbar]:hidden"
-                aria-label="Project index"
-              >
-                {workProjects.map((project) => {
-                  const isActive = activeId === project.id;
-                  return (
-                    <button
-                      key={project.id}
-                      type="button"
-                      onClick={() => scrollToProject(project.id)}
-                      className={`shrink-0 border px-3.5 py-2 text-[13px] font-medium transition-colors ${
-                        isActive
-                          ? "border-brand bg-brand/5 text-ink"
-                          : "border-border bg-white text-muted hover:border-ink/15 hover:text-ink"
-                      }`}
-                    >
-                      {project.name}
-                    </button>
-                  );
-                })}
+              <nav className="mt-8 lg:hidden" aria-label="Project index">
+                <ul className="space-y-1 border-t border-border pt-4">
+                  {workProjects.map((project) => {
+                    const isActive = activeId === project.id;
+                    return (
+                      <li key={project.id}>
+                        <button
+                          type="button"
+                          onClick={() => scrollToProject(project.id)}
+                          className={`group flex w-full items-start border-l-2 py-2.5 pl-4 text-left transition-colors duration-300 ${
+                            isActive
+                              ? "border-brand"
+                              : "border-transparent hover:border-border"
+                          }`}
+                        >
+                          <span>
+                            <span
+                              className={`block text-[14px] font-semibold tracking-tight transition-colors ${
+                                isActive
+                                  ? "text-ink"
+                                  : "text-muted group-hover:text-ink"
+                              }`}
+                            >
+                              {project.name}
+                            </span>
+                            <span className="mt-0.5 block text-[12px] text-subtle">
+                              {project.category}
+                            </span>
+                          </span>
+                        </button>
+                      </li>
+                    );
+                  })}
+                </ul>
               </nav>
 
               <nav
@@ -178,8 +191,7 @@ export function SelectedWorkSection() {
               </nav>
             </div>
 
-            {/* Scrolling project panels */}
-            <div className="pb-12 pt-10 sm:pb-16 sm:pt-14 lg:py-20">
+            <div className="pb-12 pt-6 lg:py-20">
               {workProjects.map((project) => {
                 const hasCover = Boolean(project.coverImage);
                 const coverTone = project.coverTone ?? "dark";
@@ -194,11 +206,11 @@ export function SelectedWorkSection() {
                     ref={setPanelRef(project.id)}
                     data-project-id={project.id}
                     id={`work-${project.id}`}
-                    className="scroll-mt-24 border-b border-border py-10 last:border-b-0 sm:scroll-mt-28 sm:py-14 lg:py-16 lg:first:pt-0"
+                    className="scroll-mt-24 border-b border-border py-8 last:border-b-0 sm:py-10 lg:py-14 lg:first:pt-0 xl:py-16"
                   >
                     <div className="flex flex-col justify-center lg:justify-start">
                       <div
-                        className={`group relative aspect-[16/10] max-h-[min(56vh,480px)] w-full overflow-hidden border border-border transition-colors duration-500 hover:border-ink/15 sm:max-h-[min(72vh,640px)] ${
+                        className={`group relative aspect-[16/10] w-full overflow-hidden border border-border transition-all duration-500 hover:border-ink/15 lg:max-h-[min(72vh,640px)] ${
                           hasCover
                             ? isStoneCover
                               ? "bg-[#f5f2ee]"
@@ -301,9 +313,9 @@ export function SelectedWorkSection() {
                           </span>
                         </div>
 
-                        <div className="absolute inset-x-0 bottom-0 p-4 sm:p-8 lg:p-10">
+                        <div className="absolute inset-x-0 bottom-0 p-4 sm:p-6 lg:p-10">
                           <h3
-                            className={`max-w-2xl text-[1.35rem] font-semibold leading-[1.08] tracking-tight sm:text-[2.25rem] lg:text-[2.5rem] ${
+                            className={`max-w-2xl text-[1.25rem] font-semibold leading-[1.08] tracking-tight sm:text-[1.75rem] lg:text-[2.5rem] ${
                               isStoneCover
                                 ? "text-stone-900"
                                 : isLightCover || !hasCover
@@ -314,7 +326,7 @@ export function SelectedWorkSection() {
                             {project.name}
                           </h3>
                           <p
-                            className={`mt-2 max-w-lg text-[14px] leading-relaxed sm:mt-3 sm:text-[16px] ${
+                            className={`mt-1.5 line-clamp-2 max-w-lg text-[13px] leading-snug sm:mt-2 sm:line-clamp-none sm:text-[15px] lg:mt-3 lg:text-[16px] ${
                               isStoneCover
                                 ? "text-stone-600"
                                 : isLightCover || !hasCover
@@ -327,7 +339,7 @@ export function SelectedWorkSection() {
                           <button
                             type="button"
                             onClick={() => setModalProject(project)}
-                            className={`mt-4 inline-flex items-center gap-2 text-[13px] font-medium transition-colors sm:mt-7 sm:text-[14px] ${
+                            className={`mt-3 inline-flex items-center gap-2 text-[13px] font-medium transition-colors sm:mt-5 lg:mt-7 lg:text-[14px] ${
                               isStoneCover
                                 ? "text-[#d95847] hover:text-[#bf4a3b]"
                                 : isLightCover || !hasCover

@@ -52,7 +52,7 @@ export function ScrollRevealStagger({
   const variants = pickMotion(reduced, {
     hidden: {},
     visible: {
-      transition: { staggerChildren: 0.07, delayChildren: 0.06 },
+      transition: { staggerChildren: 0.05, delayChildren: 0.04 },
     },
   });
 

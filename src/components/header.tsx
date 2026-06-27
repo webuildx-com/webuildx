@@ -32,14 +32,12 @@ function MenuIcon({ open }: { open: boolean }) {
           strokeLinecap="round"
         />
       ) : (
-        <>
-          <path
-            d="M4 7h16M4 12h16M4 17h16"
-            stroke="currentColor"
-            strokeWidth="1.75"
-            strokeLinecap="round"
-          />
-        </>
+        <path
+          d="M4 7h16M4 12h16M4 17h16"
+          stroke="currentColor"
+          strokeWidth="1.75"
+          strokeLinecap="round"
+        />
       )}
     </svg>
   );
@@ -63,13 +61,13 @@ function HeaderInner() {
 
   return (
     <>
-      <div className="mx-auto flex h-[72px] max-w-[1280px] items-center justify-between px-6 lg:px-10">
+      <div className="mx-auto flex h-[72px] max-w-[1280px] items-center justify-between gap-4 px-4 sm:px-6 lg:px-10">
         <Link
           href="/"
-          className="inline-flex shrink-0 cursor-pointer items-center"
+          className="inline-flex min-w-0 shrink cursor-pointer items-center"
           onClick={() => setMenuOpen(false)}
         >
-          <Logo className="h-6 w-auto sm:h-7" />
+          <Logo className="h-5 w-auto max-w-[128px] sm:h-6 sm:max-w-[148px] lg:h-7 lg:max-w-none" />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
@@ -84,10 +82,10 @@ function HeaderInner() {
           ))}
         </nav>
 
-        <div className="flex shrink-0 items-center gap-3">
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
           <Link
             href="/start-a-project"
-            className="inline-flex shrink-0 cursor-pointer items-center gap-2 bg-brand px-5 py-2.5 text-[14px] font-medium text-white transition-colors hover:bg-brand-hover"
+            className="hidden items-center gap-2 bg-brand px-5 py-2.5 text-[14px] font-medium text-white transition-colors hover:bg-brand-hover md:inline-flex"
           >
             Start a project
             <ArrowRightIcon className="h-4 w-4 shrink-0" />
@@ -116,19 +114,30 @@ function HeaderInner() {
             transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
             className="overflow-hidden border-t border-border bg-sea-salt md:hidden"
           >
-            <ul className="mx-auto max-w-[1280px] px-6 py-4">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="block border-b border-border py-4 text-[16px] font-medium text-ink transition-colors last:border-b-0 hover:text-brand"
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <div className="mx-auto max-w-[1280px] px-4 py-4 sm:px-6">
+              <Link
+                href="/start-a-project"
+                className="mb-4 inline-flex w-full items-center justify-center gap-2 bg-brand px-5 py-3 text-[15px] font-medium text-white transition-colors hover:bg-brand-hover"
+                onClick={() => setMenuOpen(false)}
+              >
+                Start a project
+                <ArrowRightIcon className="h-4 w-4 shrink-0" />
+              </Link>
+
+              <ul>
+                {navLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="block border-b border-border py-4 text-[16px] font-medium text-ink transition-colors last:border-b-0 hover:text-brand"
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </motion.nav>
         )}
       </AnimatePresence>

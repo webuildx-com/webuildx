@@ -22,11 +22,11 @@ export const fadeUpSafe = {
 
 /** Lightweight scroll reveal — no blur, minimal travel */
 export const fadeUpScroll = {
-  hidden: { opacity: 0, y: 16 },
+  hidden: { opacity: 0, y: 24 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: EASE },
+    transition: { duration: 0.55, ease: EASE },
   },
 };
 

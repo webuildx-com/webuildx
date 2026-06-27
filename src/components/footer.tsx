@@ -1,4 +1,3 @@
-import { ArrowRightIcon } from "@/components/icons";
 import { Logo } from "@/components/logo";
 import {
   CONTACT_EMAIL,
@@ -182,31 +181,23 @@ export function Footer() {
               ambitious companies design, build, and scale digital products that
               create real impact.
             </p>
-
-            <Link
-              href="/start-a-project"
-              className="group mt-8 inline-flex items-center gap-3 bg-white px-6 py-3 text-[15px] font-medium text-ink transition-colors hover:bg-white/90 lg:mt-10"
-            >
-              Start a project
-              <ArrowRightIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
-            </Link>
           </div>
 
-          <div className="grid gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-3 lg:gap-0">
+          <div className="grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-3 lg:gap-0">
             <FooterColumn title="Navigation">
               <FooterNavLinks links={navigationLinks} />
             </FooterColumn>
 
             <FooterColumn
               title="Services"
-              className="sm:border-l sm:border-white/10 sm:pl-8 lg:pl-10"
+              className="border-l border-white/10 pl-6 lg:pl-10"
             >
               <FooterNavLinks links={serviceLinks} />
             </FooterColumn>
 
             <FooterColumn
               title="Contact"
-              className="sm:col-span-2 sm:border-l sm:border-white/10 sm:pl-8 lg:col-span-1 lg:pl-10"
+              className="col-span-2 border-t border-white/10 pt-8 lg:col-span-1 lg:border-l lg:border-t-0 lg:pt-0 lg:pl-10"
             >
               <ul className="space-y-3">
                 {contactLinks.map((item) => (

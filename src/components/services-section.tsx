@@ -194,7 +194,7 @@ export function ServicesSection() {
 
       <div className="relative lg:pointer-events-none lg:absolute lg:inset-0">
         <div className="lg:pointer-events-auto lg:sticky lg:top-[72px] lg:flex lg:h-[calc(100svh-72px)] lg:flex-col">
-          <div className="mx-auto flex w-full max-w-[1280px] flex-col px-6 py-14 lg:h-full lg:px-10 lg:py-14">
+          <div className="mx-auto flex w-full max-w-[1280px] flex-col px-6 py-10 sm:py-12 lg:h-full lg:px-10 lg:py-14">
             <ScrollReveal className="mb-8 max-w-2xl shrink-0 lg:mb-10">
               <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.18em] text-brand">
                 What we do

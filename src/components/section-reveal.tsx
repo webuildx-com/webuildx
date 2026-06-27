@@ -7,7 +7,12 @@ import { useCallback, useLayoutEffect, useRef, useState, type ReactNode } from "
 
 /** White scroll runway before the next section enters view */
 export function SectionBreak() {
-  return <div className="h-[min(20vh,160px)]" aria-hidden="true" />;
+  return (
+    <div
+      className="h-[min(8vh,56px)] sm:h-[min(14vh,100px)] lg:h-[min(20vh,160px)]"
+      aria-hidden="true"
+    />
+  );
 }
 
 type RevealBlockProps = {

@@ -46,7 +46,7 @@ export function HowWeWorkSection() {
       className="my-6 border-t border-border bg-sea-salt lg:my-10"
       aria-labelledby="how-we-work-heading"
     >
-      <div className="mx-auto max-w-[1280px] px-6 py-16 lg:px-10 lg:py-24">
+          <div className="mx-auto max-w-[1280px] px-6 py-10 sm:py-14 lg:px-10 lg:py-24">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-0">
           <ScrollReveal className="lg:col-span-5 lg:pr-12 xl:pr-16">
             <span
@@ -94,7 +94,7 @@ export function HowWeWorkSection() {
                 <motion.article
                   key={step.id}
                   variants={pickMotion(reduced, fadeUpSafe)}
-                  className="relative grid grid-cols-[minmax(3.5rem,5rem)_1px_1fr] items-start gap-x-6 border-b border-border py-8 pl-5 first:pt-0 last:border-b-0 lg:gap-x-8 lg:py-10 lg:pl-6"
+                        className="relative grid grid-cols-[minmax(2.5rem,3.5rem)_1px_1fr] items-start gap-x-4 border-b border-border py-5 pl-3 first:pt-0 last:border-b-0 sm:grid-cols-[minmax(3.5rem,5rem)_1px_1fr] sm:gap-x-6 sm:py-7 sm:pl-5 lg:gap-x-8 lg:py-10 lg:pl-6"
                 >
                   <p
                     aria-hidden="true"

@@ -1,45 +1,16 @@
 "use client";
 
 import { ScrollReveal, ScrollRevealStagger } from "@/components/scroll-reveal";
-import { RevealBlock } from "@/components/section-reveal";
 import { fadeUpSafe, pickMotion } from "@/lib/motion";
 import { motion, useReducedMotion } from "framer-motion";
 
 const stats = [
-  {
-    value: "10+",
-    accent: true,
-    description: "Products, platforms, and digital systems delivered.",
-  },
-  {
-    value: "5+",
-    accent: false,
-    description:
-      "Industries served across fintech, AI, SaaS, logistics, healthtech, and commerce.",
-  },
-  {
-    value: "2–4 months",
-    accent: true,
-    description: "Typical MVP launch timeline for focused product builds.",
-  },
-  {
-    value: "30+",
-    accent: false,
-    description:
-      "Design, engineering, product, and cloud specialists across our network.",
-  },
-  {
-    value: "200+",
-    accent: true,
-    description:
-      "Cloud workloads, services, and infrastructure components managed.",
-  },
-  {
-    value: "$1M+",
-    accent: false,
-    description:
-      "Transaction and product infrastructure supported across fintech systems.",
-  },
+  { value: "10+", label: "Products delivered", accent: true },
+  { value: "5+", label: "Industries served", accent: false },
+  { value: "2–4 mo", label: "Typical MVP timeline", accent: true },
+  { value: "30+", label: "Specialists in network", accent: false },
+  { value: "200+", label: "Cloud workloads managed", accent: true },
+  { value: "$1M+", label: "Fintech infra supported", accent: false },
 ];
 
 export function ImpactSection() {
@@ -48,46 +19,44 @@ export function ImpactSection() {
   return (
     <section
       id="impact"
-      className="flex flex-col bg-sea-salt lg:min-h-svh"
+      className="border-t border-border bg-sea-salt"
       aria-labelledby="impact-heading"
     >
-      <RevealBlock className="mx-auto flex w-full max-w-[1280px] flex-1 flex-col px-6 py-14 lg:px-10 lg:py-20">
-        <div className="flex min-h-0 flex-1 flex-col justify-center gap-8 sm:gap-12 lg:gap-16">
-          <ScrollReveal className="max-w-2xl shrink-0">
-            <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.18em] text-brand">
-              Our impact
-            </p>
-            <h2
-              id="impact-heading"
-              className="text-[1.75rem] font-semibold leading-[1.15] tracking-tight text-ink sm:text-[2.35rem] lg:text-[2.5rem]"
-            >
-              Built for outcomes, not just delivery
-              <span className="text-brand">.</span>
-            </h2>
-          </ScrollReveal>
+      <div className="mx-auto max-w-[1280px] px-6 py-10 sm:py-14 lg:px-10 lg:py-20">
+        <ScrollReveal className="mb-6 max-w-xl sm:mb-8 lg:mb-10">
+          <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.18em] text-brand">
+            Our impact
+          </p>
+          <h2
+            id="impact-heading"
+            className="text-[1.5rem] font-semibold leading-[1.15] tracking-tight text-ink sm:text-[2rem] lg:text-[2.5rem]"
+          >
+            Built for outcomes
+            <span className="text-brand">.</span>
+          </h2>
+        </ScrollReveal>
 
-          <ScrollRevealStagger className="grid w-full shrink-0 grid-cols-1 divide-y divide-border border border-border md:grid-cols-2 md:divide-x lg:grid-cols-3">
-            {stats.map(({ value, accent, description }) => (
-              <motion.article
-                key={value}
-                variants={pickMotion(reduced, fadeUpSafe)}
-                className="flex min-h-[160px] flex-col justify-center px-5 py-6 transition-colors duration-500 hover:bg-black/[0.02] sm:min-h-[200px] sm:px-8 sm:py-8 lg:min-h-[240px] lg:px-10 lg:py-10"
+        <ScrollRevealStagger className="grid grid-cols-2 gap-px overflow-hidden rounded-sm border border-border bg-border sm:grid-cols-3 lg:gap-0">
+          {stats.map(({ value, label, accent }) => (
+            <motion.article
+              key={value}
+              variants={pickMotion(reduced, fadeUpSafe)}
+              className="group flex flex-col justify-between bg-sea-salt px-4 py-4 transition-colors duration-300 hover:bg-black/[0.02] sm:px-6 sm:py-6 lg:min-h-[180px] lg:px-8 lg:py-8"
+            >
+              <p
+                className={`text-[1.5rem] font-semibold leading-none tracking-tight transition-transform duration-300 group-hover:scale-[1.02] sm:text-[2rem] lg:text-[2.5rem] ${
+                  accent ? "text-brand" : "text-ink"
+                }`}
               >
-                <p
-                  className={`text-[2rem] font-semibold leading-none tracking-tight sm:text-[2.5rem] lg:text-[2.75rem] ${
-                    accent ? "text-brand" : "text-ink"
-                  }`}
-                >
-                  {value}
-                </p>
-                <p className="mt-5 max-w-[280px] text-[15px] leading-relaxed text-muted">
-                  {description}
-                </p>
-              </motion.article>
-            ))}
-          </ScrollRevealStagger>
-        </div>
-      </RevealBlock>
+                {value}
+              </p>
+              <p className="mt-2 text-[12px] leading-snug text-muted sm:mt-3 sm:text-[13px] lg:text-[14px]">
+                {label}
+              </p>
+            </motion.article>
+          ))}
+        </ScrollRevealStagger>
+      </div>
     </section>
   );
 }
