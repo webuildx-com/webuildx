@@ -12,9 +12,21 @@ const logos = [
   { id: "landlordcare", label: "LandLordCare" },
 ] as const;
 
-function LogoLabel({ label }: { label: string }) {
+function LogoLabel({
+  label,
+  size = "default",
+}: {
+  label: string;
+  size?: "mobile" | "default";
+}) {
   return (
-    <span className="whitespace-nowrap text-[12px] font-medium tracking-[0.02em] text-ink/40 transition-colors duration-300 hover:text-ink/55">
+    <span
+      className={
+        size === "mobile"
+          ? "whitespace-nowrap text-[15px] font-semibold tracking-[0.01em] text-ink/50"
+          : "whitespace-nowrap text-[12px] font-medium tracking-[0.02em] text-ink/40 transition-colors duration-300 hover:text-ink/55"
+      }
+    >
       {label}
     </span>
   );
@@ -33,7 +45,7 @@ export function TrustedBy() {
       variants={staggerDelayed}
     >
       <motion.p
-        className="mb-3 text-[10px] font-medium uppercase tracking-[0.22em] text-subtle sm:mb-4"
+        className="mb-5 text-[10px] font-medium uppercase tracking-[0.22em] text-subtle sm:mb-4"
         variants={fadeUpSafe}
       >
         Trusted by ambitious teams
@@ -50,12 +62,12 @@ export function TrustedBy() {
         >
           <ul
             className={`flex w-max items-center ${
-              reduced ? "gap-10" : "animate-trusted-marquee gap-12 pr-12"
+              reduced ? "gap-8" : "animate-trusted-marquee gap-10 pr-10"
             }`}
           >
             {marqueeLogos.map(({ id, label }, index) => (
               <li key={`${id}-${index}`} className="shrink-0">
-                <LogoLabel label={label} />
+                <LogoLabel label={label} size="mobile" />
               </li>
             ))}
           </ul>

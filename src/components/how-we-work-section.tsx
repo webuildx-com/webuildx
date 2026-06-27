@@ -43,7 +43,7 @@ export function HowWeWorkSection() {
   return (
     <section
       id="how-we-work"
-      className="my-6 border-t border-border bg-sea-salt lg:my-10"
+      className="my-6 bg-sea-salt lg:my-10"
       aria-labelledby="how-we-work-heading"
     >
           <div className="mx-auto max-w-[1280px] px-6 py-10 sm:py-14 lg:px-10 lg:py-24">

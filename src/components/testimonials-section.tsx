@@ -165,7 +165,7 @@ export function TestimonialsSection() {
   return (
     <section
       id="testimonials"
-      className="border-t border-border bg-sea-salt"
+      className="bg-sea-salt"
       aria-labelledby="testimonials-heading"
     >
       <div className="mx-auto max-w-[1280px] px-6 py-10 sm:py-14 lg:px-10 lg:py-20">

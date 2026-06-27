@@ -84,7 +84,7 @@ export function SelectedWorkSection() {
     <>
       <section
         id="work"
-        className="border-t border-border bg-sea-salt"
+        className="bg-sea-salt"
         aria-labelledby="work-heading"
       >
         <div className="mx-auto max-w-[1280px] px-6 lg:px-10">
