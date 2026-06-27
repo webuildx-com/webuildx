@@ -9,7 +9,7 @@ import { useCallback, useLayoutEffect, useRef, useState, type ReactNode } from "
 export function SectionBreak() {
   return (
     <div
-      className="h-[min(8vh,56px)] sm:h-[min(14vh,100px)] lg:h-[min(20vh,160px)]"
+      className="h-[min(10vh,72px)] sm:h-[min(14vh,100px)] lg:h-[min(20vh,160px)]"
       aria-hidden="true"
     />
   );

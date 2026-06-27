@@ -27,7 +27,7 @@ export function FinalCtaSection() {
 
           <Link
             href="/start-a-project"
-            className="inline-flex w-full shrink-0 items-center justify-center gap-2 bg-white px-6 py-3.5 text-[15px] font-medium text-ink transition-colors hover:bg-white/90 sm:w-auto"
+            className="inline-flex shrink-0 items-center gap-2 self-start bg-white px-6 py-3.5 text-[15px] font-medium text-ink transition-colors hover:bg-white/90"
           >
             Start a project
             <ArrowRightIcon className="h-4 w-4" />

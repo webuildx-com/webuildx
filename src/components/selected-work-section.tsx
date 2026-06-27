@@ -87,7 +87,7 @@ export function SelectedWorkSection() {
         <div className="mx-auto max-w-[1280px] px-6 lg:px-10">
           <div className="lg:grid lg:grid-cols-[minmax(0,340px)_minmax(0,1fr)] lg:gap-x-16 xl:gap-x-20">
             {/* Sticky spotlight rail */}
-            <div className="lg:sticky lg:top-[72px] lg:flex lg:min-h-[calc(100svh-72px)] lg:flex-col lg:self-start lg:py-20">
+            <div className="pt-10 lg:sticky lg:top-[72px] lg:flex lg:min-h-[calc(100svh-72px)] lg:flex-col lg:self-start lg:py-20">
               <ScrollReveal>
                 <p
                   id="work-heading"
@@ -101,7 +101,7 @@ export function SelectedWorkSection() {
                 </p>
               </ScrollReveal>
 
-              <nav className="mt-8 lg:hidden" aria-label="Project index">
+              <nav className="mt-6 lg:hidden" aria-label="Project index">
                 <ul className="space-y-1 border-t border-border pt-4">
                   {workProjects.map((project) => {
                     const isActive = activeId === project.id;
@@ -191,7 +191,7 @@ export function SelectedWorkSection() {
               </nav>
             </div>
 
-            <div className="pb-12 pt-6 lg:py-20">
+            <div className="pb-12 pt-10 lg:py-20">
               {workProjects.map((project) => {
                 const hasCover = Boolean(project.coverImage);
                 const coverTone = project.coverTone ?? "dark";

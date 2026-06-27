@@ -47,7 +47,7 @@ export function HowWeWorkSection() {
       aria-labelledby="how-we-work-heading"
     >
           <div className="mx-auto max-w-[1280px] px-6 py-10 sm:py-14 lg:px-10 lg:py-24">
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-0">
+        <div className="grid gap-10 sm:gap-12 lg:grid-cols-12 lg:gap-0">
           <ScrollReveal className="lg:col-span-5 lg:pr-12 xl:pr-16">
             <span
               className="mb-4 block h-0.5 w-10 bg-brand"

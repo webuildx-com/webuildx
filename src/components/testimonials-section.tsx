@@ -170,14 +170,14 @@ export function TestimonialsSection() {
     >
       <div className="mx-auto max-w-[1280px] px-6 py-10 sm:py-14 lg:px-10 lg:py-20">
         <ScrollReveal>
-          <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+          <div className="flex flex-col gap-6 sm:gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
-              <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.18em] text-brand">
+              <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.18em] text-brand sm:mb-4">
                 Testimonials
               </p>
               <h2
                 id="testimonials-heading"
-                className="text-[1.75rem] font-semibold leading-[1.12] tracking-tight text-ink sm:text-[2.35rem]"
+                className="text-[1.625rem] font-semibold leading-[1.12] tracking-tight text-ink sm:text-[2.35rem]"
               >
                 What our clients say
               </h2>

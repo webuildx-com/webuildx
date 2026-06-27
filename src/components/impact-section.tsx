@@ -23,13 +23,13 @@ export function ImpactSection() {
       aria-labelledby="impact-heading"
     >
       <div className="mx-auto max-w-[1280px] px-6 py-10 sm:py-14 lg:px-10 lg:py-20">
-        <ScrollReveal className="mb-6 max-w-xl sm:mb-8 lg:mb-10">
+        <ScrollReveal className="mb-8 max-w-xl sm:mb-10 lg:mb-12">
           <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.18em] text-brand">
             Our impact
           </p>
           <h2
             id="impact-heading"
-            className="text-[1.5rem] font-semibold leading-[1.15] tracking-tight text-ink sm:text-[2rem] lg:text-[2.5rem]"
+            className="text-[1.625rem] font-semibold leading-[1.15] tracking-tight text-ink sm:text-[2rem] lg:text-[2.5rem]"
           >
             Built for outcomes
             <span className="text-brand">.</span>

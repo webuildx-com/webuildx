@@ -20,10 +20,10 @@ export function Hero() {
         interfaces, build software, and scale products after launch.
       </p>
 
-      <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6">
+      <div className="mt-8 flex flex-wrap items-center gap-5 sm:mt-10 sm:gap-6">
         <Link
           href="/start-a-project"
-          className="inline-flex w-full items-center justify-center gap-2 border border-ink/15 bg-ink px-6 py-3.5 text-[15px] font-medium text-white transition-colors hover:bg-ink/90 sm:w-auto"
+          className="inline-flex items-center gap-2 border border-ink/15 bg-ink px-6 py-3 text-[15px] font-medium text-white transition-colors hover:bg-ink/90"
         >
           Start a project
           <ArrowRightIcon className="h-4 w-4" />
