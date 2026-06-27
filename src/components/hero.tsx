@@ -8,7 +8,7 @@ export function Hero() {
   return (
     <div className="max-w-3xl">
       <h1 className="text-[clamp(1.875rem,5vw,3.25rem)] font-semibold leading-[1.12] tracking-tight text-ink">
-        We design digital products for ambitious companies.
+        We design and build digital products for ambitious teams.
       </h1>
 
       <p className="mt-5 max-w-xl text-[clamp(15px,2vw,17px)] leading-relaxed text-muted sm:mt-6">

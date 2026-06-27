@@ -78,3 +78,21 @@
     @apply overflow-x-hidden bg-sea-salt text-ink antialiased;
   }
 }
+
+@layer utilities {
+  @keyframes trusted-marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-trusted-marquee {
+    animation: trusted-marquee 36s linear infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-trusted-marquee {
+      animation: none;
+    }
+  }
+}

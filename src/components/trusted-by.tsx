@@ -2,7 +2,7 @@
 
 import { useHeroEntrance } from "@/components/hero-entrance";
 import { fadeUpSafe, staggerDelayed } from "@/lib/motion";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 const logos = [
   { id: "knoxxpay", label: "KnoxxPay" },
@@ -12,8 +12,18 @@ const logos = [
   { id: "landlordcare", label: "LandLordCare" },
 ] as const;
 
+function LogoLabel({ label }: { label: string }) {
+  return (
+    <span className="whitespace-nowrap text-[12px] font-medium tracking-[0.02em] text-ink/40 transition-colors duration-300 hover:text-ink/55">
+      {label}
+    </span>
+  );
+}
+
 export function TrustedBy() {
   const { entered } = useHeroEntrance();
+  const reduced = useReducedMotion();
+  const marqueeLogos = reduced ? logos : [...logos, ...logos];
 
   return (
     <motion.div
@@ -23,63 +33,43 @@ export function TrustedBy() {
       variants={staggerDelayed}
     >
       <motion.p
-        className="mb-4 text-[11px] font-medium uppercase tracking-[0.18em] text-brand sm:mb-5"
+        className="mb-3 text-[10px] font-medium uppercase tracking-[0.22em] text-subtle sm:mb-4"
         variants={fadeUpSafe}
       >
         Trusted by ambitious teams
       </motion.p>
 
-      {/* Mobile: 3 on top, 2 centered below — 6-col grid keeps rows aligned */}
-      <motion.ul
-        className="grid grid-cols-6 gap-x-1 gap-y-5 sm:hidden"
-        variants={staggerDelayed}
-      >
-        {logos.slice(0, 3).map(({ id, label }) => (
-          <motion.li
-            key={id}
-            className="col-span-2 flex items-center justify-center text-center"
-            variants={fadeUpSafe}
-          >
-            <span className="text-[13px] font-bold leading-tight tracking-tight text-ink">
-              {label}
-            </span>
-          </motion.li>
-        ))}
-        {logos.slice(3).map(({ id, label }, index) => (
-          <motion.li
-            key={id}
-            className={`col-span-2 flex items-center justify-center text-center ${
-              index === 0 ? "col-start-2" : "col-start-4"
+      {/* Mobile: slow drift */}
+      <motion.div className="sm:hidden" variants={fadeUpSafe}>
+        <div
+          className={
+            reduced
+              ? "-mx-6 overflow-x-auto px-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              : "overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_14%,black_86%,transparent)]"
+          }
+        >
+          <ul
+            className={`flex w-max items-center ${
+              reduced ? "gap-10" : "animate-trusted-marquee gap-12 pr-12"
             }`}
-            variants={fadeUpSafe}
           >
-            <span className="text-[13px] font-bold leading-tight tracking-tight text-ink">
-              {label}
-            </span>
-          </motion.li>
-        ))}
-      </motion.ul>
+            {marqueeLogos.map(({ id, label }, index) => (
+              <li key={`${id}-${index}`} className="shrink-0">
+                <LogoLabel label={label} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </motion.div>
 
-      {/* Desktop: single row */}
+      {/* Desktop */}
       <motion.ul
-        className="hidden sm:flex sm:items-center"
+        className="hidden sm:flex sm:flex-wrap sm:items-center sm:gap-x-10 sm:gap-y-2 lg:gap-x-12"
         variants={staggerDelayed}
       >
-        {logos.map(({ id, label }, index) => (
-          <motion.li
-            key={id}
-            className="relative flex-1 py-1 text-center"
-            variants={fadeUpSafe}
-          >
-            {index > 0 && (
-              <span
-                className="absolute left-0 top-1/2 h-6 w-px -translate-y-1/2 bg-border"
-                aria-hidden="true"
-              />
-            )}
-            <span className="text-[13px] font-bold leading-none tracking-tight text-ink">
-              {label}
-            </span>
+        {logos.map(({ id, label }) => (
+          <motion.li key={id} variants={fadeUpSafe}>
+            <LogoLabel label={label} />
           </motion.li>
         ))}
       </motion.ul>

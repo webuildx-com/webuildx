@@ -15,7 +15,7 @@ export function HeroShell() {
           <Hero />
         </div>
 
-        <div className="mb-8 shrink-0 border-b border-border pb-8 pt-4 sm:mb-8 sm:pb-8 sm:pt-6">
+        <div className="shrink-0 pt-5 pb-6 sm:pt-6 sm:pb-7">
           <TrustedBy />
         </div>
       </div>
