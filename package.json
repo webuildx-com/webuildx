@@ -7,7 +7,8 @@
     "dev:clean": "lsof -ti:3010 | xargs kill -9 2>/dev/null || true; rm -rf .next && next dev --port 3010",
     "build": "next build",
     "start": "next start --port 3010",
-    "lint": "next lint"
+    "lint": "next lint",
+    "favicons": "node scripts/generate-favicons.cjs"
   },
   "dependencies": {
     "@marsidev/react-turnstile": "^1.5.3",
@@ -22,12 +23,14 @@
     "resend": "^6.16.0"
   },
   "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
     "@tailwindcss/postcss": "^4.1.10",
     "@types/node": "^22.15.32",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "eslint": "^9.29.0",
     "eslint-config-next": "^15.3.4",
+    "png-to-ico": "^3.0.1",
     "tailwindcss": "^4.1.10",
     "typescript": "5.8.2"
   }

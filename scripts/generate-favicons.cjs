@@ -1,41 +1,54 @@
 #!/usr/bin/env node
 const fs = require("fs");
 const path = require("path");
-const sharp = require("sharp");
+const { Resvg } = require("@resvg/resvg-js");
+const pngToIco = require("png-to-ico").default || require("png-to-ico");
 
-const appDir = path.join(__dirname, "../src/app");
-const svg = fs.readFileSync(path.join(appDir, "icon.svg"));
+const ROOT = path.join(__dirname, "..");
+const APP_DIR = path.join(ROOT, "src/app");
+const PUBLIC_DIR = path.join(ROOT, "public");
 
-const render = (size, background) =>
-  sharp(svg, { density: 400 })
-    .resize(size, size, {
-      fit: "contain",
-      background,
-      kernel: sharp.kernel.lanczos3,
-    })
-    .png();
+const MARK_POINTS = [
+  "531.02 147.97 224.68 147.97 372.65 0 383.15 0 531.02 147.97",
+  "679.19 147.97 679.19 153.22 454.51 377.9 383.05 449.26 372.55 449.26 301.29 377.9 229.93 449.26 219.43 449.26 206.14 435.98 129.53 359.37 71.46 301.19 71.36 301.19 0 229.83 0 219.33 71.36 147.97 224.58 147.97 148.07 224.58 206.14 282.76 301.29 377.8 377.8 301.29 377.9 301.29 377.9 301.19 454.51 224.58 454.61 224.58 531.22 147.97 679.19 147.97",
+];
 
-const whiteBg = { r: 255, g: 255, b: 255, alpha: 1 };
+function makeSvg(fill) {
+  const polys = MARK_POINTS.map(
+    (points) => `<polygon fill="${fill}" points="${points}"/>`,
+  ).join("");
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 679.19 679.19"><g transform="translate(0 114.97)">${polys}</g></svg>`;
+}
+
+function renderPng(svg, size) {
+  const resvg = new Resvg(Buffer.from(svg), {
+    fitTo: { mode: "width", value: size },
+    background: "rgba(0,0,0,0)",
+  });
+
+  return resvg.render().asPng();
+}
 
 async function main() {
-  await render(32, whiteBg).toFile(path.join(appDir, "icon.png"));
+  const whiteSvg = makeSvg("#ffffff");
+  const inkSvg = makeSvg("#0b1e1c");
 
-  await render(180, whiteBg).toFile(path.join(appDir, "apple-icon.png"));
+  fs.writeFileSync(path.join(APP_DIR, "icon.svg"), whiteSvg);
+  fs.writeFileSync(path.join(PUBLIC_DIR, "favicon-dark.svg"), whiteSvg);
+  fs.writeFileSync(path.join(PUBLIC_DIR, "favicon-light.svg"), inkSvg);
 
-  const favicon32 = await render(32, whiteBg).toBuffer();
-  const favicon16 = await sharp(favicon32).resize(16, 16).png().toBuffer();
+  const icon32 = renderPng(whiteSvg, 32);
+  const icon180 = renderPng(whiteSvg, 180);
+  const light32 = renderPng(inkSvg, 32);
+  const icon16 = renderPng(whiteSvg, 16);
 
-  let pngToIco;
-  try {
-    pngToIco = require("png-to-ico");
-  } catch {
-    const { execSync } = require("child_process");
-    execSync("npm install --no-save png-to-ico", { stdio: "inherit" });
-    pngToIco = require("png-to-ico");
-  }
+  fs.writeFileSync(path.join(APP_DIR, "icon.png"), icon32);
+  fs.writeFileSync(path.join(APP_DIR, "apple-icon.png"), icon180);
+  fs.writeFileSync(path.join(PUBLIC_DIR, "favicon-light.png"), light32);
 
-  const ico = await pngToIco.default([favicon16, favicon32]);
-  fs.writeFileSync(path.join(appDir, "favicon.ico"), ico);
+  const ico = await pngToIco([icon16, icon32]);
+  fs.writeFileSync(path.join(PUBLIC_DIR, "favicon.ico"), ico);
 
   console.log("Favicons generated.");
 }

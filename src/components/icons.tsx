@@ -69,27 +69,6 @@ export function ArrowUpRightIcon({ className }: { className?: string }) {
   );
 }
 
-export function ProcessArrowIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      width="28"
-      height="28"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M6 18L18 6M12 6H18M18 6V12"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
 export function ArrowDownRightIcon({ className }: { className?: string }) {
   return (
     <svg
