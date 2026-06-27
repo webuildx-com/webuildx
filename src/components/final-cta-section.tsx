@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowRightIcon } from "@/components/icons";
+import { ScrollReveal } from "@/components/scroll-reveal";
 import Link from "next/link";
 
 export function FinalCtaSection() {
@@ -11,7 +12,8 @@ export function FinalCtaSection() {
       aria-labelledby="final-cta-heading"
     >
       <div className="mx-auto max-w-[1280px] px-6 py-10 sm:py-12 lg:px-10 lg:py-14">
-        <div className="flex flex-col gap-6 sm:gap-8 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
+        <ScrollReveal>
+          <div className="flex flex-col gap-6 sm:gap-8 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
           <div className="min-w-0 flex-1">
             <h2
               id="final-cta-heading"
@@ -32,7 +34,8 @@ export function FinalCtaSection() {
             Start a project
             <ArrowRightIcon className="h-4 w-4" />
           </Link>
-        </div>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

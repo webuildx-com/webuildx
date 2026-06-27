@@ -1,4 +1,7 @@
+"use client";
+
 import { Logo } from "@/components/logo";
+import { ScrollReveal } from "@/components/scroll-reveal";
 import {
   CONTACT_EMAIL,
   OFFICE_LOCATION_SHORT,
@@ -170,6 +173,7 @@ export function Footer() {
         }}
       />
       <div className="mx-auto max-w-[1280px] px-4 py-12 sm:px-6 sm:py-14 lg:px-10 lg:py-16">
+        <ScrollReveal>
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 xl:gap-24">
           <div>
             <h2 className="max-w-md text-[clamp(1.75rem,3.8vw,2.75rem)] font-semibold leading-[1.1] tracking-tight text-white">
@@ -212,7 +216,9 @@ export function Footer() {
             </FooterColumn>
           </div>
         </div>
+        </ScrollReveal>
 
+        <ScrollReveal delay={0.08}>
         <div className="mt-12 flex flex-col gap-4 border-t border-white/10 pt-8 lg:mt-14 lg:flex-row lg:items-center lg:justify-between lg:gap-8">
           <Link href="/" className="inline-flex shrink-0 items-center">
             <Logo className="h-6 w-auto brightness-0 invert sm:h-7" />
@@ -238,6 +244,7 @@ export function Footer() {
             </nav>
           </div>
         </div>
+        </ScrollReveal>
       </div>
     </footer>
   );

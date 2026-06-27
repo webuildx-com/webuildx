@@ -208,6 +208,7 @@ export function TestimonialsSection() {
           </div>
         </ScrollReveal>
 
+        <ScrollReveal delay={0.08}>
         <div
           className="mt-10 lg:mt-12"
           onMouseEnter={() => setIsPaused(true)}
@@ -243,7 +244,9 @@ export function TestimonialsSection() {
             </motion.div>
           </div>
         </div>
+        </ScrollReveal>
 
+        <ScrollReveal delay={0.12}>
         <div className="mt-8 flex justify-center gap-2">
           {testimonials.map((testimonial, index) => (
             <button
@@ -257,6 +260,7 @@ export function TestimonialsSection() {
             />
           ))}
         </div>
+        </ScrollReveal>
       </div>
     </section>
   );

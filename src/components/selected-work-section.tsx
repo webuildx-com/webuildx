@@ -2,11 +2,13 @@
 
 import { ArrowDownRightIcon, ArrowRightIcon } from "@/components/icons";
 import Link from "next/link";
-import { ScrollReveal } from "@/components/scroll-reveal";
+import { ScrollReveal, ScrollRevealStagger } from "@/components/scroll-reveal";
 import { useLenis } from "@/components/scroll-context";
 import { WorkCaseModal } from "@/components/work-case-modal";
+import { fadeUpScroll, pickMotion } from "@/lib/motion";
 import { workProjects } from "@/lib/work";
 import type { WorkProject } from "@/lib/work";
+import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { useCallback, useLayoutEffect, useRef, useState } from "react";
 
@@ -25,6 +27,7 @@ const panelGlow: Record<string, string> = {
 };
 
 export function SelectedWorkSection() {
+  const reduced = useReducedMotion();
   const lenis = useLenis();
   const [activeId, setActiveId] = useState(workProjects[0].id);
   const [modalProject, setModalProject] = useState<WorkProject | null>(null);
@@ -101,7 +104,8 @@ export function SelectedWorkSection() {
                 </p>
               </ScrollReveal>
 
-              <nav className="mt-6 lg:hidden" aria-label="Project index">
+              <ScrollReveal delay={0.06}>
+                <nav className="mt-6 lg:hidden" aria-label="Project index">
                 <ul className="space-y-1 border-t border-border pt-4">
                   {workProjects.map((project) => {
                     const isActive = activeId === project.id;
@@ -136,6 +140,7 @@ export function SelectedWorkSection() {
                   })}
                 </ul>
               </nav>
+              </ScrollReveal>
 
               <nav
                 className="mt-10 hidden lg:flex lg:flex-1 lg:flex-col"
@@ -191,7 +196,7 @@ export function SelectedWorkSection() {
               </nav>
             </div>
 
-            <div className="pb-12 pt-10 lg:py-20">
+            <ScrollRevealStagger className="pb-12 pt-10 lg:py-20">
               {workProjects.map((project) => {
                 const hasCover = Boolean(project.coverImage);
                 const coverTone = project.coverTone ?? "dark";
@@ -201,8 +206,9 @@ export function SelectedWorkSection() {
                 const softOverlay = project.coverOverlay === "soft";
 
                 return (
-                  <article
+                  <motion.article
                     key={project.id}
+                    variants={pickMotion(reduced, fadeUpScroll)}
                     ref={setPanelRef(project.id)}
                     data-project-id={project.id}
                     id={`work-${project.id}`}
@@ -361,10 +367,10 @@ export function SelectedWorkSection() {
                         </div>
                       </div>
                     </div>
-                  </article>
+                  </motion.article>
                 );
               })}
-            </div>
+            </ScrollRevealStagger>
           </div>
         </div>
       </section>

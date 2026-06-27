@@ -22,38 +22,67 @@ export function TrustedBy() {
       animate={entered ? "visible" : "hidden"}
       variants={staggerDelayed}
     >
-      <motion.div
-        className="mb-4 flex items-center gap-4 sm:mb-5 sm:gap-5"
+      <motion.p
+        className="mb-4 text-[11px] font-medium uppercase tracking-[0.18em] text-brand sm:mb-5"
         variants={fadeUpSafe}
       >
-        <p className="shrink-0 text-[10px] font-medium uppercase leading-none tracking-[0.2em] text-subtle sm:text-[11px]">
-          Trusted by ambitious teams
-        </p>
-        <span className="h-px min-w-0 flex-1 bg-border" aria-hidden="true" />
-      </motion.div>
+        Trusted by ambitious teams
+      </motion.p>
 
-      <motion.div
-        className="flex flex-wrap items-center gap-x-6 gap-y-3 sm:gap-x-0 sm:gap-y-0"
+      {/* Mobile: 3 on top, 2 centered below — 6-col grid keeps rows aligned */}
+      <motion.ul
+        className="grid grid-cols-6 gap-x-1 gap-y-5 sm:hidden"
+        variants={staggerDelayed}
+      >
+        {logos.slice(0, 3).map(({ id, label }) => (
+          <motion.li
+            key={id}
+            className="col-span-2 flex items-center justify-center text-center"
+            variants={fadeUpSafe}
+          >
+            <span className="text-[13px] font-bold leading-tight tracking-tight text-ink">
+              {label}
+            </span>
+          </motion.li>
+        ))}
+        {logos.slice(3).map(({ id, label }, index) => (
+          <motion.li
+            key={id}
+            className={`col-span-2 flex items-center justify-center text-center ${
+              index === 0 ? "col-start-2" : "col-start-4"
+            }`}
+            variants={fadeUpSafe}
+          >
+            <span className="text-[13px] font-bold leading-tight tracking-tight text-ink">
+              {label}
+            </span>
+          </motion.li>
+        ))}
+      </motion.ul>
+
+      {/* Desktop: single row */}
+      <motion.ul
+        className="hidden sm:flex sm:items-center"
         variants={staggerDelayed}
       >
         {logos.map(({ id, label }, index) => (
-          <motion.div
+          <motion.li
             key={id}
-            className="relative flex min-w-0 items-center sm:flex-1 sm:justify-center sm:px-3 sm:py-3"
+            className="relative flex-1 py-1 text-center"
             variants={fadeUpSafe}
           >
             {index > 0 && (
               <span
-                className="absolute -left-3 top-1/2 hidden h-8 w-px -translate-y-1/2 bg-border sm:left-0 sm:block"
+                className="absolute left-0 top-1/2 h-6 w-px -translate-y-1/2 bg-border"
                 aria-hidden="true"
               />
             )}
-            <span className="whitespace-nowrap text-[11px] font-semibold leading-none tracking-tight text-ink/60 sm:text-center sm:text-[12px]">
+            <span className="text-[13px] font-bold leading-none tracking-tight text-ink">
               {label}
             </span>
-          </motion.div>
+          </motion.li>
         ))}
-      </motion.div>
+      </motion.ul>
     </motion.div>
   );
 }

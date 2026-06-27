@@ -208,8 +208,8 @@ export function ServicesSection() {
               </h2>
             </ScrollReveal>
 
-            <div className="flex min-h-0 flex-1 flex-col justify-center">
-              <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-14 xl:gap-20">
+            <ScrollReveal className="flex min-h-0 flex-1 flex-col justify-center">
+            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-14 xl:gap-20">
                 <div className="min-h-[200px] overflow-hidden sm:min-h-[240px] lg:min-h-[320px]">
                   <AnimatePresence mode="wait" initial={false}>
                     <motion.div
@@ -241,8 +241,9 @@ export function ServicesSection() {
                   </AnimatePresence>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
 
+            <ScrollReveal delay={0.06}>
             <nav
               className="mt-8 shrink-0 border-t border-border pt-6 lg:mt-10"
               aria-label="Services"
@@ -286,6 +287,7 @@ export function ServicesSection() {
                 />
               </div>
             </nav>
+            </ScrollReveal>
           </div>
         </div>
       </div>
