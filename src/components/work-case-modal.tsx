@@ -31,14 +31,14 @@ export function WorkCaseModal({ project, onClose }: WorkCaseModalProps) {
     >
       {project && (
         <div
-          className="flex min-h-full items-center justify-center p-6 sm:p-10"
+          className="flex min-h-full items-end justify-center p-4 sm:items-center sm:p-10"
           onClick={(event) => {
             if (event.target === event.currentTarget) onClose();
           }}
         >
           <div
             role="document"
-            className="relative w-full max-w-lg border border-border bg-white p-8 shadow-2xl sm:p-10"
+            className="relative max-h-[calc(100svh-3rem)] w-full max-w-lg overflow-y-auto border border-border bg-white p-6 shadow-2xl sm:p-10"
           >
             <button
               type="button"

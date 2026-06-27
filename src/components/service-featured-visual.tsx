@@ -24,7 +24,7 @@ function DesignVisual({ reduced }: { reduced: boolean | null }) {
   const navItems = [0, 1, 2, 3, 4];
 
   return (
-    <div className="relative aspect-[4/3] h-full max-h-[min(52vh,420px)] w-full overflow-hidden border border-border bg-[#f5f5f5] lg:max-h-[min(48vh,440px)]">
+    <div className="relative aspect-[4/3] h-full max-h-[min(44vh,360px)] w-full overflow-hidden border border-border bg-[#f5f5f5] sm:max-h-[min(52vh,420px)] lg:max-h-[min(48vh,440px)]">
       <div className="absolute inset-6 sm:inset-8">
         <div className="flex h-full flex-col overflow-hidden border border-border bg-white shadow-[0_24px_48px_-24px_rgba(0,0,0,0.18)]">
           <div className="flex items-center gap-2 border-b border-border px-4 py-3">
@@ -122,7 +122,7 @@ function BuildVisual({ reduced }: { reduced: boolean | null }) {
   const tags = ["API", "Web", "Mobile"];
 
   return (
-    <div className="relative aspect-[4/3] h-full max-h-[min(52vh,420px)] w-full overflow-hidden border border-border bg-[#f0f0f0] lg:max-h-[min(48vh,440px)]">
+    <div className="relative aspect-[4/3] h-full max-h-[min(44vh,360px)] w-full overflow-hidden border border-border bg-[#f0f0f0] sm:max-h-[min(52vh,420px)] lg:max-h-[min(48vh,440px)]">
       <div className="absolute inset-6 sm:inset-8">
         <div className="flex h-full flex-col overflow-hidden border border-[#2a2a2a] bg-ink text-white shadow-[0_24px_48px_-24px_rgba(0,0,0,0.35)]">
           <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
@@ -211,7 +211,7 @@ function ScaleVisual({ reduced }: { reduced: boolean | null }) {
   const bars = [38, 52, 44, 68, 58, 74, 62, 80];
 
   return (
-    <div className="relative aspect-[4/3] h-full max-h-[min(52vh,420px)] w-full overflow-hidden border border-border bg-[#f5f5f5] lg:max-h-[min(48vh,440px)]">
+    <div className="relative aspect-[4/3] h-full max-h-[min(44vh,360px)] w-full overflow-hidden border border-border bg-[#f5f5f5] sm:max-h-[min(52vh,420px)] lg:max-h-[min(48vh,440px)]">
       <div className="absolute inset-6 flex flex-col sm:inset-8">
         <div className="flex h-full flex-col border border-border bg-white p-4 shadow-[0_24px_48px_-24px_rgba(0,0,0,0.15)] sm:p-5">
           <div className="mb-4 flex items-center justify-between">

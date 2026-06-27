@@ -80,7 +80,7 @@ function TestimonialCard({
   initials,
 }: (typeof testimonials)[number]) {
   return (
-    <article className="flex h-full min-h-[320px] flex-col border border-border bg-white p-6 lg:min-h-[340px] lg:p-7">
+    <article className="flex h-full min-h-[280px] flex-col border border-border bg-white p-5 sm:min-h-[320px] sm:p-6 lg:min-h-[340px] lg:p-7">
       <span
         className="font-serif text-[3.5rem] leading-none text-brand"
         aria-hidden="true"
@@ -118,7 +118,7 @@ function TestimonialCard({
 export function TestimonialsSection() {
   const reduced = useReducedMotion();
   const [activeIndex, setActiveIndex] = useState(0);
-  const [cardsPerView, setCardsPerView] = useState(3);
+  const [cardsPerView, setCardsPerView] = useState(1);
   const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
@@ -168,7 +168,7 @@ export function TestimonialsSection() {
       className="border-t border-border bg-sea-salt"
       aria-labelledby="testimonials-heading"
     >
-      <div className="mx-auto max-w-[1280px] px-6 py-14 lg:px-10 lg:py-20">
+      <div className="mx-auto max-w-[1280px] px-4 py-12 sm:px-6 sm:py-14 lg:px-10 lg:py-20">
         <ScrollReveal>
           <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
@@ -177,7 +177,7 @@ export function TestimonialsSection() {
               </p>
               <h2
                 id="testimonials-heading"
-                className="text-[2rem] font-semibold leading-[1.12] tracking-tight text-ink sm:text-[2.35rem]"
+                className="text-[1.75rem] font-semibold leading-[1.12] tracking-tight text-ink sm:text-[2.35rem]"
               >
                 What our clients say
               </h2>

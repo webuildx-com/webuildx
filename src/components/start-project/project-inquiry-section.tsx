@@ -203,8 +203,8 @@ export function ProjectInquirySection() {
         className="bg-sea-salt pb-16 lg:pb-20"
         aria-labelledby="inquiry-success-heading"
       >
-        <div className="mx-auto max-w-[1280px] px-6 lg:px-10">
-          <div className={`${cardClassName} px-6 py-14 sm:px-10 sm:py-16`}>
+        <div className="mx-auto max-w-[1280px] px-4 lg:px-10">
+          <div className={`${cardClassName} px-5 py-12 sm:px-10 sm:py-16`}>
             <div className="mx-auto max-w-lg text-center">
               <h2
                 id="inquiry-success-heading"
@@ -237,11 +237,11 @@ export function ProjectInquirySection() {
       className="bg-sea-salt pb-16 lg:pb-20"
       aria-labelledby="project-details-heading"
     >
-      <div className="mx-auto max-w-[1280px] px-6 lg:px-10">
+      <div className="mx-auto max-w-[1280px] px-4 lg:px-10">
         <ScrollReveal>
           <div className={cardClassName}>
             <div className="grid lg:grid-cols-[1fr_340px] xl:grid-cols-[1fr_380px]">
-              <div className="border-b border-border p-6 sm:p-8 lg:border-b-0 lg:border-r lg:p-10">
+              <div className="border-b border-border p-5 sm:p-8 lg:border-b-0 lg:border-r lg:p-10">
                 <h2
                   id="project-details-heading"
                   className="mb-8 text-[18px] font-semibold text-ink"
@@ -342,7 +342,7 @@ export function ProjectInquirySection() {
                     required
                   />
 
-                  <div className="grid gap-5 sm:grid-cols-3">
+                  <div className="grid gap-5 md:grid-cols-3">
                     <SelectField
                       id={`${formId}-stage`}
                       name="stage"
@@ -465,7 +465,7 @@ export function ProjectInquirySection() {
                 </form>
               </div>
 
-              <aside className="bg-sea-salt/60 p-6 sm:p-8 lg:p-10">
+              <aside className="bg-sea-salt/60 p-5 sm:p-8 lg:p-10">
                 <div className="space-y-10">
                   <div>
                     <h3 className="mb-6 text-[15px] font-semibold text-ink">

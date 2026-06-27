@@ -72,6 +72,11 @@ const contactLinks = [
   },
 ];
 
+const legalLinks = [
+  { label: "Privacy", href: "/privacy" },
+  { label: "Cookies", href: "/cookies" },
+];
+
 function FooterColumn({
   title,
   children,
@@ -150,7 +155,6 @@ function ContactItem({
 
 export function Footer() {
   const year = new Date().getFullYear();
-  const companyName = "WebuildX Software Technology Limited.";
 
   return (
     <footer
@@ -166,8 +170,8 @@ export function Footer() {
           backgroundSize: "180px 180px",
         }}
       />
-      <div className="relative mx-auto max-w-[1280px] px-6 py-14 lg:px-10 lg:py-16">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-24">
+      <div className="mx-auto max-w-[1280px] px-4 py-12 sm:px-6 sm:py-14 lg:px-10 lg:py-16">
+        <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 xl:gap-24">
           <div>
             <h2 className="max-w-md text-[clamp(1.75rem,3.8vw,2.75rem)] font-semibold leading-[1.1] tracking-tight text-white">
               Let&apos;s build something that works.
@@ -188,7 +192,7 @@ export function Footer() {
             </Link>
           </div>
 
-          <div className="grid gap-10 sm:grid-cols-3 sm:gap-0">
+          <div className="grid gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-3 lg:gap-0">
             <FooterColumn title="Navigation">
               <FooterNavLinks links={navigationLinks} />
             </FooterColumn>
@@ -202,7 +206,7 @@ export function Footer() {
 
             <FooterColumn
               title="Contact"
-              className="sm:border-l sm:border-white/10 sm:pl-8 lg:pl-10"
+              className="sm:col-span-2 sm:border-l sm:border-white/10 sm:pl-8 lg:col-span-1 lg:pl-10"
             >
               <ul className="space-y-3">
                 {contactLinks.map((item) => (
@@ -218,21 +222,29 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-6 border-t border-white/10 pt-8 lg:mt-14 lg:flex-row lg:items-center lg:gap-8">
+        <div className="mt-12 flex flex-col gap-4 border-t border-white/10 pt-8 lg:mt-14 lg:flex-row lg:items-center lg:justify-between lg:gap-8">
           <Link href="/" className="inline-flex shrink-0 items-center">
             <Logo className="h-6 w-auto brightness-0 invert sm:h-7" />
           </Link>
 
-          <div className="flex flex-col gap-3 text-[12px] leading-relaxed text-white/50 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-4 lg:ml-auto lg:text-[13px]">
-            <span>© {year} {companyName}</span>
-            <span className="hidden text-white/20 sm:inline" aria-hidden>
-              |
-            </span>
-            <span>All rights reserved.</span>
-            <span className="hidden text-white/20 sm:inline" aria-hidden>
-              |
-            </span>
-            <span>{companyName}</span>
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6">
+            <p className="text-[12px] leading-relaxed text-white/50 lg:text-[13px]">
+              © {year} WebuildX Software Technology Limited. All rights reserved.
+            </p>
+            <nav
+              aria-label="Legal"
+              className="flex items-center gap-4 text-[12px] lg:text-[13px]"
+            >
+              {legalLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-white/50 transition-colors hover:text-white"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
           </div>
         </div>
       </div>

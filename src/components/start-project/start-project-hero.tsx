@@ -8,7 +8,7 @@ export function StartProjectHero() {
 
   return (
     <section className="bg-sea-salt pt-[72px]" aria-labelledby="start-project-heading">
-      <div className="mx-auto max-w-[1280px] px-6 pb-8 pt-14 lg:px-10 lg:pb-10 lg:pt-16">
+      <div className="mx-auto max-w-[1280px] px-4 pb-8 pt-12 sm:px-6 sm:pt-14 lg:px-10 lg:pb-10 lg:pt-16">
         <motion.div
           className="max-w-2xl"
           initial="hidden"

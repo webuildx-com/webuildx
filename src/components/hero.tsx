@@ -10,12 +10,12 @@ export function Hero() {
 
   return (
     <div className="max-w-3xl">
-      <h1 className="text-[2.25rem] font-semibold leading-[1.12] tracking-tight text-ink sm:text-[2.75rem] lg:text-[3.25rem]">
+      <h1 className="text-[clamp(1.875rem,5vw,3.25rem)] font-semibold leading-[1.12] tracking-tight text-ink">
         We <MorphWordInline word={word} reduced={reduced} mounted={mounted} /> digital
         products for ambitious companies.
       </h1>
 
-      <p className="mt-5 max-w-xl text-[16px] leading-relaxed text-muted sm:mt-6 sm:text-[17px]">
+      <p className="mt-5 max-w-xl text-[clamp(15px,2vw,17px)] leading-relaxed text-muted sm:mt-6">
         WebuildX partners with startups and growing teams to shape ideas, design
         interfaces, build software, and scale products after launch.
       </p>

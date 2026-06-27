@@ -11,7 +11,7 @@ export function FinalCtaSection() {
       className="bg-brand text-white"
       aria-labelledby="final-cta-heading"
     >
-      <div className="mx-auto max-w-[1280px] px-6 py-8 lg:px-10 lg:py-10">
+      <div className="mx-auto max-w-[1280px] px-4 py-8 sm:px-6 lg:px-10 lg:py-10">
         <ScrollReveal>
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
             <div className="min-w-0 flex-1">

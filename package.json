@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --port 3010",
-    "dev:clean": "lsof -ti:3010 | xargs kill -9 2>/dev/null || true; rm -rf .next && next dev --port 3010",
+    "dev:clean": "lsof -ti:3010 | xargs kill -9 2>/dev/null || true; sleep 1; rm -rf .next && next dev --port 3010",
     "build": "next build",
     "start": "next start --port 3010",
     "lint": "next lint",
