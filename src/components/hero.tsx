@@ -1,18 +1,14 @@
 "use client";
 
 import { ArrowRightIcon } from "@/components/icons";
-import { MorphWordInline, useMorphWord } from "@/components/morph-word";
 import { HoverUnderlineLink } from "@/components/hover-underline-link";
 import Link from "next/link";
 
 export function Hero() {
-  const { word, reduced, mounted } = useMorphWord();
-
   return (
     <div className="max-w-3xl">
       <h1 className="text-[clamp(1.875rem,5vw,3.25rem)] font-semibold leading-[1.12] tracking-tight text-ink">
-        We <MorphWordInline word={word} reduced={reduced} mounted={mounted} /> digital
-        products for ambitious companies.
+        We design digital products for ambitious companies.
       </h1>
 
       <p className="mt-5 max-w-xl text-[clamp(15px,2vw,17px)] leading-relaxed text-muted sm:mt-6">
