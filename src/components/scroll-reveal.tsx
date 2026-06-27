@@ -1,66 +1,47 @@
 "use client";
 
-import { useLenis } from "@/components/scroll-context";
 import { fadeUpScroll, pickMotion } from "@/lib/motion";
 import { motion, useReducedMotion } from "framer-motion";
-import {
-  useCallback,
-  useLayoutEffect,
-  useRef,
-  useState,
-  type ReactNode,
-} from "react";
+import { useLayoutEffect, useRef, useState, type ReactNode } from "react";
 
-/** Fires when ~20% of the element is in view — works with Lenis smooth scroll */
+/** Reveal when the element enters the viewport — IntersectionObserver works with Lenis */
 function useScrollInView(enabled = true) {
   const reduced = useReducedMotion();
-  const lenis = useLenis();
   const ref = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(reduced === true);
 
-  const check = useCallback(() => {
-    if (!enabled || inView || reduced) return;
+  useLayoutEffect(() => {
+    if (!enabled || reduced || inView) return;
 
     const node = ref.current;
     if (!node) return;
 
+    const reveal = () => setInView(true);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            reveal();
+            observer.disconnect();
+            break;
+          }
+        }
+      },
+      { rootMargin: "-5% 0px", threshold: 0.12 },
+    );
+
+    observer.observe(node);
+
+    // Elements already in view on load (e.g. after refresh mid-page)
     const rect = node.getBoundingClientRect();
-    const vh = window.innerHeight;
-    const topMargin = vh * 0.1;
-    const bottomMargin = vh * 0.1;
-
-    const visibleTop = Math.max(rect.top, topMargin);
-    const visibleBottom = Math.min(rect.bottom, vh - bottomMargin);
-    const visibleHeight = Math.max(0, visibleBottom - visibleTop);
-    const ratio = rect.height > 0 ? visibleHeight / rect.height : 0;
-
-    if (
-      rect.top < vh * 0.92 &&
-      rect.bottom > vh * 0.08 &&
-      ratio >= 0.18
-    ) {
-      setInView(true);
-    }
-  }, [enabled, inView, reduced]);
-
-  useLayoutEffect(() => {
-    if (!enabled || reduced) return;
-
-    check();
-
-    if (lenis) {
-      lenis.on("scroll", check);
-      return () => lenis.off("scroll", check);
+    if (rect.top < window.innerHeight * 0.92 && rect.bottom > 0) {
+      reveal();
+      observer.disconnect();
     }
 
-    window.addEventListener("scroll", check, { passive: true });
-    window.addEventListener("resize", check);
-
-    return () => {
-      window.removeEventListener("scroll", check);
-      window.removeEventListener("resize", check);
-    };
-  }, [lenis, check, enabled, reduced]);
+    return () => observer.disconnect();
+  }, [enabled, reduced, inView]);
 
   return {
     ref,
