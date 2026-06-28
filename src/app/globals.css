@@ -122,3 +122,29 @@
     }
   }
 }
+
+@layer components {
+  .btn-cta-primary {
+    @apply inline-flex items-center justify-center gap-1.5 bg-brand font-medium text-white transition-colors hover:bg-brand-hover;
+    @apply px-4 py-2.5 text-[13px] sm:gap-2 sm:px-5 sm:py-2.5 sm:text-[14px] lg:px-6 lg:py-3 lg:text-[15px];
+  }
+
+  .btn-cta-header {
+    @apply inline-flex items-center justify-center gap-1.5 bg-brand font-medium text-white transition-colors hover:bg-brand-hover;
+    @apply px-3 py-2 text-[12px] sm:gap-2 sm:px-3.5 sm:py-2 sm:text-[13px] lg:px-5 lg:py-2.5 lg:text-[14px];
+  }
+
+  .btn-cta-inverse {
+    @apply inline-flex items-center justify-center gap-1.5 bg-white font-medium text-ink transition-colors hover:bg-white/90;
+    @apply w-full px-5 py-3 text-[13px] sm:w-auto sm:gap-2 sm:px-6 sm:py-3.5 sm:text-[14px] lg:px-7 lg:py-4 lg:text-[15px];
+  }
+
+  .btn-cta-icon {
+    @apply h-3.5 w-3.5 shrink-0 sm:h-4 sm:w-4;
+  }
+
+  .link-cta-secondary {
+    @apply font-medium text-muted transition-colors hover:text-ink;
+    @apply text-[13px] sm:text-[14px] lg:text-[15px];
+  }
+}

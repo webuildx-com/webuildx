@@ -172,16 +172,13 @@ export function CapabilitiesSection() {
                 Strategy to scale — from idea to impact
               </p>
 
-              <div className="mt-8 flex flex-wrap items-center gap-6">
-                <Link
-                  href="/start-a-project"
-                  className="inline-flex items-center bg-brand px-6 py-3 text-[15px] font-medium text-white transition-colors hover:bg-brand-hover"
-                >
+              <div className="mt-8 flex flex-wrap items-center gap-4 sm:gap-5 lg:gap-6">
+                <Link href="/start-a-project" className="btn-cta-primary">
                   Start a project
                 </Link>
                 <Link
                   href="/work"
-                  className="group relative text-[15px] font-medium text-ink"
+                  className="group relative link-cta-secondary text-ink"
                 >
                   See our work
                   <span

@@ -45,7 +45,7 @@ function MenuButton({
   return (
     <button
       type="button"
-      className="inline-flex h-10 w-10 items-center justify-center text-ink transition-opacity hover:opacity-70 lg:hidden"
+      className="inline-flex h-10 w-10 items-center justify-center text-ink transition-opacity hover:opacity-70 md:hidden"
       aria-expanded={open}
       aria-controls="mobile-nav"
       aria-label={open ? "Close menu" : "Open menu"}
@@ -102,7 +102,7 @@ function MobileMenu({
           <motion.button
             type="button"
             aria-label="Close menu"
-            className="fixed inset-0 top-[72px] z-40 bg-ink/25 backdrop-blur-[2px] lg:hidden"
+            className="fixed inset-0 top-[72px] z-40 bg-ink/25 backdrop-blur-[2px] md:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -112,7 +112,7 @@ function MobileMenu({
 
           <motion.nav
             id="mobile-nav"
-            className="fixed inset-x-0 top-[72px] z-50 max-h-[calc(100dvh-72px)] overflow-y-auto border-b border-border bg-sea-salt/95 backdrop-blur-xl lg:hidden"
+            className="fixed inset-x-0 top-[72px] z-50 max-h-[calc(100dvh-72px)] overflow-y-auto border-b border-border bg-sea-salt/95 backdrop-blur-xl md:hidden"
             initial={reduced ? false : { opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={reduced ? undefined : { opacity: 0, y: -8 }}
@@ -164,11 +164,11 @@ function MobileMenu({
                 </p>
                 <Link
                   href="/start-a-project"
-                  className="inline-flex w-full items-center justify-center gap-2 bg-brand px-5 py-3 text-[15px] font-medium text-white transition-colors hover:bg-brand-hover"
+                  className="btn-cta-primary w-full"
                   onClick={onClose}
                 >
                   Start a project
-                  <ArrowRightIcon className="h-4 w-4 shrink-0" />
+                  <ArrowRightIcon className="btn-cta-icon" />
                 </Link>
               </motion.div>
             </div>
@@ -200,7 +200,7 @@ function HeaderInner() {
   return (
     <>
       <div
-        className={`mx-auto grid h-[72px] max-w-[1280px] grid-cols-[1fr_auto] items-center gap-4 px-6 sm:px-6 lg:grid-cols-[1fr_auto_1fr] lg:px-10 ${
+        className={`mx-auto grid h-[72px] max-w-[1280px] grid-cols-[1fr_auto] items-center gap-4 px-6 sm:px-6 md:grid-cols-[1fr_auto_1fr] lg:px-10 ${
           menuOpen ? "relative z-50" : ""
         }`}
       >
@@ -212,7 +212,7 @@ function HeaderInner() {
           <Logo className="h-5 w-auto max-w-[128px] sm:h-6 sm:max-w-[148px] lg:h-7 lg:max-w-none" />
         </Link>
 
-        <nav className="hidden items-center gap-8 lg:flex lg:justify-self-center">
+        <nav className="hidden items-center gap-6 md:flex md:justify-self-center lg:gap-8">
           {navLinks.map((link) => (
             <HoverUnderlineLink
               key={link.href}
@@ -225,12 +225,9 @@ function HeaderInner() {
         </nav>
 
         <div className="flex shrink-0 items-center justify-self-end gap-2 sm:gap-3">
-          <Link
-            href="/start-a-project"
-            className="hidden items-center gap-2 bg-brand px-5 py-2.5 text-[14px] font-medium text-white transition-colors hover:bg-brand-hover lg:inline-flex"
-          >
+          <Link href="/start-a-project" className="btn-cta-header hidden md:inline-flex">
             Start a project
-            <ArrowRightIcon className="h-4 w-4 shrink-0" />
+            <ArrowRightIcon className="btn-cta-icon" />
           </Link>
 
           <MenuButton

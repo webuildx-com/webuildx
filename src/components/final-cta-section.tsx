@@ -27,10 +27,10 @@ export function FinalCtaSection() {
 
           <Link
             href="/start-a-project"
-            className="group inline-flex w-full shrink-0 items-center justify-center gap-2 self-stretch bg-white px-7 py-4 text-[15px] font-medium text-ink transition-colors hover:bg-white/90 sm:w-auto sm:self-start lg:self-center"
+            className="btn-cta-inverse group shrink-0 self-stretch sm:self-start lg:self-center"
           >
             Start a project
-            <ArrowRightIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+            <ArrowRightIcon className="btn-cta-icon transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
         </div>
       </div>

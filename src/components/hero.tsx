@@ -158,17 +158,19 @@ export function Hero() {
     >
       <motion.h1
         variants={pickMotion(reduced, fadeUpSafe)}
-        className="mx-auto max-w-5xl text-[clamp(1.875rem,7vw,5rem)] font-semibold leading-[1.12] tracking-tight text-balance lg:max-w-6xl"
+        className="mx-auto max-w-5xl text-[clamp(2rem,8vw,2.375rem)] font-semibold leading-[1.14] tracking-tight sm:text-[clamp(2.125rem,5.5vw,3.5rem)] sm:leading-[1.12] lg:text-[clamp(2.5rem,5vw,5rem)] lg:max-w-6xl"
       >
-        <span className="inline-flex max-w-full flex-wrap items-center justify-center gap-x-[0.25em] gap-y-[0.25em]">
-          <span className="whitespace-nowrap text-ink">We build</span>
-          <span className="inline-flex p-1.5 -m-1.5 sm:p-0 sm:m-0">
-            <PhoneStrip onPlay={handlePlay} onSourceReady={handleSourceReady} />
+        <span className="inline-flex max-w-full flex-wrap items-center justify-center gap-x-[0.25em] gap-y-[0.2em]">
+          <span className="text-ink">We build</span>
+          <span className="inline-flex items-center gap-x-[0.25em]">
+            <span className="inline-flex p-1 -m-1 sm:p-0 sm:m-0">
+              <PhoneStrip onPlay={handlePlay} onSourceReady={handleSourceReady} />
+            </span>
+            <span className="text-ink">products</span>
           </span>
-          <span className="whitespace-nowrap text-ink">products</span>
         </span>
 
-        <span className="mt-[0.06em] block">
+        <span className="mt-[0.08em] block">
           <span className="text-subtle">for </span>
           <span className="text-ink">ambitious founders</span>
         </span>
@@ -176,26 +178,24 @@ export function Hero() {
 
       <motion.p
         variants={pickMotion(reduced, fadeUpSafe)}
-        className="mx-auto mt-6 max-w-xl text-[15px] leading-relaxed text-muted sm:mt-7 sm:text-[16px] lg:text-[17px]"
+        className="mx-auto mt-6 max-w-2xl text-[15px] leading-relaxed text-muted sm:mt-7 sm:text-[16px] lg:text-[17px]"
       >
-        Design, build, and scale — from first idea through launch and beyond
+        WebuildX is a design and technology studio helping teams turn early
+        thinking into clear plans, sharp designs, and working software
       </motion.p>
 
       <motion.div
         variants={pickMotion(reduced, fadeUpSafe)}
-        className="mt-8 flex flex-wrap items-center justify-center gap-5 sm:mt-10 sm:gap-6"
+        className="mt-8 flex flex-wrap items-center justify-center gap-4 sm:mt-10 sm:gap-5 lg:gap-6"
       >
-        <Link
-          href="/start-a-project"
-          className="inline-flex items-center gap-2 bg-brand px-6 py-3 text-[15px] font-medium text-white transition-colors hover:bg-brand-hover"
-        >
+        <Link href="/start-a-project" className="btn-cta-primary">
           Start a project
-          <ArrowRightIcon className="h-4 w-4 shrink-0" />
+          <ArrowRightIcon className="btn-cta-icon" />
         </Link>
 
         <HoverUnderlineLink
           href="/#work"
-          className="text-[15px] font-medium text-muted transition-colors hover:text-ink"
+          className="link-cta-secondary"
           underlineClassName="bg-brand"
         >
           See our work

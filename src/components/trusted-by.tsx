@@ -38,17 +38,54 @@ const clients = [
   },
 ] as const;
 
+const logoClassName =
+  "h-[22px] w-auto max-w-[88px] object-contain opacity-45 brightness-0 sm:h-[22px] sm:max-w-[88px] lg:h-6 lg:max-w-[120px]";
+
 export function TrustedBy() {
   return (
     <div
       aria-label="Trusted by"
-      className="flex flex-col items-center gap-5 sm:flex-row sm:items-center sm:gap-8 lg:gap-10"
+      className="flex w-full flex-col gap-4 sm:flex-row sm:items-center sm:gap-8 lg:gap-10"
     >
       <p className="shrink-0 text-[11px] font-medium uppercase tracking-[0.16em] text-subtle sm:text-[12px]">
         Trusted by:
       </p>
 
-      <ul className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 sm:flex-1 sm:justify-between sm:gap-x-4 sm:gap-y-4 lg:gap-x-6">
+      {/* Mobile: 3 logos, then 2 centered */}
+      <ul className="grid w-full grid-cols-6 items-center gap-x-2 gap-y-5 sm:hidden">
+        {clients.slice(0, 3).map(({ id, name, src, width, height }) => (
+          <li key={id} className="col-span-2 flex justify-center">
+            <Image
+              src={src}
+              alt={name}
+              width={width}
+              height={height}
+              className={logoClassName}
+              sizes="88px"
+            />
+          </li>
+        ))}
+        {clients.slice(3).map(({ id, name, src, width, height }, index) => (
+          <li
+            key={id}
+            className={`col-span-2 flex justify-center ${
+              index === 0 ? "col-start-2" : "col-start-4"
+            }`}
+          >
+            <Image
+              src={src}
+              alt={name}
+              width={width}
+              height={height}
+              className={logoClassName}
+              sizes="88px"
+            />
+          </li>
+        ))}
+      </ul>
+
+      {/* Tablet + desktop: single row */}
+      <ul className="hidden flex-1 flex-wrap items-center justify-between gap-x-4 gap-y-4 sm:flex lg:gap-x-6">
         {clients.map(({ id, name, src, width, height }) => (
           <li key={id} className="flex shrink-0 items-center justify-center">
             <Image
@@ -56,7 +93,7 @@ export function TrustedBy() {
               alt={name}
               width={width}
               height={height}
-              className="h-5 w-auto max-w-[72px] object-contain opacity-45 brightness-0 sm:h-[22px] sm:max-w-[88px] lg:h-6 lg:max-w-[120px]"
+              className={logoClassName}
               sizes="120px"
             />
           </li>
