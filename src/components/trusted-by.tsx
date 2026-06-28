@@ -1,8 +1,3 @@
-"use client";
-
-import { useHeroEntrance } from "@/components/hero-entrance";
-import { fadeUpSafe, pickMotion, staggerDelayed } from "@/lib/motion";
-import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 
 const clients = [
@@ -44,45 +39,29 @@ const clients = [
 ] as const;
 
 export function TrustedBy() {
-  const { entered } = useHeroEntrance();
-  const reduced = useReducedMotion();
-
   return (
-    <motion.div
+    <div
       aria-label="Trusted by"
-      initial="hidden"
-      animate={entered ? "visible" : "hidden"}
-      variants={pickMotion(reduced, staggerDelayed)}
       className="flex flex-col items-center gap-5 sm:flex-row sm:items-center sm:gap-8 lg:gap-10"
     >
-      <motion.p
-        className="shrink-0 text-[11px] font-medium uppercase tracking-[0.16em] text-subtle sm:text-[12px]"
-        variants={pickMotion(reduced, fadeUpSafe)}
-      >
+      <p className="shrink-0 text-[11px] font-medium uppercase tracking-[0.16em] text-subtle sm:text-[12px]">
         Trusted by:
-      </motion.p>
+      </p>
 
-      <motion.ul
-        className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 sm:flex-1 sm:justify-between sm:gap-x-4 sm:gap-y-4 lg:gap-x-6"
-        variants={pickMotion(reduced, staggerDelayed)}
-      >
+      <ul className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 sm:flex-1 sm:justify-between sm:gap-x-4 sm:gap-y-4 lg:gap-x-6">
         {clients.map(({ id, name, src, width, height }) => (
-          <motion.li
-            key={id}
-            className="flex shrink-0 items-center justify-center"
-            variants={pickMotion(reduced, fadeUpSafe)}
-          >
+          <li key={id} className="flex shrink-0 items-center justify-center">
             <Image
               src={src}
               alt={name}
               width={width}
               height={height}
-              className="h-5 w-auto max-w-[72px] object-contain opacity-45 brightness-0 sm:max-w-[88px] sm:h-[22px] lg:h-6 lg:max-w-[120px]"
+              className="h-5 w-auto max-w-[72px] object-contain opacity-45 brightness-0 sm:h-[22px] sm:max-w-[88px] lg:h-6 lg:max-w-[120px]"
               sizes="120px"
             />
-          </motion.li>
+          </li>
         ))}
-      </motion.ul>
-    </motion.div>
+      </ul>
+    </div>
   );
 }

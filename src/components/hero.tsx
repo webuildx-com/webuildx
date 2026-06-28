@@ -87,7 +87,7 @@ function PhoneStrip({
         onMouseEnter={() => setHovering(true)}
         onMouseLeave={() => setHovering(false)}
         onMouseMove={handleMouseMove}
-        className={`group relative mx-[0.14em] inline-flex h-[1.08em] w-[2.45em] shrink-0 translate-y-[0.04em] overflow-hidden rounded-[0.16em] bg-ink align-middle shadow-[0_8px_18px_-12px_rgba(0,0,0,0.4)] transition-shadow hover:shadow-[0_10px_22px_-10px_rgba(0,0,0,0.45)] max-sm:min-h-[44px] max-sm:min-w-[44px] max-sm:items-center max-sm:justify-center ${
+        className={`group relative mx-[0.14em] inline-flex h-[1.08em] w-[2.45em] shrink-0 translate-y-[0.04em] overflow-hidden rounded-[0.16em] bg-ink align-middle shadow-[0_8px_18px_-12px_rgba(0,0,0,0.4)] transition-shadow hover:shadow-[0_10px_22px_-10px_rgba(0,0,0,0.45)] ${
           finePointer ? "cursor-none" : "cursor-pointer"
         }`}
         aria-label="Play showreel"
@@ -162,7 +162,9 @@ export function Hero() {
       >
         <span className="inline-flex max-w-full flex-wrap items-center justify-center gap-x-[0.25em] gap-y-[0.25em]">
           <span className="whitespace-nowrap text-ink">We build</span>
-          <PhoneStrip onPlay={handlePlay} onSourceReady={handleSourceReady} />
+          <span className="inline-flex p-1.5 -m-1.5 sm:p-0 sm:m-0">
+            <PhoneStrip onPlay={handlePlay} onSourceReady={handleSourceReady} />
+          </span>
           <span className="whitespace-nowrap text-ink">products</span>
         </span>
 
