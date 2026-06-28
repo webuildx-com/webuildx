@@ -133,8 +133,8 @@ export function CapabilitiesSection() {
       className="border-t border-border bg-white"
       aria-labelledby="capabilities-heading"
     >
-      <div className="mx-auto max-w-[1280px] px-6 pt-16 pb-24 sm:px-6 sm:pt-20 sm:pb-28 lg:px-10 lg:pt-28 lg:pb-36">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,400px)_minmax(0,1fr)] lg:gap-0">
+      <div className="mx-auto max-w-[1280px] px-6 pt-12 pb-16 sm:pt-20 sm:pb-28 lg:px-10 lg:pt-28 lg:pb-36">
+        <div className="grid gap-8 sm:gap-10 lg:grid-cols-[minmax(0,400px)_minmax(0,1fr)] lg:gap-0">
           {/* Left: intro */}
           <div className="lg:flex lg:flex-col lg:justify-center lg:pr-14">
             <ScrollReveal>
@@ -144,10 +144,10 @@ export function CapabilitiesSection() {
             </ScrollReveal>
 
             {/* Heading — word-by-word clip reveal */}
-            <ScrollRevealStagger className="mt-6">
+            <ScrollRevealStagger className="mt-4 sm:mt-6">
               <h2
                 id="capabilities-heading"
-                className="flex flex-wrap text-[clamp(2rem,4.5vw,3rem)] font-semibold leading-[1.1] tracking-tight text-ink"
+                className="flex max-w-[16ch] flex-wrap text-[1.75rem] font-semibold leading-[1.15] tracking-tight text-ink sm:max-w-none sm:text-[clamp(2rem,4.5vw,3rem)] sm:leading-[1.1]"
               >
                 {HEADING_WORDS.map((word, i) => (
                   <span
@@ -164,15 +164,15 @@ export function CapabilitiesSection() {
 
             <ScrollReveal delay={0.1}>
               <span
-                className="mt-8 block h-px w-24 bg-border"
+                className="mt-5 block h-px w-20 bg-border sm:mt-8 sm:w-24"
                 aria-hidden="true"
               />
 
-              <p className="mt-6 text-[15px] leading-relaxed text-muted lg:text-[16px]">
+              <p className="mt-4 text-[14px] leading-relaxed text-muted sm:mt-6 sm:text-[15px] lg:text-[16px]">
                 Strategy to scale — from idea to impact
               </p>
 
-              <div className="mt-8 flex flex-wrap items-center gap-4 sm:gap-5 lg:gap-6">
+              <div className="mt-6 flex flex-wrap items-center gap-4 sm:mt-8 sm:gap-5 lg:gap-6">
                 <Link href="/start-a-project" className="btn-cta-primary">
                   Start a project
                 </Link>
@@ -195,7 +195,7 @@ export function CapabilitiesSection() {
           </div>
 
           {/* Right: capability rows */}
-          <ScrollRevealStagger className="lg:border-l lg:border-border">
+          <ScrollRevealStagger className="border-t border-border pt-2 lg:border-l lg:border-t-0 lg:pt-0">
             {capabilities.map(({ id, title, description, Icon }, i) => {
               const isActive = i === active;
               const dimmed = !isActive;
@@ -205,7 +205,7 @@ export function CapabilitiesSection() {
                   variants={pickMotion(reduced, fadeUpSafe)}
                   onMouseEnter={() => setActive(i)}
                   onFocus={() => setActive(i)}
-                  className={`group relative py-8 transition-opacity duration-500 lg:px-12 lg:py-10 ${
+                  className={`group relative py-5 transition-opacity duration-500 sm:py-7 lg:px-12 lg:py-10 ${
                     i > 0 ? "border-t border-border" : ""
                   } ${dimmed ? "lg:opacity-55" : "opacity-100"}`}
                 >
@@ -219,7 +219,33 @@ export function CapabilitiesSection() {
                     />
                   )}
 
-                  <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between sm:gap-8">
+                  {/* Mobile + tablet: icon beside stacked title/description */}
+                  <div className="flex items-start gap-3.5 sm:gap-4 lg:hidden">
+                    <span
+                      className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full transition-colors duration-500 ${
+                        isActive
+                          ? "bg-brand text-white"
+                          : "bg-ink/[0.05] text-ink/70"
+                      }`}
+                    >
+                      <Icon active={isActive} />
+                    </span>
+                    <div className="min-w-0 pt-0.5">
+                      <h3 className="text-[1.125rem] font-semibold tracking-tight text-ink">
+                        {title}
+                      </h3>
+                      <p
+                        className={`mt-1.5 text-[13px] leading-relaxed ${
+                          isActive ? "text-ink/80" : "text-muted"
+                        }`}
+                      >
+                        {description}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Desktop: title left, description right */}
+                  <div className="hidden lg:flex lg:items-center lg:justify-between lg:gap-8">
                     <div className="flex items-center gap-5">
                       <span
                         className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-full transition-colors duration-500 ${
@@ -231,15 +257,15 @@ export function CapabilitiesSection() {
                         <Icon active={isActive} />
                       </span>
                       <h3
-                        className={`text-[1.5rem] font-semibold tracking-tight text-ink transition-transform duration-500 lg:text-[1.75rem] ${
-                          isActive ? "lg:translate-x-1.5" : ""
+                        className={`text-[1.75rem] font-semibold tracking-tight text-ink transition-transform duration-500 ${
+                          isActive ? "translate-x-1.5" : ""
                         }`}
                       >
                         {title}
                       </h3>
                     </div>
                     <p
-                      className={`max-w-none text-[14px] leading-relaxed transition-colors duration-500 sm:max-w-[280px] lg:max-w-[240px] ${
+                      className={`max-w-[240px] text-[14px] leading-relaxed transition-colors duration-500 ${
                         isActive ? "text-ink/80" : "text-muted"
                       }`}
                     >
