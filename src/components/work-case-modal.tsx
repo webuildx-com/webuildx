@@ -84,7 +84,7 @@ export function WorkCaseModal({ project, onClose }: WorkCaseModalProps) {
               </a>
             ) : (
               <p className="mt-8 text-[13px] text-subtle">
-                Full case study coming soon.
+                Full case study coming soon
               </p>
             )}
           </div>

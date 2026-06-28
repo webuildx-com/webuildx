@@ -18,7 +18,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "WebuildX — Design-led product development studio",
   description:
-    "WebuildX partners with startups and growing teams to shape ideas, design interfaces, build software, and scale products after launch.",
+    "WebuildX partners with startups and growing teams to shape ideas, design interfaces, build software, and scale products after launch",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },

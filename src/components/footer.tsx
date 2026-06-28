@@ -11,15 +11,15 @@ import Link from "next/link";
 
 const navigationLinks = [
   { label: "Work", href: "/#work" },
-  { label: "Services", href: "/#services" },
-  { label: "About", href: "/#about" },
+  { label: "Services", href: "/#capabilities" },
+  { label: "About", href: "/#impact" },
   { label: "Contact", href: "/start-a-project" },
 ];
 
 const serviceLinks = [
-  { label: "Design", href: "/#services" },
-  { label: "Build", href: "/#services" },
-  { label: "Scale", href: "/#services" },
+  { label: "Design", href: "/#capabilities" },
+  { label: "Build", href: "/#capabilities" },
+  { label: "Scale", href: "/#capabilities" },
 ];
 
 const contactLinks = [
@@ -172,18 +172,18 @@ export function Footer() {
           backgroundSize: "180px 180px",
         }}
       />
-      <div className="mx-auto max-w-[1280px] px-4 py-12 sm:px-6 sm:py-14 lg:px-10 lg:py-16">
+      <div className="mx-auto max-w-[1280px] px-6 py-12 sm:py-14 lg:px-10 lg:py-16">
         <ScrollReveal>
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 xl:gap-24">
           <div>
             <h2 className="max-w-md text-[clamp(1.75rem,3.8vw,2.75rem)] font-semibold leading-[1.1] tracking-tight text-white">
-              Let&apos;s build something that works.
+              Let&apos;s build something that works
             </h2>
 
             <p className="mt-5 max-w-md text-[14px] leading-relaxed text-white/60 lg:mt-6 lg:text-[15px]">
               WebuildX is a design-led product development studio that helps
               ambitious companies design, build, and scale digital products that
-              create real impact.
+              create real impact
             </p>
           </div>
 
@@ -194,7 +194,7 @@ export function Footer() {
 
             <FooterColumn
               title="Services"
-              className="border-l border-white/10 pl-6 lg:pl-10"
+              className="border-l border-white/10 pl-4 sm:pl-6 lg:pl-10"
             >
               <FooterNavLinks links={serviceLinks} />
             </FooterColumn>
@@ -226,7 +226,7 @@ export function Footer() {
 
           <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6">
             <p className="text-[12px] leading-relaxed text-white/50 lg:text-[13px]">
-              © {year} WebuildX Software Technology Limited. All rights reserved.
+              © {year} WebuildX Software Technology Limited — all rights reserved
             </p>
             <nav
               aria-label="Legal"

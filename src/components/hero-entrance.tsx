@@ -1,13 +1,13 @@
 "use client";
 
-import { createContext, useContext } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 type HeroEntranceContextValue = {
   entered: boolean;
 };
 
 const HeroEntranceContext = createContext<HeroEntranceContextValue>({
-  entered: true,
+  entered: false,
 });
 
 export function HeroEntranceProvider({
@@ -15,8 +15,15 @@ export function HeroEntranceProvider({
 }: {
   children: React.ReactNode;
 }) {
+  const [entered, setEntered] = useState(false);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setEntered(true), 320);
+    return () => window.clearTimeout(timer);
+  }, []);
+
   return (
-    <HeroEntranceContext.Provider value={{ entered: true }}>
+    <HeroEntranceContext.Provider value={{ entered }}>
       {children}
     </HeroEntranceContext.Provider>
   );

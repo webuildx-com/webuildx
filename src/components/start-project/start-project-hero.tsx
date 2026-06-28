@@ -21,7 +21,6 @@ export function StartProjectHero() {
             className="text-[clamp(2rem,4.5vw,3rem)] font-semibold leading-[1.1] tracking-tight text-ink"
           >
             Tell us what you&apos;re building
-            <span className="text-brand">.</span>
           </motion.h1>
           <motion.p
             variants={pickMotion(reduced, fadeUpSafe)}
@@ -29,7 +28,7 @@ export function StartProjectHero() {
           >
             Tell us what you&apos;re building, where you are in the process, and
             what kind of help you need. We&apos;ll help you figure out the
-            smartest path to design, build, or scale it.
+            smartest path to design, build, or scale it
           </motion.p>
         </motion.div>
       </div>

@@ -1,102 +1,85 @@
 "use client";
 
 import { useHeroEntrance } from "@/components/hero-entrance";
-import { fadeUpSafe, staggerDelayed } from "@/lib/motion";
+import { fadeUpSafe, pickMotion, staggerDelayed } from "@/lib/motion";
 import { motion, useReducedMotion } from "framer-motion";
+import Image from "next/image";
 
-const logos = [
-  { id: "knoxxpay", label: "KnoxxPay" },
-  { id: "creditveto", label: "CreditVeto" },
-  { id: "orangefarm", label: "Orange Farm" },
-  { id: "klerra", label: "Klerra" },
-  { id: "landlordcare", label: "LandLordCare" },
+const clients = [
+  {
+    id: "knoxxpay",
+    name: "KnoxxPay",
+    src: "/clients/knoxxpay.png",
+    width: 106,
+    height: 40,
+  },
+  {
+    id: "orange-farm",
+    name: "Orange Farm",
+    src: "/clients/orange-farm.png",
+    width: 120,
+    height: 37,
+  },
+  {
+    id: "creditveto",
+    name: "CreditVeto",
+    src: "/clients/creditveto.png",
+    width: 240,
+    height: 56,
+  },
+  {
+    id: "klerra",
+    name: "Klerra",
+    src: "/clients/klerra.png",
+    width: 240,
+    height: 68,
+  },
+  {
+    id: "landlordcare",
+    name: "LandLordCare",
+    src: "/clients/landlordcare.png",
+    width: 240,
+    height: 65,
+  },
 ] as const;
-
-function TrustedByHeading({
-  className,
-  labelClassName,
-}: {
-  className?: string;
-  labelClassName: string;
-}) {
-  return (
-    <motion.div
-      className={`flex items-center gap-3 sm:gap-4 lg:gap-5 ${className ?? ""}`}
-      variants={fadeUpSafe}
-    >
-      <p className={`shrink-0 ${labelClassName}`}>Trusted by ambitious teams</p>
-      <span className="h-px min-w-0 flex-1 bg-border" aria-hidden="true" />
-    </motion.div>
-  );
-}
 
 export function TrustedBy() {
   const { entered } = useHeroEntrance();
   const reduced = useReducedMotion();
-  const marqueeLogos = reduced ? logos : [...logos, ...logos];
 
   return (
     <motion.div
       aria-label="Trusted by"
       initial="hidden"
       animate={entered ? "visible" : "hidden"}
-      variants={staggerDelayed}
+      variants={pickMotion(reduced, staggerDelayed)}
+      className="flex flex-col items-center gap-5 sm:flex-row sm:items-center sm:gap-8 lg:gap-10"
     >
-      {/* Mobile: label + line, then marquee */}
-      <TrustedByHeading
-        className="mb-5 sm:hidden"
-        labelClassName="text-[10px] font-medium uppercase tracking-[0.22em] text-subtle"
-      />
-
-      <motion.div className="sm:hidden" variants={fadeUpSafe}>
-        <div
-          className={
-            reduced
-              ? "-mx-6 overflow-x-auto px-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-              : "overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_14%,black_86%,transparent)]"
-          }
-        >
-          <ul
-            className={`flex w-max items-center ${
-              reduced ? "gap-8" : "animate-trusted-marquee gap-10 pr-10"
-            }`}
-          >
-            {marqueeLogos.map(({ id, label }, index) => (
-              <li key={`${id}-${index}`} className="shrink-0">
-                <span className="whitespace-nowrap text-[15px] font-semibold tracking-[0.01em] text-ink/50">
-                  {label}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </motion.div>
-
-      {/* Tablet + desktop: label + line, then logo row */}
-      <TrustedByHeading
-        className="mb-4 hidden sm:mb-5 sm:flex"
-        labelClassName="text-[11px] font-medium uppercase tracking-[0.18em] text-subtle"
-      />
+      <motion.p
+        className="shrink-0 text-[11px] font-medium uppercase tracking-[0.16em] text-subtle sm:text-[12px]"
+        variants={pickMotion(reduced, fadeUpSafe)}
+      >
+        Trusted by:
+      </motion.p>
 
       <motion.ul
-        className="hidden sm:flex sm:items-center"
-        variants={staggerDelayed}
+        className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 sm:flex-1 sm:justify-between sm:gap-x-4 sm:gap-y-4 lg:gap-x-6"
+        variants={pickMotion(reduced, staggerDelayed)}
       >
-        {logos.map(({ id, label }, index) => (
+        {clients.map(({ id, name, src, width, height }) => (
           <motion.li
             key={id}
-            className="relative flex-1 py-1 text-center"
-            variants={fadeUpSafe}
+            className="flex shrink-0 items-center justify-center"
+            variants={pickMotion(reduced, fadeUpSafe)}
           >
-            {index > 0 && (
-              <span
-                className="absolute left-0 top-1/2 h-6 w-px -translate-y-1/2 bg-border"
-                aria-hidden="true"
-              />
-            )}
-            <span className="text-[13px] font-bold leading-none tracking-tight text-ink/45">
-              {label}
-            </span>
+            <Image
+              src={src}
+              alt={name}
+              width={width}
+              height={height}
+              className="h-5 w-auto max-w-[72px] object-contain opacity-45 brightness-0 sm:max-w-[88px] sm:h-[22px] lg:h-6 lg:max-w-[120px]"
+              sizes="120px"
+            />
           </motion.li>
         ))}
       </motion.ul>

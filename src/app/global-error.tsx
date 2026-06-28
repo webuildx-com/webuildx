@@ -15,7 +15,7 @@ export default function GlobalError({
         <div className="flex min-h-svh flex-col items-center justify-center gap-4 px-6 text-center">
           <h1 className="text-xl font-semibold text-ink">Something went wrong</h1>
           <p className="max-w-md text-sm text-muted">
-            {error.message || "An unexpected error occurred."}
+            {error.message || "An unexpected error occurred"}
           </p>
           <button
             type="button"

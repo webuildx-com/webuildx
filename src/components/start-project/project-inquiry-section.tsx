@@ -26,17 +26,17 @@ const nextSteps = [
   {
     title: "We review your brief",
     description:
-      "We read through your submission and assess fit, scope, and the smartest next step.",
+      "We read through your submission and assess fit, scope, and the smartest next step",
   },
   {
     title: "We schedule a call",
     description:
-      "If it looks like a good match, we'll set up a short discovery call to go deeper.",
+      "If it looks like a good match, we'll set up a short discovery call to go deeper",
   },
   {
     title: "We shape the right next step",
     description:
-      "You'll get a clear recommendation — whether that's a sprint, a proposal, or a referral.",
+      "You'll get a clear recommendation — whether that's a sprint, a proposal, or a referral",
   },
 ];
 
@@ -97,7 +97,7 @@ function SelectField({
           className={`${inputClassName} appearance-none pr-10`}
         >
           <option value="" disabled>
-            Select...
+            Select
           </option>
           {options.map((option) => (
             <option key={option} value={option}>
@@ -150,7 +150,7 @@ export function ProjectInquirySection() {
 
     if (turnstileEnabled && !turnstileToken) {
       setStatus("error");
-      setErrorMessage("Please complete the security check below.");
+      setErrorMessage("Please complete the security check below");
       return;
     }
 
@@ -173,7 +173,7 @@ export function ProjectInquirySection() {
         trackEvent("inquiry_error", {
           reason: data.error?.slice(0, 120) ?? "unknown",
         });
-        throw new Error(data.error ?? "Something went wrong. Please try again.");
+        throw new Error(data.error ?? "Something went wrong — please try again");
       }
 
       trackGenerateLead("inquiry_form", {
@@ -191,7 +191,7 @@ export function ProjectInquirySection() {
     } catch (error) {
       setStatus("error");
       setErrorMessage(
-        error instanceof Error ? error.message : "Something went wrong. Please try again.",
+        error instanceof Error ? error.message : "Something went wrong — please try again",
       );
     }
   };
@@ -211,11 +211,10 @@ export function ProjectInquirySection() {
                 className="text-[clamp(1.5rem,3vw,2rem)] font-semibold tracking-tight text-ink"
               >
                 Thanks — we&apos;ve got your inquiry
-                <span className="text-brand">.</span>
               </h2>
               <p className="mt-4 text-[15px] leading-relaxed text-muted">
                 We&apos;ll review your submission and reply within 24 hours
-                with a clear next step.
+                with a clear next step
               </p>
               <button
                 type="button"
@@ -380,7 +379,7 @@ export function ProjectInquirySection() {
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                         data-lenis-prevent
-                        placeholder="Share a few details about your idea, goals, users, and any context that helps us understand."
+                        placeholder="Share a few details about your idea, goals, users, and any context that helps us understand"
                         className={`${inputClassName} resize-none pb-8`}
                       />
                       <span className="pointer-events-none absolute bottom-3 right-4 text-[12px] text-subtle">
@@ -449,7 +448,7 @@ export function ProjectInquirySection() {
                       disabled={status === "loading"}
                       className="inline-flex items-center justify-center gap-2 bg-brand px-8 py-3.5 text-[14px] font-medium text-white transition-colors hover:bg-brand-hover disabled:cursor-not-allowed disabled:opacity-70"
                     >
-                      {status === "loading" ? "Sending..." : "Send inquiry"}
+                      {status === "loading" ? "Sending" : "Send inquiry"}
                       <ArrowRightIcon className="h-4 w-4 shrink-0" />
                     </button>
                     <p className="text-[13px] text-muted">
@@ -543,7 +542,7 @@ export function ProjectInquirySection() {
                   </div>
 
                   <p className="border-t border-border pt-8 text-[12px] leading-relaxed text-subtle">
-                    Small senior teams. Clear process. Serious execution.
+                    Small senior teams — clear process — serious execution
                   </p>
                 </div>
               </aside>

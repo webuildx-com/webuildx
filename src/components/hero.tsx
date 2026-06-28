@@ -2,37 +2,209 @@
 
 import { ArrowRightIcon } from "@/components/icons";
 import { HoverUnderlineLink } from "@/components/hover-underline-link";
+import { ShowreelModal } from "@/components/showreel-modal";
+import { fadeUpSafe, pickMotion, stagger } from "@/lib/motion";
+import { reelEmbedUrl, SHOWREEL_SRC } from "@/lib/reel";
+import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
+import { useCallback, useEffect, useRef, useState } from "react";
+
+type PreviewMode = "video" | "embed" | "static";
+
+/** Inline showreel strip — scales in em with the headline. */
+function PhoneStrip({
+  onPlay,
+  onSourceReady,
+}: {
+  onPlay: () => void;
+  onSourceReady: (source: PreviewMode) => void;
+}) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [mounted, setMounted] = useState(false);
+  const [mode, setMode] = useState<PreviewMode>("embed");
+  const [hovering, setHovering] = useState(false);
+  const [cursor, setCursor] = useState({ x: 0, y: 0 });
+  const [finePointer, setFinePointer] = useState(false);
+
+  useEffect(() => {
+    setFinePointer(window.matchMedia("(pointer: fine)").matches);
+  }, []);
+
+  useEffect(() => {
+    setMounted(true);
+
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const syncMotion = () => {
+      if (mq.matches) {
+        setMode("static");
+        onSourceReady("static");
+        return;
+      }
+
+      // Use embed preview until hero-strip.mp4 is added to public/videos
+      setMode("embed");
+      onSourceReady("embed");
+    };
+
+    syncMotion();
+    mq.addEventListener("change", syncMotion);
+    return () => mq.removeEventListener("change", syncMotion);
+  }, [onSourceReady]);
+
+  useEffect(() => {
+    if (!mounted || mode !== "video") return;
+
+    const video = videoRef.current;
+    if (!video) return;
+
+    const fallbackToEmbed = () => {
+      setMode("embed");
+      onSourceReady("embed");
+    };
+
+    video.addEventListener("error", fallbackToEmbed);
+    video.play().catch(fallbackToEmbed);
+
+    return () => video.removeEventListener("error", fallbackToEmbed);
+  }, [mounted, mode, onSourceReady]);
+
+  const embedUrl = reelEmbedUrl({
+    autoplay: true,
+    controls: false,
+    loop: true,
+    mute: true,
+  });
+
+  const handleMouseMove = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setCursor({ x: event.clientX, y: event.clientY });
+  };
+
+  return (
+    <>
+      <button
+        type="button"
+        onClick={onPlay}
+        onMouseEnter={() => setHovering(true)}
+        onMouseLeave={() => setHovering(false)}
+        onMouseMove={handleMouseMove}
+        className={`group relative mx-[0.14em] inline-flex h-[1.08em] w-[2.45em] shrink-0 translate-y-[0.04em] overflow-hidden rounded-[0.16em] bg-ink align-middle shadow-[0_8px_18px_-12px_rgba(0,0,0,0.4)] transition-shadow hover:shadow-[0_10px_22px_-10px_rgba(0,0,0,0.45)] max-sm:min-h-[44px] max-sm:min-w-[44px] max-sm:items-center max-sm:justify-center ${
+          finePointer ? "cursor-none" : "cursor-pointer"
+        }`}
+        aria-label="Play showreel"
+      >
+        {mounted && mode === "video" && (
+          <video
+            ref={videoRef}
+            src={SHOWREEL_SRC}
+            autoPlay
+            muted
+            loop
+            playsInline
+            controls={false}
+            disablePictureInPicture
+            controlsList="nodownload noplaybackrate nofullscreen noremoteplayback"
+            preload="auto"
+            className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+          />
+        )}
+
+        {mounted && mode === "embed" && (
+          <span className="pointer-events-none absolute inset-0 overflow-hidden">
+            <iframe
+              src={embedUrl}
+              title=""
+              tabIndex={-1}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              className="absolute top-1/2 left-1/2 h-[56.25vw] min-h-[280%] w-[177.78vh] min-w-[280%] -translate-x-1/2 -translate-y-1/2 scale-[1.35] border-0"
+            />
+          </span>
+        )}
+
+        <span className="pointer-events-none absolute inset-0 z-10 bg-black/0 transition-colors group-hover:bg-black/20" />
+      </button>
+
+      {finePointer && hovering && (
+        <span
+          className="pointer-events-none fixed z-[90] -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-full bg-brand px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-[0.14em] text-white shadow-[0_8px_24px_-8px_rgba(0,0,0,0.45)]"
+          style={{ left: cursor.x, top: cursor.y }}
+          aria-hidden="true"
+        >
+          Play Me
+        </span>
+      )}
+    </>
+  );
+}
 
 export function Hero() {
+  const reduced = useReducedMotion();
+  const [showreelOpen, setShowreelOpen] = useState(false);
+  const [showreelSource, setShowreelSource] = useState<"video" | "embed">(
+    "embed",
+  );
+
+  const handleSourceReady = useCallback((source: PreviewMode) => {
+    if (source !== "static") setShowreelSource(source);
+  }, []);
+
+  const handlePlay = useCallback(() => setShowreelOpen(true), []);
+
   return (
-    <div className="max-w-3xl">
-      <h1 className="text-[clamp(1.875rem,5vw,3.25rem)] font-semibold leading-[1.12] tracking-tight text-ink">
-        We design and build digital products for ambitious teams.
-      </h1>
+    <motion.div
+      className="w-full min-w-0 overflow-hidden text-center"
+      initial="hidden"
+      animate="visible"
+      variants={pickMotion(reduced, stagger)}
+    >
+      <motion.h1
+        variants={pickMotion(reduced, fadeUpSafe)}
+        className="mx-auto max-w-5xl text-[clamp(1.875rem,7vw,5rem)] font-semibold leading-[1.12] tracking-tight text-balance lg:max-w-6xl"
+      >
+        <span className="inline-flex max-w-full flex-wrap items-center justify-center gap-x-[0.25em] gap-y-[0.25em]">
+          <span className="whitespace-nowrap text-ink">We build</span>
+          <PhoneStrip onPlay={handlePlay} onSourceReady={handleSourceReady} />
+          <span className="whitespace-nowrap text-ink">products</span>
+        </span>
 
-      <p className="mt-5 max-w-xl text-[clamp(15px,2vw,17px)] leading-relaxed text-muted sm:mt-6">
-        WebuildX partners with startups and growing teams to shape ideas, design
-        interfaces, build software, and scale products after launch.
-      </p>
+        <span className="mt-[0.06em] block">
+          <span className="text-subtle">for </span>
+          <span className="text-ink">ambitious founders</span>
+        </span>
+      </motion.h1>
 
-      <div className="mt-8 flex flex-wrap items-center gap-5 sm:mt-10 sm:gap-6">
+      <motion.p
+        variants={pickMotion(reduced, fadeUpSafe)}
+        className="mx-auto mt-6 max-w-xl text-[15px] leading-relaxed text-muted sm:mt-7 sm:text-[16px] lg:text-[17px]"
+      >
+        Design, build, and scale — from first idea through launch and beyond
+      </motion.p>
+
+      <motion.div
+        variants={pickMotion(reduced, fadeUpSafe)}
+        className="mt-8 flex flex-wrap items-center justify-center gap-5 sm:mt-10 sm:gap-6"
+      >
         <Link
           href="/start-a-project"
-          className="inline-flex items-center gap-2 bg-ink px-6 py-3 text-[15px] font-medium text-white transition-colors hover:bg-footer"
+          className="inline-flex items-center gap-2 bg-brand px-6 py-3 text-[15px] font-medium text-white transition-colors hover:bg-brand-hover"
         >
           Start a project
-          <ArrowRightIcon className="h-4 w-4" />
+          <ArrowRightIcon className="h-4 w-4 shrink-0" />
         </Link>
 
         <HoverUnderlineLink
-          href="#work"
+          href="/#work"
           className="text-[15px] font-medium text-muted transition-colors hover:text-ink"
-          underlineClassName="bg-ink/25"
+          underlineClassName="bg-brand"
         >
           See our work
         </HoverUnderlineLink>
-      </div>
-    </div>
+      </motion.div>
+
+      <ShowreelModal
+        open={showreelOpen}
+        onClose={() => setShowreelOpen(false)}
+        source={showreelSource}
+      />
+    </motion.div>
   );
 }

@@ -29,7 +29,7 @@ export async function POST(request: Request) {
 
     if (await isRateLimited(ip)) {
       return NextResponse.json(
-        { error: "Too many submissions. Please try again later or email us directly." },
+        { error: "Too many submissions — please try again later or email us directly" },
         { status: 429 },
       );
     }
@@ -39,7 +39,7 @@ export async function POST(request: Request) {
 
     if (!turnstileOk) {
       return NextResponse.json(
-        { error: "Security check failed. Please refresh and try again." },
+        { error: "Security check failed — please refresh and try again" },
         { status: 400 },
       );
     }
@@ -51,7 +51,7 @@ export async function POST(request: Request) {
 
     if (isDisposableEmail(parsed.email)) {
       return NextResponse.json(
-        { error: "Please use a permanent email address so we can reply to you." },
+        { error: "Please use a permanent email address so we can reply to you" },
         { status: 400 },
       );
     }
@@ -59,7 +59,7 @@ export async function POST(request: Request) {
     const apiKey = process.env.RESEND_API_KEY;
     if (!apiKey) {
       return NextResponse.json(
-        { error: "Email service is not configured." },
+        { error: "Email service is not configured" },
         { status: 500 },
       );
     }
@@ -74,14 +74,14 @@ export async function POST(request: Request) {
     if (brief instanceof File && brief.size > 0) {
       if (brief.size > MAX_BRIEF_BYTES) {
         return NextResponse.json(
-          { error: "Attached file must be 10MB or smaller." },
+          { error: "Attached file must be 10MB or smaller" },
           { status: 400 },
         );
       }
 
       if (brief.type && !ALLOWED_BRIEF_TYPES.has(brief.type)) {
         return NextResponse.json(
-          { error: "Attached file must be PDF, DOC, DOCX, PPT, or PPTX." },
+          { error: "Attached file must be PDF, DOC, DOCX, PPT, or PPTX" },
           { status: 400 },
         );
       }
@@ -108,7 +108,7 @@ export async function POST(request: Request) {
     if (error) {
       console.error("Resend error:", error);
       return NextResponse.json(
-        { error: "Unable to send your inquiry. Please try again or email us directly." },
+        { error: "Unable to send your inquiry — please try again or email us directly" },
         { status: 502 },
       );
     }
@@ -117,7 +117,7 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error("Inquiry API error:", error);
     return NextResponse.json(
-      { error: "Something went wrong. Please try again." },
+      { error: "Something went wrong — please try again" },
       { status: 500 },
     );
   }

@@ -90,7 +90,7 @@ export function SelectedWorkSection() {
         <div className="mx-auto max-w-[1280px] px-6 pt-8 sm:pt-10 lg:px-10 lg:pt-14">
           <div className="lg:grid lg:grid-cols-[minmax(0,340px)_minmax(0,1fr)] lg:gap-x-16 xl:gap-x-20">
             {/* Sticky spotlight rail */}
-            <div className="pt-10 lg:sticky lg:top-[72px] lg:flex lg:min-h-[calc(100svh-72px)] lg:flex-col lg:self-start lg:py-20">
+            <div className="pt-4 lg:sticky lg:top-[72px] lg:flex lg:min-h-[calc(100svh-72px)] lg:flex-col lg:self-start lg:py-20 lg:pt-10">
               <ScrollReveal>
                 <p
                   id="work-heading"
@@ -100,7 +100,7 @@ export function SelectedWorkSection() {
                 </p>
                 <p className="max-w-sm text-[1.25rem] font-semibold leading-[1.25] tracking-tight text-ink sm:text-[1.75rem] lg:text-[1.85rem]">
                   Products we&apos;ve helped take from idea to launch and
-                  beyond.
+                  beyond
                 </p>
               </ScrollReveal>
 
@@ -158,7 +158,7 @@ export function SelectedWorkSection() {
               </nav>
             </div>
 
-            <ScrollRevealStagger className="pb-12 pt-10 lg:py-20">
+            <ScrollRevealStagger className="pb-12 pt-6 sm:pt-8 lg:py-20">
               {workProjects.map((project) => {
                 const hasCover = Boolean(project.coverImage);
                 const coverTone = project.coverTone ?? "dark";
@@ -333,6 +333,16 @@ export function SelectedWorkSection() {
                 );
               })}
             </ScrollRevealStagger>
+
+            <Link
+              href="/work"
+              className="mt-2 flex items-center justify-between border-t border-border py-4 lg:hidden"
+            >
+              <span className="text-[15px] font-semibold tracking-tight text-ink">
+                View all work
+              </span>
+              <ArrowRightIcon className="h-4 w-4 shrink-0 text-brand" />
+            </Link>
           </div>
         </div>
       </section>

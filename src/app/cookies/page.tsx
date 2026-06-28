@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Cookie Policy — WebuildX",
-  description: "How WebuildX uses cookies and similar technologies on webuildx.com.",
+  description: "How WebuildX uses cookies and similar technologies on webuildx.com",
 };
 
 export default function CookiesPage() {
@@ -13,14 +13,14 @@ export default function CookiesPage() {
     <LegalPage title="Cookie Policy">
       <p>
         This policy explains how <strong>WebuildX Software Technology Limited</strong>{" "}
-        uses cookies and similar technologies on webuildx.com.
+        uses cookies and similar technologies on webuildx.com
       </p>
 
       <section className="space-y-3">
         <h2 className="text-[17px] font-semibold text-ink">What are cookies?</h2>
         <p>
-          Cookies are small text files stored on your device when you visit a website.
-          We also use similar technologies such as local storage and analytics scripts.
+          Cookies are small text files stored on your device when you visit a website —
+          we also use similar technologies such as local storage and analytics scripts
         </p>
       </section>
 
@@ -39,19 +39,19 @@ export default function CookiesPage() {
                 <td className="px-4 py-3 align-top">Google Analytics 4</td>
                 <td className="px-4 py-3 text-ink/70">
                   Measures traffic, page views, and interactions to help us understand
-                  how the site is used.
+                  how the site is used
                 </td>
               </tr>
               <tr>
                 <td className="px-4 py-3 align-top">Microsoft Clarity</td>
                 <td className="px-4 py-3 text-ink/70">
-                  Provides heatmaps and session recordings to improve usability.
+                  Provides heatmaps and session recordings to improve usability
                 </td>
               </tr>
               <tr>
                 <td className="px-4 py-3 align-top">Cloudflare Turnstile</td>
                 <td className="px-4 py-3 text-ink/70">
-                  Security check on our inquiry form to prevent spam submissions.
+                  Security check on our inquiry form to prevent spam submissions
                 </td>
               </tr>
             </tbody>
@@ -62,10 +62,10 @@ export default function CookiesPage() {
       <section className="space-y-3">
         <h2 className="text-[17px] font-semibold text-ink">Managing cookies</h2>
         <p>
-          You can control or delete cookies through your browser settings. Blocking
+          You can control or delete cookies through your browser settings — blocking
           analytics cookies will not affect your ability to browse the site, but some
           features (such as form spam protection) may rely on cookies to function
-          correctly.
+          correctly
         </p>
         <p>
           To opt out of Google Analytics across all sites, visit{" "}
@@ -77,7 +77,6 @@ export default function CookiesPage() {
           >
             Google&apos;s opt-out page
           </a>
-          .
         </p>
       </section>
 
@@ -88,14 +87,13 @@ export default function CookiesPage() {
           <Link href="/privacy" className="text-brand hover:underline">
             Privacy Policy
           </Link>
-          . Questions? Email{" "}
+          — questions? Email{" "}
           <a
             href={`mailto:${CONTACT_EMAIL}`}
             className="text-brand hover:underline"
           >
             {CONTACT_EMAIL}
           </a>
-          .
         </p>
         <p className="text-[13px] text-subtle">Last updated: June 2026</p>
       </section>

@@ -4,10 +4,10 @@ import { HeroShell } from "@/components/hero-shell";
 import { ImpactSection } from "@/components/impact-section";
 import { FinalCtaSection } from "@/components/final-cta-section";
 import { Footer } from "@/components/footer";
+import { CapabilitiesSection } from "@/components/capabilities-section";
 import { ProcessTimelineSection } from "@/components/process-timeline-section";
 import { TestimonialsSection } from "@/components/testimonials-section";
 import { SelectedWorkSection } from "@/components/selected-work-section";
-import { ServicesSection } from "@/components/services-section";
 
 export default function Home() {
   return (
@@ -15,7 +15,7 @@ export default function Home() {
       <Header />
       <HeroShell />
       <SelectedWorkSection />
-      <ServicesSection />
+      <CapabilitiesSection />
       <ProcessTimelineSection />
       <ImpactSection />
       <TestimonialsSection />

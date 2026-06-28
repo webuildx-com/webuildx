@@ -7,17 +7,22 @@ import { motion, useReducedMotion } from "framer-motion";
 const featuredStats = [
   {
     value: "10+",
-    description: "Products, platforms, and digital systems delivered.",
+    description: "Products, platforms, and digital systems delivered",
   },
   {
     value: "30+",
     description:
-      "Design, engineering, product, and cloud specialists across our network.",
+      "Design, engineering, product, and cloud specialists across our network",
   },
   {
     value: "$1M+",
     description:
-      "Transaction and product infrastructure supported across fintech systems.",
+      "Transaction and product infrastructure supported across fintech systems",
+  },
+  {
+    value: "5+",
+    description:
+      "Industries served — fintech, SaaS, AI, logistics, and commerce",
   },
 ] as const;
 
@@ -30,16 +35,15 @@ export function ImpactSection() {
       className="bg-sea-salt sm:flex sm:flex-col"
       aria-label="Our impact"
     >
-      <div className="mx-auto w-full max-w-[1280px] px-6 py-12 sm:py-20 lg:px-10 lg:py-28">
+      <div className="mx-auto w-full max-w-[1280px] px-6 py-16 sm:py-20 lg:px-10 lg:py-28">
         {/* Mobile */}
         <div className="sm:hidden">
           <ScrollReveal className="mb-6 max-w-xl">
             <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.18em] text-brand">
               Our impact
             </p>
-            <h2 className="text-[1.5rem] font-semibold leading-[1.15] tracking-tight text-ink">
+            <h2 className="text-[1.75rem] font-semibold leading-[1.12] tracking-tight text-ink">
               Built for outcomes
-              <span className="text-brand">.</span>
             </h2>
           </ScrollReveal>
 
@@ -67,9 +71,8 @@ export function ImpactSection() {
             <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.18em] text-brand lg:mb-4">
               Our impact
             </p>
-            <h2 className="text-[1.5rem] font-semibold leading-[1.15] tracking-tight text-ink md:text-[1.75rem] lg:text-[2rem] xl:text-[2.15rem]">
+            <h2 className="text-[1.75rem] font-semibold leading-[1.12] tracking-tight text-ink md:text-[2rem] lg:text-[2.25rem] xl:text-[2.5rem]">
               Built for outcomes, not just delivery
-              <span className="text-brand">.</span>
             </h2>
           </ScrollReveal>
 
@@ -78,7 +81,7 @@ export function ImpactSection() {
               <motion.article
                 key={value}
                 variants={pickMotion(reduced, fadeUpSafe)}
-                className="relative flex flex-1 flex-col justify-center px-5 py-6 md:px-7 md:py-7 lg:px-8 lg:py-8"
+                className="relative flex flex-1 flex-col justify-center px-4 py-6 md:px-5 md:py-7 lg:px-6 lg:py-8"
               >
                 {index > 0 && (
                   <span
@@ -86,10 +89,10 @@ export function ImpactSection() {
                     aria-hidden="true"
                   />
                 )}
-                <p className="text-[1.75rem] font-semibold leading-none tracking-tight text-ink md:text-[2rem] lg:text-[2.25rem] xl:text-[2.5rem]">
+                <p className="text-[1.75rem] font-semibold leading-none tracking-tight text-ink md:text-[1.875rem] lg:text-[2.15rem] xl:text-[2.35rem]">
                   {value}
                 </p>
-                <p className="mt-3 max-w-[220px] text-[13px] leading-snug text-muted md:text-[14px] lg:mt-4 lg:leading-relaxed">
+                <p className="mt-3 max-w-[180px] text-[13px] leading-snug text-muted md:text-[14px] lg:mt-4 lg:leading-relaxed">
                   {description}
                 </p>
               </motion.article>

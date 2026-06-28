@@ -10,7 +10,7 @@ const testimonials = [
   {
     id: "ipaybtc",
     quote:
-      "WebuildX helped us build our Lightning infrastructure from the ground up. Fast, secure, and built to scale.",
+      "WebuildX helped us build our Lightning infrastructure from the ground up — fast, secure, and built to scale",
     name: "Prince Ogbonna",
     role: "CEO at iPayBTC",
     company: "iPayBTC",
@@ -19,7 +19,7 @@ const testimonials = [
   {
     id: "creditveto",
     quote:
-      "The CreditVeto platform was delivered with clarity and precision. The team understood the problem and built the right solution.",
+      "The CreditVeto platform was delivered with clarity and precision — the team understood the problem and built the right solution",
     name: "Tolulope Osokoya",
     role: "Product Lead at CREDITVETO",
     company: "CREDITVETO",
@@ -28,7 +28,7 @@ const testimonials = [
   {
     id: "orangefarm",
     quote:
-      "They took our brand and website to the next level. Clean, modern, and aligned with where we're going as a company.",
+      "They took our brand and website to the next level — clean, modern, and aligned with where we're going as a company",
     name: "Tosin Aribisala",
     role: "CEO at ORANGE FARM TECH",
     company: "ORANGE FARM TECH",
@@ -37,7 +37,7 @@ const testimonials = [
   {
     id: "lightforth",
     quote:
-      "WebuildX feels like an extension of our team. Senior people, clear communication, and dependable delivery.",
+      "WebuildX feels like an extension of our team — senior people, clear communication, and dependable delivery",
     name: "Product Manager",
     role: "AI Platform at LIGHTFORTH",
     company: "LIGHTFORTH",
@@ -91,7 +91,7 @@ function TestimonialCard({
         {quote}
       </p>
       <div className="mt-6 border-t border-border pt-5">
-        <div className="flex items-end justify-between gap-4">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-4">
           <div className="flex min-w-0 items-center gap-3">
             <div
               className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-sea-salt text-[11px] font-semibold tracking-tight text-ink/70"
@@ -100,13 +100,13 @@ function TestimonialCard({
               {initials}
             </div>
             <div className="min-w-0">
-              <p className="truncate text-[14px] font-semibold text-ink">
-                {name}
+              <p className="text-[14px] font-semibold text-ink">{name}</p>
+              <p className="text-[13px] text-muted max-sm:whitespace-normal sm:truncate">
+                {role}
               </p>
-              <p className="truncate text-[13px] text-muted">{role}</p>
             </div>
           </div>
-          <p className="shrink-0 text-right text-[11px] font-semibold uppercase tracking-[0.08em] text-ink/40">
+          <p className="hidden text-right text-[11px] font-semibold uppercase tracking-[0.08em] text-ink/40 sm:block">
             {company}
           </p>
         </div>
@@ -168,7 +168,7 @@ export function TestimonialsSection() {
       className="border-t border-border bg-sea-salt"
       aria-labelledby="testimonials-heading"
     >
-      <div className="mx-auto max-w-[1280px] px-6 py-10 sm:py-14 lg:px-10 lg:py-20">
+      <div className="mx-auto max-w-[1280px] px-6 py-16 sm:py-20 lg:px-10 lg:py-28">
         <ScrollReveal>
           <div className="flex flex-col gap-6 sm:gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
@@ -177,13 +177,13 @@ export function TestimonialsSection() {
               </p>
               <h2
                 id="testimonials-heading"
-                className="text-[1.625rem] font-semibold leading-[1.12] tracking-tight text-ink sm:text-[2.35rem]"
+                className="text-[clamp(1.625rem,4.5vw,2.35rem)] font-semibold leading-[1.12] tracking-tight text-ink"
               >
                 What our clients say
               </h2>
               <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-muted lg:text-[16px]">
                 We partner with ambitious companies to turn ideas into products
-                that deliver real impact.
+                that deliver real impact
               </p>
             </div>
 

@@ -13,26 +13,26 @@ const steps = [
     index: "01",
     title: "Discover",
     description:
-      "We understand the business, users, product goal, and technical constraints.",
+      "We understand the business, users, product goal, and technical constraints",
   },
   {
     id: "shape",
     index: "02",
     title: "Shape",
-    description: "We define the scope, user flows, architecture, and delivery plan.",
+    description: "We define the scope, user flows, architecture, and delivery plan",
   },
   {
     id: "build",
     index: "03",
     title: "Build",
-    description: "We design, engineer, test, and launch with a focused team.",
+    description: "We design, engineer, test, and launch with a focused team",
   },
   {
     id: "scale",
     index: "04",
     title: "Scale",
     description:
-      "We improve performance, reliability, infrastructure, and product growth.",
+      "We improve performance, reliability, infrastructure, and product growth",
   },
 ] as const;
 
@@ -45,16 +45,15 @@ const CYCLE_MS = 2400;
 function TimelineNode({ active }: { active: boolean }) {
   return (
     <span
-      className={`relative flex items-center justify-center rounded-full border bg-black transition-all duration-500 ease-out ${
-        active ? "h-5 w-5 border-brand/50" : "h-[18px] w-[18px] border-white/25"
+      className={`relative flex items-center justify-center rounded-full border bg-[#0a0a0a] transition-all duration-500 ease-out ${
+        active
+          ? "h-5 w-5 border-brand"
+          : "h-[18px] w-[18px] border-white/20"
       }`}
     >
-      {active && (
-        <span className="absolute inset-0 animate-ping rounded-full bg-brand/20" />
-      )}
       <span
         className={`rounded-full transition-all duration-500 ease-out ${
-          active ? "h-2.5 w-2.5 bg-brand" : "h-[5px] w-[5px] bg-white/45"
+          active ? "h-2.5 w-2.5 bg-brand" : "h-[5px] w-[5px] bg-white/35"
         }`}
       />
     </span>
@@ -64,9 +63,10 @@ function TimelineNode({ active }: { active: boolean }) {
 function GhostNumber({ value, active }: { value: string; active: boolean }) {
   return (
     <span
-      className={`block text-[clamp(3.25rem,5.5vw,5.25rem)] font-extralight leading-none tracking-tight transition-colors duration-700 ease-out ${
-        active ? "text-brand/90" : "text-white/[0.18]"
+      className={`block text-[clamp(2.25rem,7vw,3.25rem)] font-extralight leading-none tracking-tight transition-colors duration-700 ease-out lg:text-[clamp(3.25rem,5.5vw,5.25rem)] ${
+        active ? "text-white/[0.22]" : "text-white/[0.1]"
       }`}
+      aria-hidden="true"
     >
       {value}
     </span>
@@ -100,7 +100,7 @@ export function ProcessTimelineSection() {
         <ScrollReveal>
           <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
             <div>
-              <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-brand">
+              <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-white/45">
                 How we work
               </p>
               <h2
@@ -109,21 +109,20 @@ export function ProcessTimelineSection() {
               >
                 A clear process
                 <br className="hidden sm:block" /> from idea to launch
-                <span className="text-brand">.</span>
               </h2>
             </div>
 
             <div className="relative max-w-xs lg:pb-1 lg:pr-12">
-              <p className="text-[13px] leading-relaxed text-white/55">
+              <p className="text-[13px] leading-relaxed text-white/50">
                 A focused, transparent process that turns complexity into clarity
-                and ideas into real-world impact.
+                and ideas into real-world impact
               </p>
               <Link
                 href="/start-a-project"
-                className="group mt-5 inline-flex items-center gap-2 border-b border-white/20 pb-1 text-[14px] font-medium text-white transition-colors hover:border-brand"
+                className="group mt-5 inline-flex items-center gap-2 border-b border-white/15 pb-1 text-[14px] font-medium text-white/85 transition-colors hover:border-white/40 hover:text-white"
               >
                 Start a project
-                <ArrowRightIcon className="h-4 w-4 text-brand transition-transform duration-300 group-hover:translate-x-1" />
+                <ArrowRightIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </div>
           </div>
@@ -137,7 +136,7 @@ export function ProcessTimelineSection() {
             style={{ top: "38px" }}
             aria-hidden="true"
           >
-            <div className="absolute left-0 right-0 top-1/2 h-px -translate-y-1/2 bg-white/15" />
+            <div className="absolute left-0 right-0 top-1/2 h-px -translate-y-1/2 bg-white/10" />
             <div
               className="absolute left-0 top-1/2 h-px -translate-y-1/2 bg-brand transition-[width] duration-700 ease-[cubic-bezier(0.65,0,0.35,1)]"
               style={{
@@ -147,9 +146,9 @@ export function ProcessTimelineSection() {
               }}
             />
             {/* START */}
-            <span className="absolute left-0 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 bg-brand" />
+            <span className="absolute left-0 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/50" />
             <span
-              className="absolute top-1/2 -translate-y-1/2 -rotate-90 text-[9px] font-medium uppercase tracking-[0.22em] text-white/40"
+              className="absolute top-1/2 -translate-y-1/2 -rotate-90 text-[9px] font-medium uppercase tracking-[0.22em] text-white/30"
               style={{ left: "-2rem" }}
             >
               Start
@@ -158,7 +157,7 @@ export function ProcessTimelineSection() {
             <span className="absolute right-0 top-1/2 flex -translate-y-1/2 items-center gap-2 bg-[#0a0a0a] pl-3">
               <span
                 className={`text-[9px] font-medium uppercase tracking-[0.22em] transition-colors duration-500 ${
-                  launched ? "text-brand" : "text-white/40"
+                  launched ? "text-brand" : "text-white/30"
                 }`}
               >
                 Launch
@@ -202,17 +201,10 @@ export function ProcessTimelineSection() {
                   className="absolute top-0 flex -translate-x-1/2 flex-col items-center"
                   style={{ left: ANCHOR }}
                 >
-                  <span
-                    className={`mb-2.5 text-[12px] font-medium tracking-wide transition-colors duration-500 ${
-                      i === active ? "text-brand" : "text-white/40"
-                    }`}
-                  >
-                    {step.index}
-                  </span>
                   <TimelineNode active={i === active} />
                   <span
                     className={`mt-2 block border-l border-dashed transition-colors duration-500 ${
-                      i === active ? "border-brand/50" : "border-white/20"
+                      i === active ? "border-white/30" : "border-white/12"
                     }`}
                     style={{ height: "44px" }}
                     aria-hidden="true"
@@ -221,10 +213,18 @@ export function ProcessTimelineSection() {
 
                 <div className="pr-6" style={{ paddingLeft: "1.5rem" }}>
                   <GhostNumber value={step.index} active={i === active} />
-                  <h3 className="mt-5 text-[18px] font-semibold tracking-tight text-white">
+                  <h3
+                    className={`mt-5 text-[18px] font-semibold tracking-tight transition-colors duration-500 ${
+                      i === active ? "text-white" : "text-white/50"
+                    }`}
+                  >
                     {step.title}
                   </h3>
-                  <p className="mt-3 max-w-[185px] text-[13px] leading-relaxed text-white/55">
+                  <p
+                    className={`mt-3 max-w-[185px] text-[13px] leading-relaxed transition-colors duration-500 ${
+                      i === active ? "text-white/65" : "text-white/40"
+                    }`}
+                  >
                     {step.description}
                   </p>
                 </div>
@@ -243,7 +243,7 @@ export function ProcessTimelineSection() {
               className="absolute bottom-2 left-[9px] top-2 w-px bg-white/15"
               aria-hidden="true"
             />
-            <div className="space-y-9">
+            <div className="space-y-7 sm:space-y-9">
               {steps.map((step, i) => (
                 <motion.article
                   key={step.id}
@@ -253,13 +253,19 @@ export function ProcessTimelineSection() {
                   <span className="absolute left-0 top-1.5">
                     <TimelineNode active={i === active} />
                   </span>
-                  <div className="flex items-baseline gap-3">
-                    <GhostNumber value={step.index} active={i === active} />
-                    <h3 className="text-[18px] font-semibold tracking-tight text-white">
-                      {step.title}
-                    </h3>
-                  </div>
-                  <p className="mt-2 max-w-sm text-[14px] leading-relaxed text-white/55">
+                  <GhostNumber value={step.index} active={i === active} />
+                  <h3
+                    className={`mt-3 text-[18px] font-semibold tracking-tight transition-colors duration-500 ${
+                      i === active ? "text-white" : "text-white/50"
+                    }`}
+                  >
+                    {step.title}
+                  </h3>
+                  <p
+                    className={`mt-2 max-w-sm text-[14px] leading-relaxed transition-colors duration-500 ${
+                      i === active ? "text-white/65" : "text-white/40"
+                    }`}
+                  >
                     {step.description}
                   </p>
                 </motion.article>

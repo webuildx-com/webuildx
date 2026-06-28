@@ -12,10 +12,10 @@ import { useEffect, useState } from "react";
 
 const navLinks = [
   { label: "Work", href: "/#work" },
-  { label: "Services", href: "/#services" },
-  { label: "About", href: "/#about" },
+  { label: "Services", href: "/#capabilities" },
+  { label: "About", href: "/#impact" },
   { label: "Contact", href: "/start-a-project" },
-];
+] as const;
 
 const menuStagger = {
   hidden: {},
@@ -45,7 +45,7 @@ function MenuButton({
   return (
     <button
       type="button"
-      className="inline-flex h-10 w-10 items-center justify-center text-ink transition-opacity hover:opacity-70 md:hidden"
+      className="inline-flex h-10 w-10 items-center justify-center text-ink transition-opacity hover:opacity-70 lg:hidden"
       aria-expanded={open}
       aria-controls="mobile-nav"
       aria-label={open ? "Close menu" : "Open menu"}
@@ -102,7 +102,7 @@ function MobileMenu({
           <motion.button
             type="button"
             aria-label="Close menu"
-            className="fixed inset-0 top-[72px] z-40 bg-ink/25 backdrop-blur-[2px] md:hidden"
+            className="fixed inset-0 top-[72px] z-40 bg-ink/25 backdrop-blur-[2px] lg:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -112,7 +112,7 @@ function MobileMenu({
 
           <motion.nav
             id="mobile-nav"
-            className="fixed inset-x-0 top-[72px] z-50 max-h-[calc(100dvh-72px)] overflow-y-auto border-b border-border bg-sea-salt/95 backdrop-blur-xl md:hidden"
+            className="fixed inset-x-0 top-[72px] z-50 max-h-[calc(100dvh-72px)] overflow-y-auto border-b border-border bg-sea-salt/95 backdrop-blur-xl lg:hidden"
             initial={reduced ? false : { opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={reduced ? undefined : { opacity: 0, y: -8 }}
@@ -200,19 +200,19 @@ function HeaderInner() {
   return (
     <>
       <div
-        className={`mx-auto flex h-[72px] max-w-[1280px] items-center justify-between gap-4 px-4 sm:px-6 lg:px-10 ${
+        className={`mx-auto grid h-[72px] max-w-[1280px] grid-cols-[1fr_auto] items-center gap-4 px-6 sm:px-6 lg:grid-cols-[1fr_auto_1fr] lg:px-10 ${
           menuOpen ? "relative z-50" : ""
         }`}
       >
         <Link
           href="/"
-          className="inline-flex min-w-0 shrink cursor-pointer items-center"
+          className="inline-flex min-w-0 shrink cursor-pointer items-center justify-self-start"
           onClick={closeMenu}
         >
           <Logo className="h-5 w-auto max-w-[128px] sm:h-6 sm:max-w-[148px] lg:h-7 lg:max-w-none" />
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-8 lg:flex lg:justify-self-center">
           {navLinks.map((link) => (
             <HoverUnderlineLink
               key={link.href}
@@ -224,10 +224,10 @@ function HeaderInner() {
           ))}
         </nav>
 
-        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+        <div className="flex shrink-0 items-center justify-self-end gap-2 sm:gap-3">
           <Link
             href="/start-a-project"
-            className="hidden items-center gap-2 bg-brand px-5 py-2.5 text-[14px] font-medium text-white transition-colors hover:bg-brand-hover md:inline-flex"
+            className="hidden items-center gap-2 bg-brand px-5 py-2.5 text-[14px] font-medium text-white transition-colors hover:bg-brand-hover lg:inline-flex"
           >
             Start a project
             <ArrowRightIcon className="h-4 w-4 shrink-0" />

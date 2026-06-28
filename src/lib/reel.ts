@@ -1,4 +1,5 @@
 export const REEL_VIDEO_ID = "JheSSTJcsQ4";
+export const SHOWREEL_SRC = "/videos/hero-strip.mp4";
 
 export function reelEmbedUrl(options: {
   autoplay?: boolean;
@@ -25,6 +26,12 @@ export function reelEmbedUrl(options: {
     fs: controls ? "1" : "0",
     iv_load_policy: "3",
     cc_load_policy: "0",
+    ...(controls
+      ? {}
+      : {
+          autohide: "1",
+          showinfo: "0",
+        }),
   });
 
   return `https://www.youtube-nocookie.com/embed/${REEL_VIDEO_ID}?${params}`;

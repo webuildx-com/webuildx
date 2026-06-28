@@ -12,28 +12,28 @@ const steps = [
     index: "01",
     title: "Discover",
     description:
-      "We understand the business, users, product goal, and technical constraints.",
+      "We understand the business, users, product goal, and technical constraints",
   },
   {
     id: "shape",
     index: "02",
     title: "Shape",
     description:
-      "We define the scope, user flows, architecture, and delivery plan.",
+      "We define the scope, user flows, architecture, and delivery plan",
   },
   {
     id: "build",
     index: "03",
     title: "Build",
     description:
-      "We design, engineer, test, and launch with a focused team.",
+      "We design, engineer, test, and launch with a focused team",
   },
   {
     id: "scale",
     index: "04",
     title: "Scale",
     description:
-      "We improve performance, reliability, infrastructure, and product growth.",
+      "We improve performance, reliability, infrastructure, and product growth",
   },
 ] as const;
 
@@ -159,7 +159,7 @@ export function HowWeWorkSection() {
                 id="how-we-work-heading"
                 className="mt-6 max-w-sm text-[clamp(1.85rem,4vw,2.5rem)] font-semibold leading-[1.1] tracking-tight text-ink lg:mt-8"
               >
-                A clear process from idea to launch.
+                A clear process from idea to launch
               </h2>
 
               <span
@@ -168,7 +168,7 @@ export function HowWeWorkSection() {
               />
 
               <p className="mt-8 max-w-xs text-[15px] leading-relaxed text-muted lg:text-[16px]">
-                Strategic thinking, precise execution, measurable impact.
+                Strategic thinking, precise execution, measurable impact
               </p>
             </div>
 

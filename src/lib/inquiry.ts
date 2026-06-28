@@ -1,6 +1,6 @@
 export const PROJECT_TYPES = [
   "Software Development (Web/Mobile App)",
-  "Cloud Infrastructure Services (Migration, DevOps, Security, etc.)",
+  "Cloud Infrastructure Services (Migration, DevOps, Security, and more)",
   "Team Formation & Culture Development",
   "Custom Engineering Solution",
   "Not Sure Yet",
@@ -69,35 +69,35 @@ export function parseInquiryForm(formData: FormData): InquiryPayload | { error: 
   const description = getStringField(formData, "description");
 
   if (!name || name.length > 120) {
-    return { error: "Please enter your name." };
+    return { error: "Please enter your name" };
   }
 
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    return { error: "Please enter a valid email address." };
+    return { error: "Please enter a valid email address" };
   }
 
   if (website && !/^https?:\/\/.+/i.test(website)) {
-    return { error: "Please enter a valid website URL." };
+    return { error: "Please enter a valid website URL" };
   }
 
   if (!PROJECT_TYPES.includes(projectType as (typeof PROJECT_TYPES)[number])) {
-    return { error: "Please select what you are looking for." };
+    return { error: "Please select what you are looking for" };
   }
 
   if (!PROJECT_STAGES.includes(stage as (typeof PROJECT_STAGES)[number])) {
-    return { error: "Please select a project stage." };
+    return { error: "Please select a project stage" };
   }
 
   if (!BUDGET_RANGES.includes(budget as (typeof BUDGET_RANGES)[number])) {
-    return { error: "Please select a budget range." };
+    return { error: "Please select a budget range" };
   }
 
   if (!TIMELINES.includes(timeline as (typeof TIMELINES)[number])) {
-    return { error: "Please select a timeline." };
+    return { error: "Please select a timeline" };
   }
 
   if (!description || description.length > 1000) {
-    return { error: "Please tell us about the project (max 1000 characters)." };
+    return { error: "Please tell us about the project (max 1000 characters)" };
   }
 
   return {
@@ -201,7 +201,7 @@ export function buildInquiryEmailHtml(
                 <p style="margin:0 0 16px;font-size:14px;line-height:1.6;color:#4f5c5a;">
                   A new project inquiry was submitted via
                   <strong style="color:#0b1e1c;">webuildx.com/start-a-project</strong>
-                  on ${escapeHtml(formattedDate)} (WAT).
+                  on ${escapeHtml(formattedDate)} (WAT)
                 </p>
                 <table role="presentation" cellspacing="0" cellpadding="0">
                   <tr>
