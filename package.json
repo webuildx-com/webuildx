@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "rm -rf .next && next dev --port 3010",
-    "dev:fast": "next dev --port 3010",
+    "dev": "rm -rf .next && next dev --turbopack --port 3010",
+    "dev:fast": "next dev --turbopack --port 3010",
     "build": "next build",
     "start": "next start --port 3010",
     "lint": "next lint",
