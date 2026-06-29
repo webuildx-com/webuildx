@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 const navLinks = [
   { label: "Work", href: "/#work" },
   { label: "Services", href: "/#capabilities" },
-  { label: "About", href: "/#impact" },
+  { label: "About", href: "/about" },
   { label: "Contact", href: "/start-a-project" },
 ] as const;
 

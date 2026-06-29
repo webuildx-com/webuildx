@@ -8,6 +8,7 @@ import { CapabilitiesSection } from "@/components/capabilities-section";
 import { ProcessTimelineSection } from "@/components/process-timeline-section";
 import { TestimonialsSection } from "@/components/testimonials-section";
 import { SelectedWorkSection } from "@/components/selected-work-section";
+import { WhatWeDoSection } from "@/components/what-we-do-section";
 
 export default function Home() {
   return (
@@ -15,7 +16,8 @@ export default function Home() {
       <Header />
       <HeroShell />
       <SelectedWorkSection />
-      <CapabilitiesSection />
+      {/* <CapabilitiesSection /> */}
+      <WhatWeDoSection />
       <ProcessTimelineSection />
       <ImpactSection />
       <TestimonialsSection />

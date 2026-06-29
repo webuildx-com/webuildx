@@ -5,24 +5,22 @@ import { fadeUpSafe, pickMotion } from "@/lib/motion";
 import { featuredStats } from "@/lib/stats";
 import { motion, useReducedMotion } from "framer-motion";
 
-export function ImpactSection() {
+export function AboutImpactSection() {
   const reduced = useReducedMotion();
 
   return (
-    <section
-      id="impact"
-      className="bg-sea-salt sm:flex sm:flex-col"
-      aria-label="Our impact"
-    >
-      <div className="mx-auto w-full max-w-[1280px] px-6 py-16 sm:py-20 lg:px-10 lg:py-28">
-        {/* Mobile */}
+    <section className="bg-sea-salt" aria-labelledby="about-impact-heading">
+      <div className="mx-auto w-full max-w-[1280px] px-6 py-20 sm:py-24 lg:px-10 lg:py-32">
         <div className="sm:hidden">
           <ScrollReveal className="mb-6 max-w-xl">
             <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.18em] text-brand">
               Our impact
             </p>
-            <h2 className="text-[1.75rem] font-semibold leading-[1.12] tracking-tight text-ink">
-              Built for outcomes
+            <h2
+              id="about-impact-heading"
+              className="text-[1.75rem] font-semibold leading-[1.12] tracking-tight text-ink md:text-[2rem] lg:text-[2.25rem] xl:text-[2.5rem]"
+            >
+              Built for outcomes, not just delivery
             </h2>
           </ScrollReveal>
 
@@ -44,7 +42,6 @@ export function ImpactSection() {
           </ScrollRevealStagger>
         </div>
 
-        {/* Tablet + desktop: align left column with Selected Work (340px at lg) */}
         <div className="hidden sm:grid sm:w-full sm:grid-cols-[minmax(0,260px)_minmax(0,1fr)] sm:items-center sm:gap-x-8 md:grid-cols-[minmax(0,300px)_minmax(0,1fr)] md:gap-x-10 lg:grid-cols-[minmax(0,340px)_minmax(0,1fr)] lg:gap-x-16 xl:gap-x-20">
           <ScrollReveal className="flex min-w-0 flex-col justify-center border-r border-border py-4 pr-8 md:py-6 lg:py-8 lg:pr-12">
             <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.18em] text-brand lg:mb-4">
@@ -71,7 +68,7 @@ export function ImpactSection() {
                 <p className="text-[1.75rem] font-semibold leading-none tracking-tight text-ink md:text-[1.875rem] lg:text-[2.15rem] xl:text-[2.35rem]">
                   {value}
                 </p>
-                <p className="mt-3 max-w-[180px] text-[13px] leading-snug text-muted md:text-[14px] lg:mt-4 lg:leading-relaxed">
+                <p className="mt-3 max-w-[200px] text-[13px] leading-snug text-muted md:text-[14px] lg:mt-4 lg:max-w-[220px] lg:leading-relaxed">
                   {description}
                 </p>
               </motion.article>

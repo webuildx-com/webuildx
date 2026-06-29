@@ -8,40 +8,40 @@ import { useCallback, useEffect, useState } from "react";
 
 const testimonials = [
   {
+    id: "byte",
+    quote:
+      "Bolaji Yusuf of WebuildX has been an invaluable partner to Byte over the past three years. His expertise in cloud deployment, service scaling, and cost optimization has made a significant impact on our operations.",
+    name: "Kahlid Ismail",
+    role: "Founder & CEO at Byte",
+    company: "BYTE",
+    initials: "KI",
+  },
+  {
+    id: "selego",
+    quote:
+      "During our collaboration, they demonstrated expertise in streamlining deployments, automating workflows, and ensuring reliability. They met deadlines, communicated effectively, and exhibited professionalism in every task.",
+    name: "Mathias Coussat",
+    role: "Manager at Selego",
+    company: "SELEGO",
+    initials: "MC",
+  },
+  {
+    id: "lynkk",
+    quote:
+      "Working with WebuildX has been a transforming experience for us! Their passion and inventiveness reflected through every stage of the journey, leaving us feeling supported and empowered. Thank you for believing in our mission!",
+    name: "Olamide Giwa",
+    role: "CEO at Lynkk",
+    company: "LYNKK",
+    initials: "OG",
+  },
+  {
     id: "ipaybtc",
     quote:
-      "WebuildX helped us build our Lightning infrastructure from the ground up — fast, secure, and built to scale",
+      "Bolaji Yusuf of WebuildX has been an outstanding collaborator and a valuable contributor. His contributions were instrumental to our progress at iPayBTC, where he played a major role in cloud deployment, research and the development of our key infrastructure.",
     name: "Prince Ogbonna",
     role: "CEO at iPayBTC",
-    company: "iPayBTC",
+    company: "IPAYBTC",
     initials: "PO",
-  },
-  {
-    id: "creditveto",
-    quote:
-      "The CreditVeto platform was delivered with clarity and precision — the team understood the problem and built the right solution",
-    name: "Tolulope Osokoya",
-    role: "Product Lead at CREDITVETO",
-    company: "CREDITVETO",
-    initials: "TO",
-  },
-  {
-    id: "orangefarm",
-    quote:
-      "They took our brand and website to the next level — clean, modern, and aligned with where we're going as a company",
-    name: "Tosin Aribisala",
-    role: "CEO at ORANGE FARM TECH",
-    company: "ORANGE FARM TECH",
-    initials: "TA",
-  },
-  {
-    id: "lightforth",
-    quote:
-      "WebuildX feels like an extension of our team — senior people, clear communication, and dependable delivery",
-    name: "Product Manager",
-    role: "AI Platform at LIGHTFORTH",
-    company: "LIGHTFORTH",
-    initials: "LF",
   },
 ] as const;
 

@@ -75,7 +75,7 @@
   }
 
   body {
-    @apply overflow-x-hidden bg-sea-salt text-ink antialiased;
+    @apply overflow-x-clip bg-sea-salt text-ink antialiased;
   }
 }
 

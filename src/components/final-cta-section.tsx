@@ -1,36 +1,34 @@
 "use client";
 
-import { ArrowRightIcon } from "@/components/icons";
 import Link from "next/link";
 
 export function FinalCtaSection() {
   return (
     <section
       id="contact"
-      className="bg-brand text-white"
+      className="bg-[#f4f4f5] text-ink"
       aria-labelledby="final-cta-heading"
     >
       <div className="mx-auto max-w-[1280px] px-6 py-16 sm:py-20 lg:px-10 lg:py-28">
-        <div className="flex flex-col gap-8 sm:gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
-          <div className="min-w-0 flex-1">
+        <div className="flex flex-col gap-6 rounded-lg bg-brand p-8 sm:p-12 lg:gap-6 lg:p-16">
+          <div className="flex flex-col gap-6">
             <h2
               id="final-cta-heading"
-              className="max-w-[22ch] text-[clamp(1.875rem,5vw,3.25rem)] font-semibold leading-[1.08] tracking-tight text-white"
+              className="max-w-2xl text-[clamp(1.875rem,5vw,2.25rem)] font-semibold leading-[1.2] tracking-tight text-white lg:text-[36px] lg:leading-[1.25]"
             >
-              Have a product, platform, or website to build?
+              Ready to design, build, or scale your product?
             </h2>
-            <p className="mt-5 max-w-xl text-[16px] leading-relaxed text-white/90 lg:text-[17px]">
-              Tell us what you&apos;re working on. We&apos;ll help you figure
-              out the smartest way to design, build, or scale it
+            <p className="max-w-[620px] text-[16px] leading-[26px] text-white lg:text-[18px]">
+              Tell us what you&apos;re building — we&apos;ll help you shape
+              ideas, ship software, and scale what comes next
             </p>
           </div>
 
           <Link
             href="/start-a-project"
-            className="btn-cta-inverse group shrink-0 self-stretch sm:self-start lg:self-center"
+            className="inline-flex w-fit items-center justify-center rounded-md bg-[#17171a] px-5 py-2.5 text-[13px] font-medium text-white transition-colors hover:bg-[#2a2a2e] sm:text-[14px]"
           >
             Start a project
-            <ArrowRightIcon className="btn-cta-icon transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
         </div>
       </div>
