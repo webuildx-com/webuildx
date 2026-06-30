@@ -169,7 +169,7 @@ export function CapabilitiesSection() {
               />
 
               <p className="mt-4 text-[14px] leading-relaxed text-muted sm:mt-6 sm:text-[15px] lg:text-[16px]">
-                Strategy to scale — from idea to impact
+                Strategy to scale, from idea to impact
               </p>
 
               <div className="mt-6 flex flex-wrap items-center gap-4 sm:mt-8 sm:gap-5 lg:gap-6">

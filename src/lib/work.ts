@@ -28,7 +28,7 @@ export const workProjects: WorkProject[] = [
       "Designed and built core payment flows and platform infrastructure for a growing fintech product",
     modal: {
       overview:
-        "KnoxxPay needed a reliable payments experience and a platform foundation that could scale with new products — we shaped the product direction, designed key user flows, and built the software behind their core payment surfaces",
+        "KnoxxPay needed a reliable payments experience and a platform foundation that could scale with new products. We shaped the product direction, designed key user flows, and built the software behind their core payment surfaces.",
       highlights: [
         "Payment product strategy and flow design",
         "Dashboard and transaction experience build",
@@ -47,7 +47,7 @@ export const workProjects: WorkProject[] = [
       "Klerra helps teams manage contracts end-to-end: draft, review, sign, monitor obligations, and stay ahead of renewals, risks, and deadlines",
     modal: {
       overview:
-        "Klerra is building contract intelligence for modern teams — we helped shape the product foundation from core workflows and dashboards to the design system supporting drafting, review, signing, and ongoing obligation tracking",
+        "Klerra is building contract intelligence for modern teams. We helped shape the product foundation from core workflows and dashboards to the design system supporting drafting, review, signing, and ongoing obligation tracking.",
       highlights: [
         "Contract workflow and dashboard design",
         "Core platform architecture",
@@ -65,7 +65,7 @@ export const workProjects: WorkProject[] = [
       "Designed and built the foundation for a credit monitoring and debt intelligence platform",
     modal: {
       overview:
-        "CreditVeto is building credit intelligence for modern financial products — we established the product foundation from core dashboards and data models to the design system supporting future growth",
+        "CreditVeto is building credit intelligence for modern financial products. We established the product foundation from core dashboards and data models to the design system supporting future growth.",
       highlights: [
         "Product and interface design",
         "Core platform architecture",
@@ -84,7 +84,7 @@ export const workProjects: WorkProject[] = [
       "Created a sharper brand and website system for a growing technology company",
     modal: {
       overview:
-        "Orange Farm Tech needed a brand and web presence that matched their ambition — we delivered a refined identity, website system, and digital foundation built to scale with the business",
+        "Orange Farm Tech needed a brand and web presence that matched their ambition. We delivered a refined identity, website system, and digital foundation built to scale with the business.",
       highlights: [
         "Brand direction and visual identity",
         "Marketing website design and build",

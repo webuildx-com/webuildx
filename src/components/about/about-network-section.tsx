@@ -26,7 +26,7 @@ export function AboutNetworkSection() {
           </h2>
           <p className="mt-5 text-[15px] leading-relaxed text-white/55 lg:mt-6 lg:text-[16px]">
             We operate as a focused studio with a 30+ person specialist
-            network — designers, engineers, and product people who join each
+            network of designers, engineers, and product people who join each
             engagement as the work demands
           </p>
         </ScrollReveal>

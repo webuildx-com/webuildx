@@ -19,8 +19,8 @@ export function FinalCtaSection() {
               Ready to design, build, or scale your product?
             </h2>
             <p className="max-w-[620px] text-[16px] leading-[26px] text-white lg:text-[18px]">
-              Tell us what you&apos;re building — we&apos;ll help you shape
-              ideas, ship software, and scale what comes next
+              Tell us what you&apos;re building. We&apos;ll help you shape
+              ideas, ship software, and scale what comes next.
             </p>
           </div>
 

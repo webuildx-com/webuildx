@@ -38,16 +38,14 @@ const steps = [
     index: "05",
     title: "Launch",
     description:
-      "From deployment to launch, we&apos;re with you every step of the way, offering support to manage your application in the long term.",
+      "From deployment to launch, we are with you every step of the way, offering support to manage your application in the long term.",
   },
 ] as const;
 
-/** Header (72px) + section breathing room — matches `lg:top-28` */
+/** Header (72px) + section breathing room */
 const STICKY_TOP = 112;
-/** Title strip visible on each card behind the front card */
 const STICKY_STEP = 24;
-/** Scroll runway while each card stays pinned before the next stacks on top */
-const STACK_GAP = 180;
+const STACK_GAP = 30;
 
 const STACK_PADDING = [
   STACK_GAP * 4,
@@ -57,67 +55,67 @@ const STACK_PADDING = [
   0,
 ] as const;
 
-function StepIcon({ path }: { path: string }) {
-  return (
-    <svg className="h-7 w-7" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true">
-      <path d={path} />
-    </svg>
-  );
-}
-
-const stepIcons: Record<(typeof steps)[number]["id"], string[]> = {
+const stepIcons: Record<(typeof steps)[number]["id"], string[][]> = {
   discovery: [
-    // MagnifyingGlass
-    "M229.66,218.34l-50.07-50.07a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.31ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z",
-    // Lightbulb
-    "M176,232a8,8,0,0,1-8,8H88a8,8,0,0,1,0-16h80A8,8,0,0,1,176,232Zm40-128a88,88,0,1,1-160-50.61V216a8,8,0,0,0,8,8h80a8,8,0,0,0,8-8V53.39A88,88,0,0,1,216,104Z",
-    // Users
-    "M117.25,157.92a60,60,0,1,0-66.5,0A95.83,95.83,0,0,0,3.53,195.63a8,8,0,1,0,13.4,8.74,80,80,0,0,1,134.14,0,8,8,0,0,0,13.4-8.74A95.83,95.83,0,0,0,117.25,157.92ZM40,108a44,44,0,1,1,44,44A44.05,44.05,0,0,1,40,108Zm210.14,98.7a8,8,0,0,1-11.07-2.33A79.83,79.83,0,0,0,172,168a8,8,0,0,1,0-16,44,44,0,1,0-16.34-84.87,8,8,0,1,1-5.94-14.85,60,60,0,0,1,55.53,105.64,95.83,95.83,0,0,1,47.22,37.71A8,8,0,0,1,250.14,206.7Z",
+    ["M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"],
+    ["M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"],
+    ["M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z"],
   ],
   design: [
-    // PencilSimple
-    "M227.31,73.37,182.63,28.68a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H92.69A15.86,15.86,0,0,0,104,219.31L227.31,96a16,16,0,0,0,0-22.63ZM51.31,160,136,75.31,152.69,92,68,176.68ZM48,179.31,76.69,208H48Zm48,25.38L79.31,188,164,103.31,180.69,120Z",
-    // Eye
-    "M247.31,124.76c-.35-.79-8.82-19.58-27.65-38.41C194.57,61.26,162.88,48,128,48S61.43,61.26,36.34,86.35C17.51,105.18,9,124,8.69,124.76a8,8,0,0,0,0,6.5c.35.79,8.82,19.57,27.65,38.4C61.43,194.74,93.12,208,128,208s66.57-13.26,91.66-38.34c18.83-18.83,27.3-37.61,27.65-38.4A8,8,0,0,0,247.31,124.76ZM128,192c-30.78,0-57.67-11.19-79.93-33.25A133.47,133.47,0,0,1,25,128,133.33,133.33,0,0,1,48.07,97.25C70.33,75.19,97.22,64,128,64s57.67,11.19,79.93,33.25A133.52,133.52,0,0,1,231.05,128C223.84,141.46,192.43,192,128,192Zm0-112a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Z",
-    // Palette
-    "M200.77,53.89A103.27,103.27,0,0,0,128,24h-1.07A104,104,0,0,0,24,128c0,43,26.58,79.06,69.36,94.17A32,32,0,0,0,136,192a16,16,0,0,1,16-16h46.21a31.81,31.81,0,0,0,31.2-24.88,104.43,104.43,0,0,0,2.59-24A103.28,103.28,0,0,0,200.77,53.89Z",
+    ["M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125"],
+    ["M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z", "M15 12a3 3 0 11-6 0 3 3 0 016 0z"],
+    ["M4.098 19.902a3.75 3.75 0 005.304 0l6.401-6.402M6.75 21A3.75 3.75 0 013 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 003.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l2.88-2.88c.438-.439 1.15-.439 1.59 0l3.712 3.713c.44.44.44 1.152 0 1.59l-2.879 2.88M6.75 17.25h.008v.008H6.75v-.008z"],
   ],
   develop: [
-    // Code
-    "M69.12,94.15,28.5,128l40.62,33.85a8,8,0,1,1-10.24,12.29l-48-40a8,8,0,0,1,0-12.29l48-40a8,8,0,0,1,10.24,12.3Zm176,27.7-48-40a8,8,0,1,0-10.24,12.3L227.5,128l-40.62,33.85a8,8,0,1,0,10.24,12.29l48-40a8,8,0,0,0,0-12.29ZM162.73,32.48a8,8,0,0,0-10.25,4.79l-64,176a8,8,0,0,0,4.79,10.26A8.14,8.14,0,0,0,96,224a8,8,0,0,0,7.52-5.27l64-176A8,8,0,0,0,162.73,32.48Z",
-    // Terminal
-    "M223.51,48h-191A16.51,16.51,0,0,0,16,64.49v127A16.51,16.51,0,0,0,32.49,208h191A16.51,16.51,0,0,0,240,191.51v-127A16.51,16.51,0,0,0,223.51,48Z",
-    // GitBranch
-    "M232,64a32,32,0,1,0-40,31V120a8,8,0,0,1-8,8H96a24,24,0,0,0-24,24v-8.07A32,32,0,1,0,40,176v.09A32,32,0,1,0,88,208v-8a8,8,0,0,1,8-8h88a24,24,0,0,0,24-24V95A32.06,32.06,0,0,0,232,64ZM72,176a16,16,0,1,1-16-16A16,16,0,0,1,72,176Zm88,32a16,16,0,1,1-16-16A16,16,0,0,1,160,208ZM200,80a16,16,0,1,1,16-16A16,16,0,0,1,200,80Z",
+    ["M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"],
+    ["M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z"],
+    ["M21 7.5l-2.25-1.313M21 7.5v2.25m0-2.25l-2.25 1.313M3 7.5l2.25-1.313M3 7.5l2.25 1.313M3 7.5v2.25m9 3l2.25-1.313M12 12.75l-2.25-1.313M12 12.75V15m0 6.75l2.25-1.313M12 21.75V19.5m0 2.25l-2.25-1.313m0-16.875L12 2.25l2.25 1.313M21 14.25v2.25l-2.25 1.313m-13.5 0L3 16.5v-2.25"],
   ],
   testing: [
-    // CheckCircle
-    "M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z",
-    // ShieldCheck
-    "M208,40H48A16,16,0,0,0,32,56V200a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V56A16,16,0,0,0,208,40Zm-32,80H80a8,8,0,0,1,0-16h96a8,8,0,0,1,0,16Z",
-    // Bug
-    "M96,72a32,32,0,0,1,64,0v80a32,32,0,0,1-64,0ZM248,120a8,8,0,0,0-8-8H192V104c0-3.78-.21-7.52-.62-11.2l25.31-13.77a8,8,0,0,0-7.38-14.17L185.1,77.14A80.14,80.14,0,0,0,176,56H80a80.14,80.14,0,0,0-9.1,21.14L46.69,64.86a8,8,0,0,0-7.38,14.17L64.62,92.8C64.21,96.48,64,100.22,64,104v8H16a8,8,0,0,0,0,16H64v8a80.61,80.61,0,0,0,2.32,19.41L41.38,169.18a8,8,0,1,0,9.24,13.08l22.38-15.8A80.05,80.05,0,0,0,200,152v-8h48A8,8,0,0,0,248,120Zm-48,32a64,64,0,0,1-64,64H120a64,64,0,0,1-64-64V104a64,64,0,0,1,128,0Z",
+    ["M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"],
+    ["M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"],
+    ["M11.35 3.836c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m8.9-4.414c.376.023.75.05 1.124.08 1.131.094 1.976 1.057 1.976 2.192V16.5A2.25 2.25 0 0118 18.75h-2.25m-7.5-10.5H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V18.75m-7.5-10.5h6.375c.621 0 1.125.504 1.125 1.125v9.375m-8.25-3l1.5 1.5 3-3.75"],
   ],
   launch: [
-    // Rocket
-    "M152.77,84.5A64.09,64.09,0,0,0,105.63,19.65a8,8,0,0,0-11.26,7.17V56H72a8,8,0,0,0,0,16h22.37v24H72a8,8,0,0,0,0,16h22.37v12.39a8,8,0,0,0,11.26,7.17A64.09,64.09,0,0,0,152.77,84.5Zm32.94,84.39A72.12,72.12,0,0,0,200,128a8,8,0,0,0-8-8H64a8,8,0,0,0-8,8,72.12,72.12,0,0,0,14.29,40.89L55.12,182.76A8,8,0,0,0,56,196.69,96,96,0,0,0,128,232a96,96,0,0,0,72-35.31,8,8,0,0,0,.88-13.93Z",
-    // Globe
-    "M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm87.89,96H168.3a131.56,131.56,0,0,0-22.59-71.58A88.3,88.3,0,0,1,215.89,120ZM128,40a115.18,115.18,0,0,1,24.48,80H103.52A115.18,115.18,0,0,1,128,40ZM40.11,136H87.7a131.56,131.56,0,0,0,22.59,71.58A88.3,88.3,0,0,1,40.11,136Zm104.48,71.58A131.56,131.56,0,0,0,167.19,136h47.59A88.3,88.3,0,0,1,144.59,207.58ZM87.7,120H40.11A88.3,88.3,0,0,1,110.29,48.42,131.56,131.56,0,0,0,87.7,120ZM128,216a115.18,115.18,0,0,1-24.48-80h48.96A115.18,115.18,0,0,1,128,216Z",
-    // ChartLineUp
-    "M232,208a8,8,0,0,1-8,8H32a8,8,0,0,1-8-8V48a8,8,0,0,1,16,0V156.69l50.34-50.35a8,8,0,0,1,11.32,0L128,132.69,180.69,80H160a8,8,0,0,1,0-16h40a8,8,0,0,1,8,8v40a8,8,0,0,1-16,0V91.31l-58.34,58.35a8,8,0,0,1-11.32,0L96,123.31l-56,56V200H224A8,8,0,0,1,232,208Z",
+    ["M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"],
+    ["M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"],
+    ["M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z"],
   ],
 };
 
-function StepIconPills({ stepId }: { stepId: (typeof steps)[number]["id"] }) {
+const PILL_DELAYS = ["delay-0", "delay-75", "delay-150"] as const;
+
+function StepIconPills({
+  stepId,
+  active,
+}: {
+  stepId: (typeof steps)[number]["id"];
+  active: boolean;
+}) {
   const icons = stepIcons[stepId];
   return (
     <div className="flex w-full items-center justify-center gap-6" aria-hidden="true">
-      {icons.map((path, index) => (
+      {icons.map((paths, i) => (
         <span
-          key={index}
-          className="flex h-[72px] w-[72px] shrink-0 items-center justify-center rounded-full bg-white text-[#404047]"
+          key={i}
+          className={`flex h-[72px] w-[72px] shrink-0 items-center justify-center rounded-full bg-white text-[#404047] shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition-[transform,background-color,color,box-shadow,opacity] duration-300 ease-out motion-reduce:transition-none motion-reduce:hover:scale-100 group-hover:-translate-y-1 ${PILL_DELAYS[i]} hover:z-10 hover:scale-110 hover:bg-brand hover:text-white hover:shadow-[0_12px_28px_-10px_rgba(0,0,0,0.18)] ${
+            active ? "opacity-100" : "opacity-75"
+          }`}
         >
-          <StepIcon path={path} />
+          <svg
+            className="h-6 w-6 transition-transform duration-300 ease-out group-hover:scale-105 motion-reduce:transition-none"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            {paths.map((d, j) => (
+              <path key={j} d={d} />
+            ))}
+          </svg>
         </span>
       ))}
     </div>
@@ -170,9 +168,9 @@ function StepItem({
       aria-label={step.title}
     >
       <div
-        className={`flex h-[412px] flex-col overflow-hidden rounded-md bg-[#f4f4f5] p-8 transition-opacity duration-300 ${
+        className={`group flex h-[412px] flex-col overflow-hidden rounded-md bg-[#f4f4f5] p-8 ${
           stackMode ? "cursor-pointer" : ""
-        } ${stackIndex > 0 && stackMode ? "lg:shadow-[0_-10px_40px_rgba(0,0,0,0.08)]" : ""}`}
+        } ${stackIndex > 0 && stackMode ? "lg:shadow-[0_-1px_4px_rgba(0,0,0,0.02)]" : ""}`}
         {...(!stackMode
           ? {
               role: "button",
@@ -188,22 +186,13 @@ function StepItem({
             }
           : {})}
       >
-        <div className="flex items-start justify-between">
-          <h3
-            className={`text-[clamp(1.75rem,4vw,2.5rem)] font-semibold leading-[1.2] tracking-[-0.02em] transition-colors duration-300 lg:text-[40px] lg:leading-[48px] lg:whitespace-nowrap ${
-              active ? "text-[#17171a]" : "text-[#17171a]/55"
-            }`}
-          >
-            {step.title}
-          </h3>
-          <span
-            className={`shrink-0 text-[13px] font-medium tabular-nums transition-colors duration-300 ${
-              active ? "text-[#17171a]/40" : "text-[#17171a]/25"
-            }`}
-          >
-            {step.index}
-          </span>
-        </div>
+        <h3
+          className={`text-[clamp(1.75rem,4vw,2.5rem)] font-semibold leading-[1.2] tracking-[-0.02em] transition-colors duration-300 lg:text-[40px] lg:leading-[48px] lg:whitespace-nowrap ${
+            active ? "text-[#17171a]" : "text-[#17171a]/55"
+          }`}
+        >
+          {step.title}
+        </h3>
 
         <p
           className={`mt-3 max-w-md text-[15px] leading-relaxed transition-colors duration-300 lg:text-[16px] ${
@@ -214,7 +203,7 @@ function StepItem({
         </p>
 
         <div className="mt-auto pt-6 lg:pt-8">
-          <StepIconPills stepId={step.id} />
+          <StepIconPills stepId={step.id} active={active} />
         </div>
       </div>
     </article>
@@ -291,8 +280,7 @@ export function OurProcessSection() {
       if (lenis) {
         lenis.scrollTo(node, { offset, duration: 1.1 });
       } else {
-        const top =
-          node.getBoundingClientRect().top + window.scrollY + offset;
+        const top = node.getBoundingClientRect().top + window.scrollY + offset;
         window.scrollTo({ top, behavior: "smooth" });
       }
     },
@@ -310,17 +298,9 @@ export function OurProcessSection() {
           {/* Left sticky panel */}
           <div className="lg:sticky lg:top-28 lg:w-[60%] lg:self-start">
             <div className="overflow-hidden rounded-md bg-brand p-8 sm:p-10 lg:p-12">
-              {/* Pill badge */}
-              <div className="inline-flex items-center gap-2 rounded-full border border-white/30 px-3 py-1.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-white" aria-hidden="true" />
-                <span className="text-[11px] font-medium tracking-wide text-white">
-                  Our process
-                </span>
-              </div>
-
               <h2
                 id="our-process-heading"
-                className="mt-5 max-w-lg text-[clamp(2rem,4.5vw,2.5rem)] font-semibold leading-[1.2] tracking-[-0.02em] text-white lg:leading-[1.4]"
+                className="max-w-lg text-[clamp(2rem,4.5vw,2.5rem)] font-semibold leading-[1.2] tracking-[-0.02em] text-white lg:leading-[1.4]"
               >
                 How we make it happen
               </h2>
@@ -328,6 +308,21 @@ export function OurProcessSection() {
               <p className="mt-5 max-w-md text-[15px] leading-relaxed text-white/80 lg:mt-6 lg:text-[16px]">
                 Discover how our systematic process ensures your project&apos;s
                 success from start to finish.
+              </p>
+
+              <div className="mt-10 flex items-center gap-2" aria-hidden="true">
+                {steps.map((step, i) => (
+                  <span
+                    key={step.id}
+                    className={`block h-1 rounded-full transition-all duration-500 ${
+                      i === active ? "w-6 bg-white" : "w-2 bg-white/20"
+                    }`}
+                  />
+                ))}
+              </div>
+
+              <p className="mt-3 text-[13px] font-medium text-white/35">
+                {steps[active].index} — {steps[active].title}
               </p>
 
               <div className="relative mt-8 aspect-[4/3] overflow-hidden rounded-md sm:mt-10">

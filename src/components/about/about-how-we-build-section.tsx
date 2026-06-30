@@ -30,7 +30,7 @@ export function AboutHowWeBuildSection() {
               </h2>
               <p className="mt-5 text-[15px] leading-relaxed text-white/55 lg:mt-6 lg:text-[16px]">
                 We keep strategy, design, and engineering close together, so
-                ideas do not get lost between teams — the same people who help
+                ideas do not get lost between teams. The same people who help
                 shape the product are involved in building it, refining it, and
                 helping it scale
               </p>

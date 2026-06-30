@@ -27,7 +27,7 @@ const offerings = [
     id: "cloud",
     title: "Cloud infra",
     description:
-      "Deploy, monitor, and scale on reliable cloud infrastructure — with DevOps, CI/CD, and performance engineering built in.",
+      "Deploy, monitor, and scale on reliable cloud infrastructure, with DevOps, CI/CD, and performance engineering built in.",
   },
 ] as const;
 
@@ -296,8 +296,8 @@ export function WhatWeOfferSection() {
               </h2>
 
               <p className="mt-5 max-w-md text-[15px] leading-relaxed text-white/90 lg:mt-6 lg:text-[16px]">
-                From web and mobile products to design and cloud infrastructure —
-                focused services to help you design, build, and scale with
+                From web and mobile products to design and cloud infrastructure.
+                Focused services to help you design, build, and scale with
                 clarity.
               </p>
 

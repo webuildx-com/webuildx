@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Cookie Policy — WebuildX",
+  title: "Cookie Policy | WebuildX",
   description: "How WebuildX uses cookies and similar technologies on webuildx.com",
 };
 
@@ -19,7 +19,7 @@ export default function CookiesPage() {
       <section className="space-y-3">
         <h2 className="text-[17px] font-semibold text-ink">What are cookies?</h2>
         <p>
-          Cookies are small text files stored on your device when you visit a website —
+          Cookies are small text files stored on your device when you visit a website.
           we also use similar technologies such as local storage and analytics scripts
         </p>
       </section>
@@ -62,7 +62,7 @@ export default function CookiesPage() {
       <section className="space-y-3">
         <h2 className="text-[17px] font-semibold text-ink">Managing cookies</h2>
         <p>
-          You can control or delete cookies through your browser settings — blocking
+          You can control or delete cookies through your browser settings. Blocking
           analytics cookies will not affect your ability to browse the site, but some
           features (such as form spam protection) may rely on cookies to function
           correctly
@@ -87,7 +87,7 @@ export default function CookiesPage() {
           <Link href="/privacy" className="text-brand hover:underline">
             Privacy Policy
           </Link>
-          — questions? Email{" "}
+          Questions? Email{" "}
           <a
             href={`mailto:${CONTACT_EMAIL}`}
             className="text-brand hover:underline"

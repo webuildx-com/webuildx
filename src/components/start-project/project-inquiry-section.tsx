@@ -36,7 +36,7 @@ const nextSteps = [
   {
     title: "We shape the right next step",
     description:
-      "You'll get a clear recommendation — whether that's a sprint, a proposal, or a referral",
+      "You'll get a clear recommendation: a sprint, a proposal, or a referral",
   },
 ];
 
@@ -173,7 +173,7 @@ export function ProjectInquirySection() {
         trackEvent("inquiry_error", {
           reason: data.error?.slice(0, 120) ?? "unknown",
         });
-        throw new Error(data.error ?? "Something went wrong — please try again");
+        throw new Error(data.error ?? "Something went wrong. Please try again");
       }
 
       trackGenerateLead("inquiry_form", {
@@ -191,7 +191,7 @@ export function ProjectInquirySection() {
     } catch (error) {
       setStatus("error");
       setErrorMessage(
-        error instanceof Error ? error.message : "Something went wrong — please try again",
+        error instanceof Error ? error.message : "Something went wrong. Please try again",
       );
     }
   };
@@ -210,7 +210,7 @@ export function ProjectInquirySection() {
                 id="inquiry-success-heading"
                 className="text-[clamp(1.5rem,3vw,2rem)] font-semibold tracking-tight text-ink"
               >
-                Thanks — we&apos;ve got your inquiry
+                Thanks, we&apos;ve got your inquiry
               </h2>
               <p className="mt-4 text-[15px] leading-relaxed text-muted">
                 We&apos;ll review your submission and reply within 24 hours
@@ -542,7 +542,7 @@ export function ProjectInquirySection() {
                   </div>
 
                   <p className="border-t border-border pt-8 text-[12px] leading-relaxed text-subtle">
-                    Small senior teams — clear process — serious execution
+                    Small senior teams. Clear process. Serious execution.
                   </p>
                 </div>
               </aside>

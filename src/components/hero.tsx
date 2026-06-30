@@ -87,7 +87,7 @@ function PhoneStrip({
         onMouseEnter={() => setHovering(true)}
         onMouseLeave={() => setHovering(false)}
         onMouseMove={handleMouseMove}
-        className={`group relative mx-[0.14em] inline-flex h-[1.08em] w-[2.45em] shrink-0 translate-y-[0.04em] overflow-hidden rounded-[0.16em] bg-ink align-middle shadow-[0_8px_18px_-12px_rgba(0,0,0,0.4)] transition-shadow hover:shadow-[0_10px_22px_-10px_rgba(0,0,0,0.45)] ${
+        className={`group relative mx-[0.14em] inline-flex h-[1.08em] w-[2.45em] shrink-0 translate-y-[0.04em] overflow-hidden rounded-[0.16em] bg-ink align-middle shadow-[0_8px_18px_-12px_rgba(0,0,0,0.4)] transition-shadow hover:shadow-[0_10px_22px_-10px_rgba(0,0,0,0.45)] [container-type:size] ${
           finePointer ? "cursor-none" : "cursor-pointer"
         }`}
         aria-label="Play showreel"
@@ -115,7 +115,7 @@ function PhoneStrip({
               title=""
               tabIndex={-1}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              className="absolute top-1/2 left-1/2 h-[56.25vw] min-h-[280%] w-[177.78vh] min-w-[280%] -translate-x-1/2 -translate-y-1/2 scale-[1.35] border-0"
+              className="absolute top-1/2 left-1/2 h-[56.25cqw] min-h-full w-full -translate-x-1/2 -translate-y-1/2 border-0"
             />
           </span>
         )}

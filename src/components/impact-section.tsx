@@ -2,8 +2,30 @@
 
 import { ScrollReveal, ScrollRevealStagger } from "@/components/scroll-reveal";
 import { fadeUpSafe, pickMotion } from "@/lib/motion";
-import { featuredStats } from "@/lib/stats";
 import { motion, useReducedMotion } from "framer-motion";
+
+const stats = [
+  {
+    value: "10+",
+    label: "Products delivered",
+    description: "Products, platforms, and digital systems shipped end to end",
+  },
+  {
+    value: "30+",
+    label: "Specialists",
+    description: "Designers, engineers, and product people across our network",
+  },
+  {
+    value: "$1M+",
+    label: "Infrastructure supported",
+    description: "Transaction and product infrastructure across fintech systems",
+  },
+  {
+    value: "5+",
+    label: "Industries",
+    description: "Fintech, SaaS, AI, logistics, and commerce",
+  },
+] as const;
 
 export function ImpactSection() {
   const reduced = useReducedMotion();
@@ -11,73 +33,80 @@ export function ImpactSection() {
   return (
     <section
       id="impact"
-      className="bg-sea-salt sm:flex sm:flex-col"
+      className="bg-[#0a0a0a]"
       aria-label="Our impact"
     >
-      <div className="mx-auto w-full max-w-[1280px] px-6 py-16 sm:py-20 lg:px-10 lg:py-28">
-        {/* Mobile */}
-        <div className="sm:hidden">
-          <ScrollReveal className="mb-6 max-w-xl">
-            <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.18em] text-brand">
-              Our impact
+      <div className="mx-auto max-w-[1280px] px-6 py-16 sm:py-20 lg:px-10 lg:py-28">
+
+        {/* Header */}
+        <ScrollReveal>
+          <div className="mb-14 flex flex-col gap-4 lg:mb-20 lg:flex-row lg:items-end lg:justify-between">
+            <div>
+              <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-white/40">
+                Our impact
+              </p>
+              <h2 className="mt-4 text-[clamp(1.75rem,3.5vw,2.5rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-white">
+                The work, in numbers
+              </h2>
+            </div>
+            <p className="max-w-xs text-[14px] leading-relaxed text-white/40 lg:pb-1">
+              Shipped across fintech, SaaS, AI, and logistics. Every number is a product in production.
             </p>
-            <h2 className="text-[1.75rem] font-semibold leading-[1.12] tracking-tight text-ink">
-              Built for outcomes
-            </h2>
-          </ScrollReveal>
+          </div>
+        </ScrollReveal>
 
-          <ScrollRevealStagger className="divide-y divide-border border-y border-border">
-            {featuredStats.map(({ value, description }) => (
-              <motion.article
-                key={value}
-                variants={pickMotion(reduced, fadeUpSafe)}
-                className="flex flex-col gap-2 py-5"
-              >
-                <p className="text-[1.75rem] font-semibold leading-none tracking-tight text-ink">
-                  {value}
+        {/* Mobile + tablet: stacked list */}
+        <ScrollRevealStagger className="flex flex-col divide-y divide-white/10 lg:hidden">
+          {stats.map((stat) => (
+            <motion.div
+              key={stat.value}
+              variants={pickMotion(reduced, fadeUpSafe)}
+              className="flex items-center gap-8 py-7 sm:gap-16"
+            >
+              <p className="w-28 shrink-0 text-[2.75rem] font-semibold leading-none tracking-[-0.03em] text-white sm:w-36 sm:text-[3.25rem]">
+                {stat.value}
+              </p>
+              <div>
+                <p className="text-[15px] font-medium text-white/80">
+                  {stat.label}
                 </p>
-                <p className="text-[13px] leading-relaxed text-muted">
-                  {description}
+                <p className="mt-1 text-[13px] leading-relaxed text-white/35">
+                  {stat.description}
                 </p>
-              </motion.article>
-            ))}
-          </ScrollRevealStagger>
-        </div>
+              </div>
+            </motion.div>
+          ))}
+        </ScrollRevealStagger>
 
-        {/* Tablet + desktop: align left column with Selected Work (340px at lg) */}
-        <div className="hidden sm:grid sm:w-full sm:grid-cols-[minmax(0,260px)_minmax(0,1fr)] sm:items-center sm:gap-x-8 md:grid-cols-[minmax(0,300px)_minmax(0,1fr)] md:gap-x-10 lg:grid-cols-[minmax(0,340px)_minmax(0,1fr)] lg:gap-x-16 xl:gap-x-20">
-          <ScrollReveal className="flex min-w-0 flex-col justify-center border-r border-border py-4 pr-8 md:py-6 lg:py-8 lg:pr-12">
-            <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.18em] text-brand lg:mb-4">
-              Our impact
-            </p>
-            <h2 className="text-[1.75rem] font-semibold leading-[1.12] tracking-tight text-ink md:text-[2rem] lg:text-[2.25rem] xl:text-[2.5rem]">
-              Built for outcomes, not just delivery
-            </h2>
-          </ScrollReveal>
+        {/* Desktop: 4-column row with equal spacing */}
+        <ScrollRevealStagger className="hidden lg:flex">
+          {stats.map((stat, index) => (
+            <motion.div
+              key={stat.value}
+              variants={pickMotion(reduced, fadeUpSafe)}
+              className={`flex flex-1 flex-col gap-5 ${
+                index === 0
+                  ? "pr-10"
+                  : index === stats.length - 1
+                  ? "border-l border-white/10 pl-10"
+                  : "border-l border-white/10 px-10"
+              }`}
+            >
+              <p className="text-[clamp(3.5rem,5vw,5.5rem)] font-semibold leading-none tracking-[-0.03em] text-white">
+                {stat.value}
+              </p>
+              <div className="flex flex-col gap-1.5">
+                <p className="text-[15px] font-medium text-white/80">
+                  {stat.label}
+                </p>
+                <p className="text-[13px] leading-relaxed text-white/35">
+                  {stat.description}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </ScrollRevealStagger>
 
-          <ScrollRevealStagger className="flex min-w-0 flex-1 items-center">
-            {featuredStats.map(({ value, description }, index) => (
-              <motion.article
-                key={value}
-                variants={pickMotion(reduced, fadeUpSafe)}
-                className="relative flex flex-1 flex-col justify-center px-4 py-6 md:px-5 md:py-7 lg:px-6 lg:py-8"
-              >
-                {index > 0 && (
-                  <span
-                    className="absolute left-0 top-1/2 h-[calc(100%-2rem)] max-h-32 w-px -translate-y-1/2 bg-border lg:max-h-40"
-                    aria-hidden="true"
-                  />
-                )}
-                <p className="text-[1.75rem] font-semibold leading-none tracking-tight text-ink md:text-[1.875rem] lg:text-[2.15rem] xl:text-[2.35rem]">
-                  {value}
-                </p>
-                <p className="mt-3 max-w-[180px] text-[13px] leading-snug text-muted md:text-[14px] lg:mt-4 lg:leading-relaxed">
-                  {description}
-                </p>
-              </motion.article>
-            ))}
-          </ScrollRevealStagger>
-        </div>
       </div>
     </section>
   );

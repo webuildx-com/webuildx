@@ -9,7 +9,7 @@ export const principles = [
     index: "02",
     title: "Built to ship",
     description:
-      "Focused teams, clear scope, working software — not endless decks",
+      "Focused teams, clear scope, working software. Not endless decks.",
   },
   {
     index: "03",
@@ -114,13 +114,13 @@ export const specialties = [
 export const featuredQuotes = [
   {
     quote:
-      "WebuildX feels like an extension of our team — senior people, clear communication, and dependable delivery",
+      "WebuildX feels like an extension of our team: senior people, clear communication, and dependable delivery.",
     name: "Product Manager",
     company: "LIGHTFORTH",
   },
   {
     quote:
-      "WebuildX helped us build our Lightning infrastructure from the ground up — fast, secure, and built to scale",
+      "WebuildX helped us build our Lightning infrastructure from the ground up: fast, secure, and built to scale.",
     name: "Prince Ogbonna",
     company: "iPayBTC",
   },

@@ -16,6 +16,6 @@ export const featuredStats = [
   {
     value: "5+",
     description:
-      "Industries served — fintech, SaaS, AI, logistics, and commerce",
+      "Industries served: fintech, SaaS, AI, logistics, and commerce",
   },
 ] as const;

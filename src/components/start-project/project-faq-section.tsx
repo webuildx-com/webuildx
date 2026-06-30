@@ -8,47 +8,47 @@ const faqs = [
   {
     question: "Do you work with early-stage teams?",
     answer:
-      "Yes — we regularly partner with founders and early-stage teams who need help shaping an idea, validating direction, or building an MVP — we focus on clarity, speed, and making the right trade-offs early",
+      "Yes. We regularly partner with founders and early-stage teams who need help shaping an idea, validating direction, or building an MVP. We focus on clarity, speed, and making the right trade-offs early.",
   },
   {
     question: "Can you help shape an idea before build?",
     answer:
-      "Absolutely — strategy is often the most valuable part of the engagement, defining the problem, user flows, scope, and technical approach before writing code or pushing pixels",
+      "Absolutely. Strategy is often the most valuable part of the engagement, defining the problem, user flows, scope, and technical approach before writing code or pushing pixels.",
   },
   {
     question: "Do you work on design only, engineering only, or both?",
     answer:
-      "All of the above — some clients need end-to-end product delivery, others come to us for design systems, frontend builds, backend engineering, or scaling existing products — we'll recommend what makes sense for your stage",
+      "All of the above. Some clients need end-to-end product delivery, others come to us for design systems, frontend builds, backend engineering, or scaling existing products. We'll recommend what makes sense for your stage.",
   },
   {
     question: "What happens after I submit the form?",
     answer:
-      "We review your submission and reply within 24 hours — if it looks like a good fit, we'll schedule a short discovery call — from there, we'll recommend the smartest next step: a scoped proposal, a focused sprint, or an honest referral elsewhere",
+      "We review your submission and reply within 24 hours. If it looks like a good fit, we'll schedule a short discovery call. From there, we'll recommend the smartest next step: a scoped proposal, a focused sprint, or an honest referral elsewhere.",
   },
   {
     question: "How long does a typical project take?",
     answer:
-      "It depends on scope — focused MVPs often land in the 2–4 month range, larger platforms, migrations, or multi-phase builds take longer — we'll give you a realistic timeline once we understand your goals, constraints, and team setup",
+      "It depends on scope. Focused MVPs often land in the 2 to 4 month range, larger platforms, migrations, or multi-phase builds take longer. We'll give you a realistic timeline once we understand your goals, constraints, and team setup.",
   },
   {
     question: "Do you work with teams outside Nigeria?",
     answer:
-      "Yes — we're based in Lagos and work with clients remotely across time zones — discovery calls, reviews, and delivery are structured to stay clear and async-friendly, with overlap for live working sessions when needed",
+      "Yes. We're based in Lagos and work with clients remotely across time zones. Discovery calls, reviews, and delivery are structured to stay clear and async-friendly, with overlap for live working sessions when needed.",
   },
   {
     question: "What budget should we have in mind?",
     answer:
-      "Budget needs to match scope and speed — smaller engagements might start in the low five figures, full product builds, platforms, or cloud work typically run higher — share your range in the form, it helps us respond with something realistic, not generic",
+      "Budget needs to match scope and speed. Smaller engagements might start in the low five figures, full product builds, platforms, or cloud work typically run higher. Share your range in the form and it helps us respond with something realistic, not generic.",
   },
   {
     question: "Can you work alongside our in-house team?",
     answer:
-      "Yes — we often embed with existing product, design, or engineering teams, leading a workstream, filling a gap, or helping you ship faster without rebuilding everything from scratch",
+      "Yes. We often embed with existing product, design, or engineering teams, leading a workstream, filling a gap, or helping you ship faster without rebuilding everything from scratch.",
   },
   {
     question: "Do you sign NDAs before we share details?",
     answer:
-      "Yes — if you need an NDA in place before sharing sensitive product or business information, mention it in your message and we'll arrange that before the discovery conversation",
+      "Yes. If you need an NDA in place before sharing sensitive product or business information, mention it in your message and we'll arrange that before the discovery conversation.",
   },
 ];
 

@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — WebuildX",
+  title: "Privacy Policy | WebuildX",
   description: "How WebuildX collects, uses, and protects your personal information",
 };
 
@@ -13,7 +13,7 @@ export default function PrivacyPage() {
     <LegalPage title="Privacy Policy">
       <p>
         <strong>WebuildX Software Technology Limited</strong> (&quot;WebuildX&quot;,
-        &quot;we&quot;, &quot;us&quot;) operates webuildx.com — this policy explains
+        &quot;we&quot;, &quot;us&quot;) operates webuildx.com. This policy explains
         how we handle personal information when you visit our website or contact us
       </p>
 
@@ -28,7 +28,7 @@ export default function PrivacyPage() {
           <li>
             <strong>Analytics:</strong> anonymised usage data such as pages viewed,
             scroll behaviour, and button clicks via Google Analytics 4 and Microsoft
-            Clarity — see our{" "}
+            Clarity, see our{" "}
             <Link href="/cookies" className="text-brand hover:underline">
               Cookie Policy
             </Link>
@@ -52,7 +52,7 @@ export default function PrivacyPage() {
       <section className="space-y-3">
         <h2 className="text-[17px] font-semibold text-ink">Sharing</h2>
         <p>
-          We do not sell your personal data — we share information only with service
+          We do not sell your personal data. We share information only with service
           providers that help us operate the site (for example email delivery, analytics,
           hosting) and only as needed to provide those services
         </p>
@@ -62,7 +62,7 @@ export default function PrivacyPage() {
         <h2 className="text-[17px] font-semibold text-ink">Retention</h2>
         <p>
           Inquiry submissions are kept as long as needed to respond to you and manage
-          our business relationship — analytics data is retained according to each
+          our business relationship. Analytics data is retained according to each
           provider&apos;s default settings
         </p>
       </section>
@@ -84,7 +84,7 @@ export default function PrivacyPage() {
       <section className="space-y-3">
         <h2 className="text-[17px] font-semibold text-ink">Changes</h2>
         <p>
-          We may update this policy from time to time — the latest version will always
+          We may update this policy from time to time. The latest version will always
           be published on this page
         </p>
         <p className="text-[13px] text-subtle">Last updated: June 2026</p>

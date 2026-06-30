@@ -30,14 +30,14 @@ export function AboutStorySection() {
               We were engineers working across different companies and products,
               and we kept seeing the same problem: businesses with solid ideas
               and genuine ambition, but no reliable way to turn that into
-              working software — the talent was hard to find, the process fell
-              apart, and the product never quite matched what was imagined
+              working software. The talent was hard to find, the process fell
+              apart, and the product never quite matched what was imagined.
             </p>
             <p>
-              So we built the studio we kept wishing existed — one that
+              So we built the studio we kept wishing existed, one that
               understands the business problem before touching any technology,
               and stays close enough to care about the outcome long after the
-              work is done — that&apos;s still what WebuildX is
+              work is done. That&apos;s still what WebuildX is.
             </p>
           </ScrollReveal>
         </div>

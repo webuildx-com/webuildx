@@ -39,7 +39,7 @@ export function AboutStudioSection() {
           <ScrollReveal delay={0.06} className="min-w-0 space-y-8">
             <p className="text-[15px] leading-relaxed text-muted lg:text-[16px]">
               Our studio is in {OFFICE_LOCATION_SHORT}, where we collaborate with
-              teams across time zones — whether you need a product partner on the
+              teams across time zones. Whether you need a product partner on the
               ground or a remote team that ships like they&apos;re in the room,
               we&apos;re set up for both
             </p>

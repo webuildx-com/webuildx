@@ -10,7 +10,7 @@ const services = [
     id: "design",
     title: "Design",
     description:
-      "Great products start with great design. We craft intuitive user experiences and distinctive brand identities that resonate — turning complex problems into elegant, memorable solutions.",
+      "Great products start with great design. We craft intuitive user experiences and distinctive brand identities that resonate, turning complex problems into elegant, memorable solutions.",
     items: ["Product Design", "UX / UI Design", "Brand Identity", "Design Systems", "Art Direction"],
     bg: "bg-[#0a0a0a]",
     title_color: "text-white",

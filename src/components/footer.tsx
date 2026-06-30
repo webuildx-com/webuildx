@@ -226,7 +226,7 @@ export function Footer() {
 
           <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6">
             <p className="text-[12px] leading-relaxed text-white/50 lg:text-[13px]">
-              © {year} WebuildX Software Technology Limited — all rights reserved
+              © {year} WebuildX Software Technology Limited. All rights reserved.
             </p>
             <nav
               aria-label="Legal"
